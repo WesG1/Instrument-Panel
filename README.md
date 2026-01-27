@@ -1,2 +1,10 @@
 # Instrument Panel
-65 Mustang Modern Insturment Panel
+Description:
+    Digital custom 65 mustang modern insturment panel. Uses six servo motors along with RGB LEDs to display gauge information. Controlled by an ESP32-s2. Motors and warning lights are interfaced through I2C protocall using a PCA9685 controller. Odometer and tripmeter are displayed on an I2C LCD. 
+    
+    Odo and trip values are stored in an EEPROM chip with a wear leveling algorithm. Odometer value is also stored in a second backup EEPROM. At startup the values of both EEPROMs are read, and if they are different the higher value is set as the current mileage. At shutdown the last stored value and current value for the mileage are compared and the current value is only stored if it is higher than the saved value.
+
+    Each servo motor (execpt voltage) has a deticated sensor. The signals from the oil, temp, and fuel sensors are passed through a calibrated voltage divider to drop them to a level safe for the ESP32 to read. Speed and tach are a digital pulse and are passed through a logic shifter. Voltage is derived by an algorithm and read by a voltage divider from the dash power supply. Volts, oil, temp, and fuel have accompanying warning lights that turn red if the value goes out of a safe range, are off if the value is normal and the headlights are off, and white if the values is normal and the headlights are on. Temp has additionally will turn yellow if the value is too low.
+
+01/26/26:
+    Added code to git
