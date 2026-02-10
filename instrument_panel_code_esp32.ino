@@ -64,6 +64,11 @@ const int TempPot = 3;
 const int SpdPot = 2;
 const int TachPot = 1;
 
+//Additional I/O Pins
+const int LightsOnOff = 8;
+const int SwtichedSense = 9;
+const int PowerOnOff = 10;
+
 //Raw ADC values
 int OilVal;
 int FuelVal;
