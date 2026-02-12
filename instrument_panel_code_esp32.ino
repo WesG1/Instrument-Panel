@@ -8,8 +8,14 @@
 /******Variables and function delarations******/
 
 //i2c addresses
-Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40);
-//const int LCD_ADDR = 0x27;
+/*change addresses based off current dection breakouts
+if implemented current boards will use 0x40, 0x41, 0x44, 0x45
+current plan is to use Adafruit INA260 breakout boards*/
+Adafruit_PWMServoDriver pwmServo = Adafruit_PWMServoDriver(0x42);
+Adafruit_PWMServoDriver pwmLED = Adafruit_PWMServoDriver(0x43);
+/*const int LCD_ADDR = 0x27; 
+  may need to be changed based off specific LCD used
+  using Newhaven Display NHD-0216K3Z-FS(RGB)-FBW-V3 */
 //const int EEPROM_ADDR_1 = 0x50; //Primary EEPROM to store milage and trip
 //const int EEPROM_ADDR_2 = 0x51; //Backuo EEPROM to store copy of mileage
 
@@ -111,7 +117,7 @@ void setup() {
   Serial.println(SCL_PIN);
   Wire.begin(SDA_PIN, SCL_PIN);
 
-  //Scan I2C bus
+  //*********Scan I2C bus********************************
   //Remove once prototyping is complete
   Serial.println("Scanning I2C bus...");
   byte count = 0;
