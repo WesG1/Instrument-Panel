@@ -1,6 +1,9 @@
 # Instrument Panel
 KiCAD schematics and PCB files for instrument pannel project
 
+02/24/26
+    Added connectors, pins for lights, and additional LEDs
+
 2/23/26
     Added power flags, servo connectors, optocoupler, and mosfet
 
