@@ -72,8 +72,12 @@ const int TachPot = 1;
 
 //Additional I/O Pins
 const int LightsOnOff = 8;
-const int SwtichedSense = 9;
-const int PowerOnOff = 10;
+const int HighsOnOff = 9;
+const int LTurnIn = 10;
+const int RTurnIn = 11;
+const int BrakeIn = 12;
+const int SwtichedSense = 13;
+const int PowerOnOff = 14;
 
 //Raw ADC values
 int OilVal;
