@@ -2,6 +2,11 @@
 /************************************************/
 /**Description**/
 
+/*NO LONGER USING PCA CHIPS, REMOVE ADAFRUIT DRIVERS, CHANGE SERVO CODE TO USE
+STANDARD SERVO LIBRARIES. NO LONGER USING I2C LCD, REMOVE CODE. ADD CODE TO 
+REFLECT NEW TFT LCD, Adafruit 1.14" 240x135 Color Newxie TFT Display - ST7789
+DELETE THIS NOTE ONCE CHANGES HAVE BEEN MADE*/
+
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
