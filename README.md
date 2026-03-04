@@ -1,6 +1,10 @@
 # Instrument Panel
 KiCAD schematics and PCB files for instrument pannel project
 
+Change Log
+03/03/26
+    Removed PCA chips, added additional connectors, added trip reset button, combined LEDs to single bus, added LCD connections, added speaker connection, added ultrasonic senor connections
+
 02/24/26
     Added connectors, pins for lights, and additional LEDs
 
