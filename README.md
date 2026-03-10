@@ -2,6 +2,9 @@
 KiCAD schematics and PCB files for instrument pannel project
 
 Change Log
+03/09/26
+    Changed logic shifters back to older version, changed names of outputs for clarification, added shifter for echo pin
+
 03/03/26
     Removed PCA chips, added additional connectors, added trip reset button, combined LEDs to single bus, added LCD connections, added speaker connection, added ultrasonic senor connections, added connectors for lights and power, fixed pinnouts, added inputs for turn and brake lights
 
