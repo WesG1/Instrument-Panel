@@ -2,6 +2,9 @@
 KiCAD schematics and PCB files for instrument pannel project
 
 Change Log
+03/11/2026
+    Placed diodes on gate of power shut off mosfet, one wired to esp32, other wired to keyed power detection
+
 03/09/26
     Changed logic shifters back to older version, changed names of outputs for clarification, added shifter for echo pin
 
