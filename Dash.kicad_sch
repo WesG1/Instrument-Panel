@@ -2138,6 +2138,174 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:D"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=K 2=A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "D_0_1"
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:D_Schottky"
 			(pin_numbers
 				(hide yes)
@@ -5801,6 +5969,131 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:VAA"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "VAA"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"VAA\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "VAA_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "VAA_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(text "Low Beam LED"
 		(exclude_from_sim no)
@@ -5921,6 +6214,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1e24a26e-93d3-4ed3-b0cf-a6837350ac78")
+	)
+	(junction
+		(at 195.58 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2311ec62-f5d5-4260-8adb-7fd42010c790")
 	)
 	(junction
 		(at 171.45 224.79)
@@ -6149,6 +6448,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bee171b3-a773-468e-b99d-54cd19d4b800")
+	)
+	(junction
+		(at 180.34 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c7126ea1-769f-454c-ac59-5acb9c0db9ce")
 	)
 	(junction
 		(at 93.98 184.15)
@@ -6420,6 +6725,26 @@
 	)
 	(wire
 		(pts
+			(xy 179.07 99.06) (xy 180.34 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ba95d60-b7a8-496b-9f0a-c5b6d23a6bce")
+	)
+	(wire
+		(pts
+			(xy 180.34 99.06) (xy 182.88 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c4f4a6d-0004-48ec-9386-b047248780c7")
+	)
+	(wire
+		(pts
 			(xy 144.78 48.26) (xy 157.48 48.26)
 		)
 		(stroke
@@ -6477,6 +6802,16 @@
 			(type default)
 		)
 		(uuid "215eeb07-96a0-4816-815f-885c22a3c324")
+	)
+	(wire
+		(pts
+			(xy 195.58 97.79) (xy 195.58 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21822303-a1e9-4631-95f5-1cf3fde578fe")
 	)
 	(wire
 		(pts
@@ -6667,16 +7002,6 @@
 			(type default)
 		)
 		(uuid "3cd7fa9a-8025-4748-9723-dc0f4c6395a4")
-	)
-	(wire
-		(pts
-			(xy 179.07 106.68) (xy 179.07 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3d364b7c-9f0c-4501-872a-b2608b7dd480")
 	)
 	(wire
 		(pts
@@ -7150,6 +7475,16 @@
 	)
 	(wire
 		(pts
+			(xy 195.58 99.06) (xy 195.58 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "79ef71bf-d101-4a30-b752-979830e2c4fe")
+	)
+	(wire
+		(pts
 			(xy 59.69 224.79) (xy 60.96 224.79)
 		)
 		(stroke
@@ -7157,6 +7492,16 @@
 			(type default)
 		)
 		(uuid "7aae4452-4410-4607-bc52-3ce163cb678c")
+	)
+	(wire
+		(pts
+			(xy 180.34 107.95) (xy 182.88 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7b5f94d6-2826-4a9f-aadb-9c148b292ea5")
 	)
 	(wire
 		(pts
@@ -7450,6 +7795,16 @@
 	)
 	(wire
 		(pts
+			(xy 190.5 118.11) (xy 190.5 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9bc01878-8854-4c13-b80b-5afd5d3b6306")
+	)
+	(wire
+		(pts
 			(xy 92.71 245.11) (xy 101.6 245.11)
 		)
 		(stroke
@@ -7537,6 +7892,16 @@
 			(type default)
 		)
 		(uuid "ade5fa2d-bc78-4185-9f7d-45cfaa4cf466")
+	)
+	(wire
+		(pts
+			(xy 190.5 99.06) (xy 195.58 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b04db8c2-e420-4e07-91d4-f697f9db7426")
 	)
 	(wire
 		(pts
@@ -7880,16 +8245,6 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 97.79) (xy 195.58 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dcff3f48-3154-49bd-bc44-5fc08b9c8430")
-	)
-	(wire
-		(pts
 			(xy 149.86 184.15) (xy 149.86 186.69)
 		)
 		(stroke
@@ -8000,6 +8355,16 @@
 	)
 	(wire
 		(pts
+			(xy 180.34 99.06) (xy 180.34 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef76d847-e6cc-43ae-bd59-0bbd3d924cfa")
+	)
+	(wire
+		(pts
 			(xy 102.87 184.15) (xy 102.87 186.69)
 		)
 		(stroke
@@ -8057,16 +8422,6 @@
 			(type default)
 		)
 		(uuid "f7d16561-9673-4041-b421-a5d729539d81")
-	)
-	(wire
-		(pts
-			(xy 162.56 99.06) (xy 171.45 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f930adc7-43ce-419a-b080-eb108519f726")
 	)
 	(wire
 		(pts
@@ -8789,7 +9144,7 @@
 		(uuid "ddd9f658-b9c6-48a7-a8a5-37a1b82543f0")
 	)
 	(label "Power Off"
-		(at 162.56 99.06 0)
+		(at 190.5 118.11 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10488,7 +10843,8 @@
 	)
 	(symbol
 		(lib_id "Transistor_FET:2N7000")
-		(at 176.53 99.06 0)
+		(at 173.99 99.06 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10497,7 +10853,7 @@
 		(fields_autoplaced yes)
 		(uuid "1e08d309-a778-4f87-bc67-2a87c797c6fc")
 		(property "Reference" "Q1"
-			(at 182.88 97.7899 0)
+			(at 167.64 97.7899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10506,7 +10862,7 @@
 			)
 		)
 		(property "Value" "2N7000"
-			(at 182.88 100.3299 0)
+			(at 167.64 100.3299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10515,7 +10871,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
-			(at 181.61 100.965 0)
+			(at 168.91 100.965 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10526,7 +10882,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.vishay.com/docs/70226/70226.pdf"
-			(at 181.61 102.87 0)
+			(at 168.91 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10536,7 +10892,7 @@
 			)
 		)
 		(property "Description" "0.2A Id, 200V Vds, N-Channel MOSFET, 2.6V Logic Level, TO-92"
-			(at 176.53 99.06 0)
+			(at 173.99 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12561,74 +12917,8 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+BATT")
-		(at 72.39 132.08 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "509cd011-757e-456a-9d94-4af63284ba44")
-		(property "Reference" "#PWR066"
-			(at 72.39 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+BATT"
-			(at 72.39 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 72.39 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 72.39 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+BATT\""
-			(at 72.39 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5ecf7a5c-3f19-4c80-8f3a-eaf41e7311a0")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "#PWR066")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+VDC")
-		(at 179.07 93.98 0)
+		(at 195.58 91.44 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12637,7 +12927,7 @@
 		(fields_autoplaced yes)
 		(uuid "518621e0-1c5a-4e3d-812d-253fdd9819e1")
 		(property "Reference" "#PWR047"
-			(at 179.07 96.52 0)
+			(at 195.58 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12646,7 +12936,7 @@
 			)
 		)
 		(property "Value" "+VDC"
-			(at 179.07 86.36 0)
+			(at 195.58 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12654,7 +12944,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 179.07 93.98 0)
+			(at 195.58 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12663,7 +12953,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 179.07 93.98 0)
+			(at 195.58 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12672,7 +12962,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+VDC\""
-			(at 179.07 93.98 0)
+			(at 195.58 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12895,6 +13185,91 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:D")
+		(at 186.69 107.95 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "587c39e6-c458-4454-9a44-3393dae0c424")
+		(property "Reference" "D13"
+			(at 186.6278 104.902 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D"
+			(at 186.6278 110.744 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 186.69 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 186.69 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Diode"
+			(at 186.69 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 186.69 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 186.69 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1cac4aec-5149-4da7-96d5-2755d8a595a8")
+		)
+		(pin "2"
+			(uuid "82f006f2-d9f9-4b73-8d66-57747523b7ea")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "D13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 356.87 58.42 0)
 		(unit 1)
@@ -12955,6 +13330,72 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "#PWR034")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VAA")
+		(at 72.39 132.08 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5c11959f-bfb8-45ef-a7a9-14d4379a34ec")
+		(property "Reference" "#PWR060"
+			(at 72.39 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VAA"
+			(at 72.39 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 72.39 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 72.39 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VAA\""
+			(at 72.39 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f86b49e6-de22-43f2-92ed-8bd6e7a84d20")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "#PWR060")
 					(unit 1)
 				)
 			)
@@ -13725,72 +14166,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+BATT")
-		(at 71.12 91.44 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6ec35f9e-7110-42d3-b282-07a7e5e77a76")
-		(property "Reference" "#PWR048"
-			(at 71.12 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+BATT"
-			(at 71.12 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 71.12 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 71.12 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+BATT\""
-			(at 71.12 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e35d5b39-b4e3-4435-980b-fca5bd40d613")
-		)
-		(instances
-			(project ""
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "#PWR048")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 85.09 114.3 0)
 		(unit 1)
@@ -14436,6 +14811,72 @@
 			(project ""
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "D10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VAA")
+		(at 171.45 104.14 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7604b8da-ef81-485a-baf9-d755e2fb0f0b")
+		(property "Reference" "#PWR072"
+			(at 171.45 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VAA"
+			(at 171.45 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 171.45 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 171.45 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VAA\""
+			(at 171.45 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "164f9754-9b46-4a6b-911c-77ca884345fd")
+		)
+		(instances
+			(project ""
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "#PWR072")
 					(unit 1)
 				)
 			)
@@ -15243,72 +15684,6 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "#PWR043")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 179.07 106.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "828fccc9-b158-4e61-b312-549334616100")
-		(property "Reference" "#PWR060"
-			(at 179.07 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 179.07 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 179.07 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 179.07 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 179.07 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a16cbcbf-6187-42a1-8f2b-5f60c668688d")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "#PWR060")
 					(unit 1)
 				)
 			)
@@ -18949,6 +19324,91 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:D")
+		(at 186.69 99.06 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ca2c26f8-95d1-4ccd-85f6-13151a544117")
+		(property "Reference" "D12"
+			(at 186.6278 96.012 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D"
+			(at 186.6278 101.854 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 186.69 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 186.69 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Diode"
+			(at 186.69 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 186.69 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 186.69 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7d1b7292-314c-49f7-97fb-357ecf40892f")
+		)
+		(pin "2"
+			(uuid "429b5ab4-4231-4dd9-bc40-81228a2ec99d")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "D12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 31.75 44.45 180)
 		(unit 1)
@@ -19015,7 +19475,8 @@
 	)
 	(symbol
 		(lib_id "power:+BATT")
-		(at 195.58 91.44 0)
+		(at 171.45 93.98 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -19024,7 +19485,7 @@
 		(fields_autoplaced yes)
 		(uuid "cb7977ed-ead3-4bc2-9f94-52d1aee84403")
 		(property "Reference" "#PWR049"
-			(at 195.58 95.25 0)
+			(at 171.45 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19033,7 +19494,7 @@
 			)
 		)
 		(property "Value" "+BATT"
-			(at 195.58 86.36 0)
+			(at 171.45 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19041,7 +19502,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 195.58 91.44 0)
+			(at 171.45 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19050,7 +19511,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 195.58 91.44 0)
+			(at 171.45 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19059,7 +19520,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+BATT\""
-			(at 195.58 91.44 0)
+			(at 171.45 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19210,6 +19671,138 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VAA")
+		(at 71.12 91.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cd7d8457-2b77-40a2-a1ed-37ed06a236ae")
+		(property "Reference" "#PWR048"
+			(at 71.12 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VAA"
+			(at 71.12 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 71.12 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 71.12 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VAA\""
+			(at 71.12 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "040e58ad-3c60-441b-86ef-28982b4d20e8")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "#PWR048")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 69.85 21.59 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d0362a93-0745-4fd1-b652-9d004e10e2f5")
+		(property "Reference" "#FLG06"
+			(at 69.85 19.685 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 69.85 16.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 69.85 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 69.85 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 69.85 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b64fbc78-a1e7-4c73-b8e9-52620d53e756")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "#FLG06")
 					(unit 1)
 				)
 			)
@@ -21302,6 +21895,72 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "#PWR074")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VAA")
+		(at 69.85 21.59 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f76133f1-d91f-4408-acd3-ab66fa883627")
+		(property "Reference" "#PWR066"
+			(at 69.85 17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VAA"
+			(at 69.85 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 69.85 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 69.85 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VAA\""
+			(at 69.85 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d5ccbccc-ba47-4686-ae92-3fc882451b19")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "#PWR066")
 					(unit 1)
 				)
 			)
