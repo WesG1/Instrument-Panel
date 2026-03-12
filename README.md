@@ -7,6 +7,9 @@ Description:
     Each servo motor (execpt voltage) has a deticated sensor. The signals from the oil, temp, and fuel sensors are passed through a calibrated voltage divider to drop them to a level safe for the ESP32 to read. Speed and tach are a digital pulse and are passed through a logic shifter. Voltage is derived by an algorithm and read by a voltage divider from the dash power supply. Volts, oil, temp, and fuel have accompanying warning lights that turn red if the value goes out of a safe range, are off if the value is normal and the headlights are off, and white if the values is normal and the headlights are on. Temp has additionally will turn yellow if the value is too low.
 
 Change Log
+03/11/2026
+    Removed Adafruit PWM servo code, removed I2C LCD code, removed code of RGB leds since ARGB leds will be used instead, changed SDA and SCL pins to match schematic, added code for new LCD pins, added code for speaker and ultrasonic sensor, changed servo pins to connect directly to esp32, started power on off function
+
 03/03/26
     Added note in code to reflect changes in hardware. Code has not yet been updated.
 

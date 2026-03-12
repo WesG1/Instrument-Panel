@@ -3,12 +3,13 @@
 /**Description**/
 
 /*NO LONGER USING PCA CHIPS, REMOVE ADAFRUIT DRIVERS, CHANGE SERVO CODE TO USE
-STANDARD SERVO LIBRARIES. NO LONGER USING I2C LCD, REMOVE CODE. ADD CODE TO 
-REFLECT NEW TFT LCD, Adafruit 1.14" 240x135 Color Newxie TFT Display - ST7789
+STANDARD SERVO LIBRARIES. CHANGE CODE FOR LEDS TO REFLECT ARGB USE, USE LIBRARIES
+NO LONGER USING I2C LCD, REMOVE CODE. ADD CODE TO REFLECT NEW TFT LCD, Adafruit 
+1.14" 240x135 Color Newxie TFT Display - ST7789. CHANGE GROUPINGS OF PINS TO BE
+NUMERICAL ORDER TO REDUCE CONFUSION IN WIRING
 DELETE THIS NOTE ONCE CHANGES HAVE BEEN MADE*/
 
 #include <Wire.h>
-#include <Adafruit_PWMServoDriver.h>
 
 /******Variables and function delarations******/
 
@@ -16,41 +17,20 @@ DELETE THIS NOTE ONCE CHANGES HAVE BEEN MADE*/
 /*change addresses based off current dection breakouts
 if implemented current boards will use 0x40, 0x41, 0x44, 0x45
 current plan is to use Adafruit INA260 breakout boards*/
-Adafruit_PWMServoDriver pwmServo = Adafruit_PWMServoDriver(0x42);
-Adafruit_PWMServoDriver pwmLED = Adafruit_PWMServoDriver(0x43);
-/*const int LCD_ADDR = 0x27; 
-  may need to be changed based off specific LCD used
-  using Newhaven Display NHD-0216K3Z-FS(RGB)-FBW-V3 */
-//const int EEPROM_ADDR_1 = 0x50; //Primary EEPROM to store milage and trip
-//const int EEPROM_ADDR_2 = 0x51; //Backuo EEPROM to store copy of mileage
+const int EEPROM_ADDR_1 = 0x50; //Primary EEPROM to store milage and trip
+const int EEPROM_ADDR_2 = 0x51; //Backuo EEPROM to store copy of mileage
 
 //lcd
-//LiquidCrystal_I2C lcd(LCD_ADDR, 16, 2);
 
 //I2C pins for ESP32-S2
-#define SDA_PIN 33
-#define SCL_PIN 34
-
-//Servo and light channels on PCA9685
-#define SERVO_BATT 0
-#define SERVO_TEMP 1
-#define SERVO_TACH 2
-#define SERVO_SPD 3
-#define SERVO_FUEL 4
-#define SERVO_OIL 5
-#define BATT_R 8
-#define BATT_G 9
-#define TEMP_R 10
-#define TEMP_G 11
-#define FUEL_R 12
-#define FUEL_G 13
-#define OIL_R 14
-#define OIL_G 15
+#define SDA_PIN 37
+#define SCL_PIN 38
 
 //Servo settings
+/*these may not be needed anymore, delete if not needed, uncomment if needed
 #define SERVO_FREQ 50
 #define SERVOMIN 150
-#define SERVOMAX 600
+#define SERVOMAX 600*/
 
 //Gauge ranges (in degrees 0-180)
 #define OILMAX 29
@@ -75,14 +55,32 @@ const int TempPot = 3;
 const int SpdPot = 2;
 const int TachPot = 1;
 
+//Servo PWM pins
+//rename with names of each servo when updated on schematic
+const int servo1 = 17;
+const int servo2 = 18;
+const int servo3 = 21;
+const int servo4 = 33;
+const int servo5 = 34;
+const int servo6 = 35;
+
 //Additional I/O Pins
-const int LightsOnOff = 8;
-const int HighsOnOff = 9;
-const int LTurnIn = 10;
-const int RTurnIn = 11;
-const int BrakeIn = 12;
-const int SwtichedSense = 13;
-const int PowerOnOff = 14;
+bool LightsOnOff = 8;
+bool HighsOnOff = 9;
+bool LTurnIn = 10;
+bool RTurnIn = 11;
+bool BrakeIn = 12;
+bool SwtichedSense = 13;
+bool PowerOnOff = 14;
+const int speaker1 = 43;
+const int speaker2 = 44;
+
+//LCD pins
+const int DA = 39;
+const int CS = 40;
+const int DC = 41;
+const int BL = 42;
+const int CL = 45;
 
 //Raw ADC values
 int OilVal;
@@ -112,6 +110,7 @@ void volts();
 void fuelLevel();
 void oilPress();
 void startupAnimation();
+void checkPowerOnOff();
 
 void setup() {
   Serial.begin(115200);
@@ -146,13 +145,6 @@ void setup() {
   Serial.println("Setting ADC attenuation...");
   analogSetAttenuation(ADC_11db); 
 
-  //Initialize PCA9685
-  Serial.println("Initializing PCA9685...");
-  pwm.begin();
-  pwm.setOscillatorFrequency(27000000);
-  pwm.setPWMFreq(SERVO_FREQ);
-  delay(10);
-
   //Startup
   Serial.println("Setup complete!");
   Serial.println("\n=== STARTING ANIMATION ===");
@@ -171,7 +163,12 @@ void loop(){
   delay(10);
 }
 
+void checkPowerOnOff(){
+  
+}
+
 //Function to set servo angle
+//may not be needed if so delete, if needed modify to work
 void setServoAngle(uint8_t channel, int angle) {
   //Constrain angle to 0-180
   angle = constrain(angle, 0, 180);
@@ -181,25 +178,6 @@ void setServoAngle(uint8_t channel, int angle) {
   pwm.setPWM(channel, 0, pulse);
 }
 
-//Helper function to set LED
-//This will be changed or removed once led are replaced with ARGB leds
-void setLED(uint8_t channel, bool state){
-  if(state){
-    //Full ON
-    pwm.setPWM(channel, 4095, 0);  
-  } 
-  else{
-    //Full OFF
-    pwm.setPWM(channel, 0, 4096);  
-  }
-}
-
-//Helper function to set RGB LED color
-//This will be changed or removed once led are replaced with ARGB leds
-void setRGBLED(uint8_t redChannel, uint8_t greenChannel, bool red, bool green){
-  setLED(redChannel, red);
-  setLED(greenChannel, green);
-}
 
 void speed(){
   //Read raw ADC values (0-4095 for ESP32)
