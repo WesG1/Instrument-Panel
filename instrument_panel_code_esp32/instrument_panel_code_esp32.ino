@@ -280,6 +280,7 @@ void temp(){/*
 void volts(){/*
   //Read raw ADC values (0-4095 for ESP32) 
   //volage does not have a dedicated sensor
+  //voltage divider R1=39k, R2=10K
   //change to algoritm to calculate value form Vin 
   BattVal = analogRead(BattPot);
   //Map from 0-4095 to servo ranges (in degrees)
