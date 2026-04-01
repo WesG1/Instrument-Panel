@@ -55,10 +55,10 @@ Servo servoSpd;
 
 //ESP32 analog pins
 //Change these to sensors with correct ranges
-const int OilPot = 6;
-const int FuelPot = 5;
-const int BattPot = 4;
-const int TempPot = 3;
+const int OilSense = 6;
+const int FuelSense = 5;
+const int BattVoltage = 4;
+const int TempSense = 3;
 const int SpdPot = 2;
 const int TachPot = 1;
 
@@ -99,6 +99,8 @@ int Temp;
 
 //Digital values
 //int vssCount = 0 //variable to store number of pulses from VSS sensor, may be changed as needed
+const int R1 = 39000; //Voltage divider R1 39K
+const int R2 = 10000; //Voltage diider R2 10K
 
 //Function declarations
 void speed();
@@ -223,42 +225,61 @@ void speed(){/*
   }
   //Calculate speed based on VSS pulses (example: 8000 pulses per mile, actual value depends on sensor)
   //8000 can be used if signal is simulated for demo
-  float speedCalc = (vssCount / 8000.0) * 3600 / ((millis() - lastVSSTime) / 1000.0); 
-  
+  float speedCalc = (vssCount / 8000.0) * 3600 / ((millis() - lastVSSTime) / 1000.0);*/  
 
   //Map from 0-4095 to servo ranges (in degrees)
   //change SpdVal to speedCalc
   Speed = map(SpdVal, 0, 4095, SPDMIN, SPDMAX);
-  //Write to servos via PCA9685  
-  setServoAngle(SERVO_SPD, Speed);
+  servoSpd.write(Speed);
+  delay(10);
   //Display output
   Serial.print(" Spd:");
-  Serial.print(Speed);*/
+  Serial.print(Speed);
 }
 
-void tach(){/*
+void tach(){
   //Read raw ADC values (0-4095 for ESP32)
   //read value form 'Tach" pin on distributor
   //or from simulated signal for demo
   TachVal = analogRead(TachPot);
   //Map from 0-4095 to servo ranges (in degrees)
   RPM = map(TachVal, 0, 4095, TACHMIN, TACHMAX);
-  //Write to servos via PCA9685
-  setServoAngle(SERVO_TACH, RPM);
+  servoTach.write(RPM);
   //Display output
   Serial.print(" Tach:");
-  Serial.println(RPM);*/
+  Serial.println(RPM);
 }
 
-void temp(){/*
+void temp(){
   //Read raw ADC values (0-4095 for ESP32)
   //change to sensor
-  TempVal = analogRead(TempPot);
+  TempVal = analogRead(TempSense);
   //Map from 0-4095 to servo ranges (in degrees)  
   Temp = map(TempVal, 0, 4095, TEMPMIN, TEMPMAX);
   //Write to servos
-  setServoAngle(SERVO_TEMP, Temp); 
-  //Set warning lights 
+  servoTemp.write(Temp);
+
+  //Read raw value from temp sensor
+  TempVal = analogRead(TempSense);
+  //prevents a divide-by-zero error
+  if (TempVal == 0){
+    servoFuel.write(TEMPMIN); 
+    return; 
+  }
+  //Convert ADC reading to resistance (560Ω pull-up)
+  float resistance = 560.0 * ((4095.0 / TempVal) - 1.0);
+  //Map resistance to pressure (PSI) using lookup table
+  //78Ω@130*, 50Ω@160*, 26Ω@200*, 16Ω@230*, 10Ω@250*
+  if(resistance >= 78) Temp = 5;
+  else if (resistance >= 50) Temp = map(resistance, 50, 78, 15, 5);
+  else if (resistance >= 26) Temp = map(resistance, 26, 50, 45, 15);
+  else if (resistance >= 16) Temp = map(resistance, 16, 26, 70, 45);
+  else if (resistance >= 10) Temp= map(resistance, 10, 16, 85, 70);
+  else                       Temp = 85;
+  // Map PSI to servo angle and write
+  Temp = map(Temp, 0, 85, TEMPMIN, TEMPMAX);
+  servoTemp.write(Temp);
+  /*Set warning lights 
   //warning light functions will change when leds change to ARGBs
   if(Temp < 10){
     //Yellow (red + green)
@@ -277,17 +298,18 @@ void temp(){/*
   Serial.print(Temp);*/
 }
 
-void volts(){/*
-  //Read raw ADC values (0-4095 for ESP32) 
-  //volage does not have a dedicated sensor
-  //voltage divider R1=39k, R2=10K
-  //change to algoritm to calculate value form Vin 
-  BattVal = analogRead(BattPot);
+void volts(){
+  //Read raw ADC values (0-4095 for ESP32)
+  BattVal = analogRead(BattVoltage);
+  //Calculate scaled measured voltage
+  float voltsCalc = (BattVal * 3.3) / 4095;
+  //Voltage divider equation
+  Volts = voltsCalc / (R2 / (R1 + R2));
   //Map from 0-4095 to servo ranges (in degrees)
   Volts = map(BattVal, 0, 4095, BATTMIN, BATTMAX);
   //Write to servos  
-  setServoAngle(SERVO_BATT, Volts); 
-  // Set warning lights
+  servoBatt.write(Volts);
+  /* Set warning lights
   //warning light functions will change when leds change to ARGBs
   if(Volts < 20 || Volts > 80){
     //Red
@@ -302,15 +324,28 @@ void volts(){/*
   Serial.print(Volts);*/
 }
 
-void fuelLevel(){/*
-  //Read raw ADC values   
-  //change to sensor value
-  FuelVal = analogRead(FuelPot);
-  //Map from 0-4095 to servo ranges (in degrees)
-  FuelLevel = map(FuelVal, 0, 4095, FUELMIN, FUELMAX);
-  //Write to servos  
-  setServoAngle(SERVO_FUEL, FuelLevel);
-  // Set warning lights
+void fuelLevel(){
+  //Read raw value from level sensor
+  FuelVal = analogRead(FuelSense);
+  //prevents a divide-by-zero error
+  if (FuelVal == 0){
+    servoFuel.write(FUELMIN); 
+    return; 
+  }
+  //Convert ADC reading to resistance (560Ω pull-up)
+  float resistance = 560.0 * ((4095.0 / FuelVal) - 1.0);
+  //Map resistance to pressure (PSI) using lookup table
+  //78Ω@5psi, 50Ω@15psi, 26Ω@45psi, 16Ω@70psi, 10Ω@85psi
+  if(resistance >= 78) FuelLevel = 5;
+  else if (resistance >= 50) FuelLevel = map(resistance, 50, 78, 15, 5);
+  else if (resistance >= 26) FuelLevel = map(resistance, 26, 50, 45, 15);
+  else if (resistance >= 16) FuelLevel = map(resistance, 16, 26, 70, 45);
+  else if (resistance >= 10) FuelLevel = map(resistance, 10, 16, 85, 70);
+  else                       FuelLevel = 85;
+  // Map PSI to servo angle and write
+  FuelLevel = map(FuelLevel, 0, 85, FUELMIN, FUELMAX);
+  servoFuel.write(FuelLevel);
+  /* Set warning lights
   //warning light functions will change when leds change to ARGBs
   if(FuelLevel > 100){
     //Red    
@@ -325,15 +360,28 @@ void fuelLevel(){/*
   Serial.print(FuelLevel);*/
 }
 
-void oilPress(){/*
-  //Read raw ADC values (0-4095 for ESP32)
-  //change to sensor value
-  OilVal = analogRead(OilPot);
-  //Map from 0-4095 to servo ranges (in degrees)  
-  OilPress = map(OilVal, 0, 4095, OILMIN, OILMAX);
-  //Write to servos
-  setServoAngle(SERVO_OIL, OilPress);
-  // Set warning light
+void oilPress(){
+  //Read raw value from pressure sensor
+  OilVal = analogRead(OilSense);
+  //prevents a divide-by-zero error
+  if (OilVal == 0){
+    servoOil.write(OILMIN); 
+    return; 
+  }
+  //Convert ADC reading to resistance (560Ω pull-up)
+  float resistance = 560.0 * ((4095.0 / OilVal) - 1.0);
+  //Map resistance to pressure (PSI) using lookup table
+  //78Ω@5psi, 50Ω@15psi, 26Ω@45psi, 16Ω@70psi, 10Ω@85psi
+  if(resistance >= 78) OilPress = 5;
+  else if (resistance >= 50) OilPress = map(resistance, 50, 78, 15, 5);
+  else if (resistance >= 26) OilPress = map(resistance, 26, 50, 45, 15);
+  else if (resistance >= 16) OilPress = map(resistance, 16, 26, 70, 45);
+  else if (resistance >= 10) OilPress = map(resistance, 10, 16, 85, 70);
+  else                       OilPress = 85;
+  // Map PSI to servo angle and write
+  OilPress = map(OilPress, 0, 85, OILMIN, OILMAX);
+  servoOil.write(OilPress);
+  /* Set warning light
   //warning light functions will change when leds change to ARGBs
   if(OilPress < 40 || OilPress > 100){
     //Red
