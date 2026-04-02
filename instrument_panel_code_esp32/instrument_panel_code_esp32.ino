@@ -71,8 +71,8 @@ const int RTurnIn = 11;       //Input from right turn signal
 const int BrakeIn = 12;       //Input forn brake switch
 const int SwtichedSense = 13; //Sensor for key position
 const int PowerOnOff = 14;    //Main power shut off
-const int echoPin = 20;       //Echo pin for ultrasonic sensor
-const int trigPin = 19;       //Trigger pin for ultrasonic sensor
+const int echoPin = 15;       //Echo pin for ultrasonic sensor
+const int trigPin = 16;       //Trigger pin for ultrasonic sensor
 const int LEDdata = 36;       //Data pin for ARGB LEDs
 const int speaker = 44;       //Speaker for turn signal and hazard beeps
 
@@ -81,7 +81,7 @@ const int DA = 39;
 const int CS = 40;
 const int DC = 41;
 const int BL = 42;
-const int CL = 45;
+const int CL = 46;
 
 //Raw ADC values
 int OilVal;
@@ -103,6 +103,7 @@ int Temp;
 //int vssCount = 0 //variable to store number of pulses from VSS sensor, may be changed as needed
 const int R1 = 39000; //Voltage divider R1 39K
 const int R2 = 10000; //Voltage diider R2 10K
+bool powerState = false;
 
 //Function declarations
 void speed();
@@ -117,7 +118,17 @@ void readEEPROM();
 void writeEEPROM();
 
 void setup() {
-  PowerOnOff = HIGH;
+  pinMode(trip_rest,      INPUT_PULLUP);
+  pinMode(LightsOnOff,    INPUT_PULLUP);
+  pinMode(HighsOnOff,     INPUT_PULLUP);
+  pinMode(LTurnIn,        INPUT_PULLUP);
+  pinMode(RTurnIn,        INPUT_PULLUP);
+  pinMode(BrakeIn,        INPUT_PULLUP);
+  pinMode(SwtichedSense,  INPUT_PULLUP);
+  pinMode(POWER_PIN,      OUTPUT);
+  pinMode(trigPin,        OUTPUT);
+  pinMode(echoPin,        INPUT);
+  pinMode(LEDdata,        OUTPUT);
   Serial.begin(115200);
   //Delay to pause startup when key is first turned
   //This insures the car is running before the startup begins
@@ -253,14 +264,6 @@ void tach(){
 }
 
 void temp(){
-  //Read raw ADC values (0-4095 for ESP32)
-  //change to sensor
-  TempVal = analogRead(TempSense);
-  //Map from 0-4095 to servo ranges (in degrees)  
-  Temp = map(TempVal, 0, 4095, TEMPMIN, TEMPMAX);
-  //Write to servos
-  servoTemp.write(Temp);
-
   //Read raw value from temp sensor
   TempVal = analogRead(TempSense);
   //prevents a divide-by-zero error
