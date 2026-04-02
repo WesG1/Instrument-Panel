@@ -63,16 +63,18 @@ const int SpdPot = 2;
 const int TachPot = 1;
 
 //Additional I/O Pins
-const int trip_rest = 7;
-bool LightsOnOff = 8;
-bool HighsOnOff = 9;
-bool LTurnIn = 10;
-bool RTurnIn = 11;
-bool BrakeIn = 12;
-const int SwtichedSense = 13;
-bool PowerOnOff = 14;
-const int speaker1 = 43;
-const int speaker2 = 44;
+const int trip_rest = 7;      //Trip meter reset button
+const int LightsOnOff = 8;    //Input from low bean switch
+const int HighsOnOff = 9;     //Input from high beam swtich
+const int LTurnIn = 10;       //Input from left turn signal
+const int RTurnIn = 11;       //Input from right turn signal
+const int BrakeIn = 12;       //Input forn brake switch
+const int SwtichedSense = 13; //Sensor for key position
+const int PowerOnOff = 14;    //Main power shut off
+const int echoPin = 20;       //Echo pin for ultrasonic sensor
+const int trigPin = 19;       //Trigger pin for ultrasonic sensor
+const int LEDdata = 36;       //Data pin for ARGB LEDs
+const int speaker = 44;       //Speaker for turn signal and hazard beeps
 
 //LCD pins
 const int DA = 39;
