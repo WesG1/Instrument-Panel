@@ -118,17 +118,17 @@ void readEEPROM();
 void writeEEPROM();
 
 void setup() {
-  pinMode(trip_rest,      INPUT_PULLUP);
-  pinMode(LightsOnOff,    INPUT_PULLUP);
-  pinMode(HighsOnOff,     INPUT_PULLUP);
-  pinMode(LTurnIn,        INPUT_PULLUP);
-  pinMode(RTurnIn,        INPUT_PULLUP);
-  pinMode(BrakeIn,        INPUT_PULLUP);
-  pinMode(SwtichedSense,  INPUT_PULLUP);
-  pinMode(POWER_PIN,      OUTPUT);
-  pinMode(trigPin,        OUTPUT);
-  pinMode(echoPin,        INPUT);
-  pinMode(LEDdata,        OUTPUT);
+  pinMode(trip_rest, INPUT_PULLUP);
+  pinMode(LightsOnOff, INPUT_PULLUP);
+  pinMode(HighsOnOff, INPUT_PULLUP);
+  pinMode(LTurnIn, INPUT_PULLUP);
+  pinMode(RTurnIn, INPUT_PULLUP);
+  pinMode(BrakeIn, INPUT_PULLUP);
+  pinMode(SwtichedSense, INPUT_PULLUP);
+  pinMode(PowerOnOff, OUTPUT);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(LEDdata, OUTPUT);
   Serial.begin(115200);
   //Delay to pause startup when key is first turned
   //This insures the car is running before the startup begins
@@ -205,7 +205,7 @@ void readEEPROM(){
 }
 
 void writeEEPROM(){/*
-  if(/*current value is greater than the stored value){
+  if(current value is greater than the stored value){
     //write current value of milage to both EEPROMs via wear leveling algorithm
     //write current trip value to main EEPROM via wear leveling, no need to backup trip reading
     //set servos to "0" position
@@ -268,13 +268,13 @@ void temp(){
   TempVal = analogRead(TempSense);
   //prevents a divide-by-zero error
   if (TempVal == 0){
-    servoFuel.write(TEMPMIN); 
+    servoTemp.write(TEMPMIN); 
     return; 
   }
   //Convert ADC reading to resistance (560Ω pull-up)
   float resistance = 560.0 * ((4095.0 / TempVal) - 1.0);
   //Map resistance to pressure (PSI) using lookup table
-  //78Ω@130*, 50Ω@160*, 26Ω@200*, 16Ω@230*, 10Ω@250*
+  //78Ω@ 130*, 50Ω@ 160*, 26Ω@ 200*, 16Ω@ 230*, 10Ω@ 250*
   if(resistance >= 78) Temp = 5;
   else if (resistance >= 50) Temp = map(resistance, 50, 78, 15, 5);
   else if (resistance >= 26) Temp = map(resistance, 26, 50, 45, 15);
@@ -303,7 +303,14 @@ void temp(){
   Serial.print(Temp);*/
 }
 
-void volts(){
+void volts(){/*
+Logic needs rewritting
+R1 and R2 are const int. R2 / (R1 + R2) = 10000 / 49000 = 0 in integer math, 
+causing a divide-by-zero at runtime. This line also gets immediately overwritten 
+on the next line anyway (line 314 maps BattVal directly to the servo angle), 
+making the whole voltsCalc block dead code. You should either fix and use it, 
+or remove lines 310–312 entirely.*/
+/*  
   //Read raw ADC values (0-4095 for ESP32)
   BattVal = analogRead(BattVoltage);
   //Calculate scaled measured voltage
@@ -314,6 +321,7 @@ void volts(){
   Volts = map(BattVal, 0, 4095, BATTMIN, BATTMAX);
   //Write to servos  
   servoBatt.write(Volts);
+  */
   /* Set warning lights
   //warning light functions will change when leds change to ARGBs
   if(Volts < 20 || Volts > 80){
@@ -327,6 +335,7 @@ void volts(){
   //Display output
   Serial.print(" Batt:");
   Serial.print(Volts);*/
+  
 }
 
 void fuelLevel(){
@@ -340,7 +349,7 @@ void fuelLevel(){
   //Convert ADC reading to resistance (560Ω pull-up)
   float resistance = 560.0 * ((4095.0 / FuelVal) - 1.0);
   //Map resistance to pressure (PSI) using lookup table
-  //78Ω@5psi, 50Ω@15psi, 26Ω@45psi, 16Ω@70psi, 10Ω@85psi
+  //78Ω@ Empty, 50Ω@ 1/4, 26Ω@ 1/2, 16Ω@ 3/4, 10Ω@ Full
   if(resistance >= 78) FuelLevel = 5;
   else if (resistance >= 50) FuelLevel = map(resistance, 50, 78, 15, 5);
   else if (resistance >= 26) FuelLevel = map(resistance, 26, 50, 45, 15);
