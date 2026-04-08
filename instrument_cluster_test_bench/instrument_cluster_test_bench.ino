@@ -31,23 +31,25 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 //Tach and speed values do not matter
 //Specific pin assignments may change based on board used
 //If fault detection is not implemented, remove Brakes, Fog, and LowHiHBm
+
+//Inputs
 const int OilPot = A0;
 const int TempPot = A1;
 const int FuelPot = A2;
 const int TachPot = A3;
 const int SpdPot = A6;
-const int LightsOnOff = 13;
+const int LowBeams = 13;
 const int LeftTurn = 12;
-const int RightTurn = 11;
-const int Hazard = 10;
-const int Brakes = 9;
-const int Fog = 8;
-const int LowHiHBm = 7;
-const int LftTrnOut = 6;
-const int RgtTrnOut = 5;
-const int HazdOut = 4;
-const int RPM = 3;
-const int MPH = 2;
+const int RightTurn = 8;
+const int Hazard = 7;
+const int Brakes = 4;
+const int HighBeams = 3;
+//Outputs
+const int LftTrnOut = 11;
+const int RgtTrnOut = 10;
+const int HazdOut = 9;
+const int RPM = 6;
+const int MPH = 5
 
 //Pin Values
 int OilVal = 0;
@@ -55,13 +57,12 @@ int TempVal = 0;
 int FuelVal = 0;
 int TachVal = 0;
 int SpdVal = 0;
-bool Lights = false;
+bool LowBeamVal = false;
 bool LftTrnVal = false;
 bool RgtTrnVal = false;
 bool HazdVal = false;
 bool BrkVal = false;
-bool FogVal = false;
-bool LowHiHVal = false;
+bool HighBeamVal = false;
 
 //Function declarations
 void setSquareWave(int pin);
@@ -84,13 +85,12 @@ void setup() {
   pinMode(FuelPot,INPUT);
   pinMode(TachPot,INPUT);
   pinMode(SpdPot,INPUT);
-  pinMode(LightsOnOff,INPUT);
+  pinMode(LowBeams,INPUT);
   pinMode(LeftTurn,INPUT);
   pinMode(RightTurn,INPUT);
   pinMode(Hazard,INPUT);
   pinMode(Brakes,INPUT);
-  pinMode(Fog,INPUT);
-  pinMode(LowHiHBm,INPUT);
+  pinMode(HighBeams,INPUT);
   pinMode(LftTrnOut,OUTPUT);
   pinMode(RgtTrnOut,OUTPUT);
   pinMode(HazdOut,OUTPUT);
@@ -105,13 +105,12 @@ void loop() {
   FuelVal = analogRead(FuelPot);
   TachVal = analogRead(TachPot);
   SpdVal = analogRead(SpdPot);
-  Lights = digitalRead(LightsOnOff);
+  LowBeamVal = digitalRead(LowBeams);
   LftTrnVal = digitalRead(LeftTurn);
   RgtTrnVal = digitalRead(RightTurn);
   HazdVal = digitalRead(Hazard);
   BrkVal = digitalRead(Brakes);
-  FogVal = digitalRead(Fog);
-  LowHiHVal = digitalRead(LowHiHBm);
+  HighBeamVal = digitalRead(HighBeams);
   //Process speed
   setVSSPulse();
   //Process tach
