@@ -2,6 +2,9 @@
 KiCAD schematics and PCB files for instrument pannel project
 
 Change Log
+04/13/26
+    Began drawing pcb for prototype circuit. Will need to be changed once desgin is finalized
+
 03/11/2026
     Placed diodes on gate of power shut off mosfet, one wired to esp32, other wired to keyed power detection
 
