@@ -6976,6 +6976,10 @@
 		(uuid "14d4fc8b-c666-467c-93ab-bdae88739bf6")
 	)
 	(no_connect
+		(at 317.5 241.3)
+		(uuid "19091f1b-459c-402b-8364-0d916299a2ae")
+	)
+	(no_connect
 		(at 317.5 165.1)
 		(uuid "3070704a-edb0-4fb7-8b67-0d21172b2e7b")
 	)
@@ -10165,7 +10169,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 330.962 88.9 90)
 			(hide yes)
 			(show_name no)
@@ -10322,7 +10326,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 321.31 220.218 90)
 			(hide yes)
 			(show_name no)
@@ -10393,7 +10397,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 120.65 222.2499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10404,7 +10408,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 116.332 220.98 90)
 			(hide yes)
 			(show_name no)
@@ -10640,7 +10644,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_A-41791-0003_1x03_P3.96mm_Vertical"
 			(at 124.46 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -10877,7 +10881,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 321.31 230.378 90)
 			(hide yes)
 			(show_name no)
@@ -10957,7 +10961,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
 			(at 161.29 196.85 0)
 			(hide yes)
 			(show_name no)
@@ -11142,7 +11146,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 95.25 252.7299 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11153,7 +11157,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 90.932 251.46 90)
 			(hide yes)
 			(show_name no)
@@ -11544,7 +11548,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_5273-05A_1x05_P3.96mm_Vertical"
 			(at 78.74 77.47 0)
 			(hide yes)
 			(show_name no)
@@ -12103,7 +12107,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 44.45 222.2499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12114,7 +12118,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 40.132 220.98 90)
 			(hide yes)
 			(show_name no)
@@ -12194,7 +12198,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_5273-06A_1x06_P3.96mm_Vertical"
 			(at 57.15 77.47 0)
 			(hide yes)
 			(show_name no)
@@ -12608,7 +12612,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_A-41791-0003_1x03_P3.96mm_Vertical"
 			(at 29.21 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -12693,7 +12697,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 143.2052 152.4 0)
 			(hide yes)
 			(show_name no)
@@ -12773,7 +12777,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
 			(at 109.22 96.8248 0)
 			(hide yes)
 			(show_name no)
@@ -13251,7 +13255,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 321.31 222.758 90)
 			(hide yes)
 			(show_name no)
@@ -13487,7 +13491,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_A-41791-0003_1x03_P3.96mm_Vertical"
 			(at 100.33 77.47 0)
 			(hide yes)
 			(show_name no)
@@ -13569,7 +13573,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 307.34 97.028 90)
 			(hide yes)
 			(show_name no)
@@ -13727,7 +13731,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_THT:L_Radial_D9.5mm_P5.00mm_Fastron_07HVP"
 			(at 119.38 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -13807,7 +13811,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H8mm"
 			(at 173.99 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -13878,7 +13882,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 173.99 222.2499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13889,7 +13893,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 169.672 220.98 90)
 			(hide yes)
 			(show_name no)
@@ -13969,7 +13973,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_5273-07A_1x07_P3.96mm_Vertical"
 			(at 29.21 77.47 0)
 			(hide yes)
 			(show_name no)
@@ -14289,7 +14293,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 114.3 191.7699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14300,7 +14304,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 109.982 190.5 90)
 			(hide yes)
 			(show_name no)
@@ -14379,7 +14383,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_A-405_P7.62mm_Horizontal"
 			(at 186.69 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -14805,7 +14809,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 102.87 222.2499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14816,7 +14820,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 98.552 220.98 90)
 			(hide yes)
 			(show_name no)
@@ -14895,7 +14899,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 307.34 99.568 90)
 			(hide yes)
 			(show_name no)
@@ -14977,7 +14981,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 193.802 105.41 90)
 			(hide yes)
 			(show_name no)
@@ -15214,7 +15218,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 40.3352 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -15371,7 +15375,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 321.31 225.298 90)
 			(hide yes)
 			(show_name no)
@@ -15453,7 +15457,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
 			(at 63.1952 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -15691,7 +15695,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
 			(at 64.4652 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -15938,7 +15942,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 141.9352 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -16018,7 +16022,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
 			(at 53.34 257.81 0)
 			(hide yes)
 			(show_name no)
@@ -16125,7 +16129,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 156.21 222.2499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16136,7 +16140,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 151.892 220.98 90)
 			(hide yes)
 			(show_name no)
@@ -16218,7 +16222,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_A-405_P7.62mm_Horizontal"
 			(at 110.49 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -16455,7 +16459,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 44.45 252.7299 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16466,7 +16470,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 40.132 251.46 90)
 			(hide yes)
 			(show_name no)
@@ -17080,7 +17084,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 44.45 191.7699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17091,7 +17095,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 40.132 190.5 90)
 			(hide yes)
 			(show_name no)
@@ -17407,7 +17411,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 51.7652 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -18140,7 +18144,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_A-41791-0003_1x03_P3.96mm_Vertical"
 			(at 67.31 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -18300,7 +18304,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 248.92 99.568 90)
 			(hide yes)
 			(show_name no)
@@ -18535,7 +18539,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-7_P2.54x3.7mm_StaggerOdd_Lead3.8mm_Vertical"
 			(at 88.9 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -18795,7 +18799,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
 			(at 53.34 227.33 0)
 			(hide yes)
 			(show_name no)
@@ -18911,7 +18915,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_A-41791-0003_1x03_P3.96mm_Vertical"
 			(at 105.41 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -19162,7 +19166,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 129.2352 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -19320,7 +19324,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_A-41791-0003_1x03_P3.96mm_Vertical"
 			(at 48.26 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -19480,7 +19484,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 321.31 232.918 90)
 			(hide yes)
 			(show_name no)
@@ -19640,7 +19644,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 130.5052 152.4 0)
 			(hide yes)
 			(show_name no)
@@ -19875,7 +19879,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
 			(at 53.34 196.85 0)
 			(hide yes)
 			(show_name no)
@@ -20147,7 +20151,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
 			(at 111.76 227.33 0)
 			(hide yes)
 			(show_name no)
@@ -20254,7 +20258,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 96.52 191.7699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20265,7 +20269,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 92.202 190.5 90)
 			(hide yes)
 			(show_name no)
@@ -20345,7 +20349,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
 			(at 165.1 227.33 0)
 			(hide yes)
 			(show_name no)
@@ -20452,7 +20456,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 62.23 222.2499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20463,7 +20467,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 57.912 220.98 90)
 			(hide yes)
 			(show_name no)
@@ -20689,7 +20693,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 62.23 252.7299 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20700,7 +20704,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 57.912 251.46 90)
 			(hide yes)
 			(show_name no)
@@ -20849,7 +20853,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 62.23 191.7699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20860,7 +20864,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 57.912 190.5 90)
 			(hide yes)
 			(show_name no)
@@ -21098,7 +21102,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-7_P2.54x3.7mm_StaggerOdd_Lead3.8mm_Vertical"
 			(at 87.63 102.87 0)
 			(hide yes)
 			(show_name no)
@@ -21193,7 +21197,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_A-41791-0003_1x03_P3.96mm_Vertical"
 			(at 86.36 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -21278,7 +21282,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 272.542 88.9 90)
 			(hide yes)
 			(show_name no)
@@ -21437,7 +21441,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 41.6052 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -21517,7 +21521,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
 			(at 110.49 137.4648 0)
 			(hide yes)
 			(show_name no)
@@ -21596,7 +21600,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_A-405_P7.62mm_Horizontal"
 			(at 186.69 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -21934,7 +21938,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 28.9052 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -22238,7 +22242,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 170.18 191.7699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22249,7 +22253,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 165.862 190.5 90)
 			(hide yes)
 			(show_name no)
@@ -22320,7 +22324,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 152.4 191.7699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22331,7 +22335,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 148.082 190.5 90)
 			(hide yes)
 			(show_name no)
@@ -22414,7 +22418,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "PCM_Espressif:ESP32-S2-DevKitM"
+		(property "Footprint" "Espressif:ESP32-S2-DevKitM"
 			(at 274.32 254 0)
 			(hide yes)
 			(show_name no)
@@ -22614,7 +22618,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
 			(at 104.14 257.81 0)
 			(hide yes)
 			(show_name no)
@@ -22732,7 +22736,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 30.1752 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -22814,7 +22818,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
 			(at 53.0352 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -23049,7 +23053,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 248.92 94.488 90)
 			(hide yes)
 			(show_name no)
@@ -23362,7 +23366,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_5273-04A_1x04_P3.96mm_Vertical"
 			(at 121.92 77.47 0)
 			(hide yes)
 			(show_name no)
@@ -23604,7 +23608,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
 			(at 105.41 196.85 0)
 			(hide yes)
 			(show_name no)
@@ -23719,7 +23723,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 321.31 227.838 90)
 			(hide yes)
 			(show_name no)
@@ -23964,7 +23968,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 248.92 97.028 90)
 			(hide yes)
 			(show_name no)
@@ -24043,7 +24047,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 302.26 94.488 90)
 			(hide yes)
 			(show_name no)
@@ -24114,7 +24118,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 113.03 252.7299 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24125,7 +24129,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 108.712 251.46 90)
 			(hide yes)
 			(show_name no)
@@ -24205,7 +24209,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_THT:L_Radial_D9.5mm_P5.00mm_Fastron_07HVP"
 			(at 118.11 102.87 0)
 			(hide yes)
 			(show_name no)
@@ -24287,7 +24291,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_KK-396_5273-02A_1x02_P3.96mm_Vertical"
 			(at 330.2 172.72 0)
 			(hide yes)
 			(show_name no)
@@ -24457,7 +24461,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 179.832 134.62 90)
 			(hide yes)
 			(show_name no)
@@ -24850,7 +24854,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_A-405_P7.62mm_Horizontal"
 			(at 111.76 148.59 0)
 			(hide yes)
 			(show_name no)
