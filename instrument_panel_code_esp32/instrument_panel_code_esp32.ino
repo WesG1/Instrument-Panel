@@ -2,9 +2,7 @@
 /************************************************/
 /**Description**/
 
-/*NO LONGER USING PCA CHIPS, REMOVE ADAFRUIT DRIVERS, CHANGE SERVO CODE TO USE
-STANDARD SERVO LIBRARIES. CHANGE CODE FOR LEDS TO REFLECT ARGB USE, USE LIBRARIES
-NO LONGER USING I2C LCD, REMOVE CODE. ADD CODE TO REFLECT NEW TFT LCD, Adafruit 
+/* ADD CODE TO REFLECT NEW TFT LCD, Adafruit 
 1.14" 240x135 Color Newxie TFT Display - ST7789. CHANGE GROUPINGS OF PINS TO BE
 NUMERICAL ORDER TO REDUCE CONFUSION IN WIRING. ORGANIZE PIN DEFINITIONS TO BE CLEANER
 DELETE THIS NOTE ONCE CHANGES HAVE BEEN MADE*/
@@ -34,10 +32,6 @@ Servo servoTemp;
 Servo servoBatt;
 Servo servoTach;
 Servo servoSpd;
-/*these may not be needed anymore, delete if not needed, uncomment if needed
-#define SERVO_FREQ 50
-#define SERVOMIN 150
-#define SERVOMAX 600*/
 
 //Gauge ranges (in degrees 0-180)
 #define OILMAX 29
@@ -75,8 +69,11 @@ const int echoPin = 15;       //Echo pin for ultrasonic sensor
 const int trigPin = 16;       //Trigger pin for ultrasonic sensor
 const int LEDdata = 36;       //Data pin for ARGB LEDs
 const int speaker = 44;       //Speaker for turn signal and hazard beeps
+/*speaker may interfere with serial output, leave disconnected or comment 
+out speaker code if not currently using it*/
 
 //LCD pins
+//add additional pins for extra LCDs
 const int DA = 39;
 const int CS = 40;
 const int DC = 41;
@@ -116,6 +113,9 @@ void startupAnimation();
 void checkPowerOnOff();
 void readEEPROM();
 void writeEEPROM();
+void setLEDs(/*add variables here if needed*/);
+void readUltraSonic();
+void generateTone();
 
 void setup() {
   pinMode(trip_rest, INPUT_PULLUP);
@@ -189,9 +189,21 @@ void loop(){
   delay(10);
 }
 
+void generateTone(){
+  //code not needed for turn or hazard signal, speaker will click on its own
+  //rapid beeping for distance warning from ultrasonic sensor
+  //slow beeping for gauge warning, if red light is triggered
+}
+
+void readUltraSonic(){
+  //read data from sensor
+  //convert distance to "real life values" for demo
+}
+
 void checkPowerOnOff(){
   bool checkKey = digitalRead(SwtichedSense); //check if key has been switched off
   if(checkKey == LOW){  //if yes begin shutdown
+    //sweep all gauges to 0 position
     writeEEPROM();  //write milage to EEPROM
     digitalWrite(PowerOnOff, LOW);  //shut down
   }
@@ -208,9 +220,27 @@ void writeEEPROM(){/*
   if(current value is greater than the stored value){
     //write current value of milage to both EEPROMs via wear leveling algorithm
     //write current trip value to main EEPROM via wear leveling, no need to backup trip reading
-    //set servos to "0" position
   }
   //else do nothing*/
+}
+
+void setLEDs(/*add variables here if needed*/){
+  /*This may not work as a standalone function
+  if not, split the code for each LED to its own function
+  using neopixel leds for warning lights
+  using argb strip for backlights
+  use adafruit libray
+
+  sets backlight on if headlights are on
+  set backilight off if headligths are off
+  set gauge lights to white if headlights are on and no warning conditions
+  set gauge lights to off if headlights are off and no warning conditions
+
+  set batt light to red if voltage is too low or too high
+  set oil light to red if pressure is too low or too high
+  set temp light to yellow if too low, red if too high
+  set fuel light to yellow if too low
+  */
 }
 
 /******FUNCTIONS NEED TO MODIFIED OR REMOVED TO FIT CURRENT PLAN******/
@@ -283,59 +313,7 @@ void temp(){
   else                       Temp = 85;
   // Map PSI to servo angle and write
   Temp = map(Temp, 0, 85, TEMPMIN, TEMPMAX);
-  servoTemp.write(Temp);
-  /*Set warning lights 
-  //warning light functions will change when leds change to ARGBs
-  if(Temp < 10){
-    //Yellow (red + green)
-    setRGBLED(TEMP_R, TEMP_G, true, true);  
-  }
-  else if(Temp > 100){
-    //Red only
-    setRGBLED(TEMP_R, TEMP_G, true, false);  
-  }
-  else{
-    //Off
-    setRGBLED(TEMP_R, TEMP_G, false, false);  
-  }
-  //display output
-  Serial.print(" Temp:");
-  Serial.print(Temp);*/
-}
-
-void volts(){/*
-Logic needs rewritting
-R1 and R2 are const int. R2 / (R1 + R2) = 10000 / 49000 = 0 in integer math, 
-causing a divide-by-zero at runtime. This line also gets immediately overwritten 
-on the next line anyway (line 314 maps BattVal directly to the servo angle), 
-making the whole voltsCalc block dead code. You should either fix and use it, 
-or remove lines 310–312 entirely.*/
-/*  
-  //Read raw ADC values (0-4095 for ESP32)
-  BattVal = analogRead(BattVoltage);
-  //Calculate scaled measured voltage
-  float voltsCalc = (BattVal * 3.3) / 4095;
-  //Voltage divider equation
-  Volts = voltsCalc / (R2 / (R1 + R2));
-  //Map from 0-4095 to servo ranges (in degrees)
-  Volts = map(BattVal, 0, 4095, BATTMIN, BATTMAX);
-  //Write to servos  
-  servoBatt.write(Volts);
-  */
-  /* Set warning lights
-  //warning light functions will change when leds change to ARGBs
-  if(Volts < 20 || Volts > 80){
-    //Red
-    setRGBLED(BATT_R, BATT_G, true, false);  
-  }
-  else{
-    //Off
-    setRGBLED(BATT_R, BATT_G, false, false);  
-  }
-  //Display output
-  Serial.print(" Batt:");
-  Serial.print(Volts);*/
-  
+  servoTemp.write(Temp);  
 }
 
 void fuelLevel(){
@@ -359,19 +337,6 @@ void fuelLevel(){
   // Map PSI to servo angle and write
   FuelLevel = map(FuelLevel, 0, 85, FUELMIN, FUELMAX);
   servoFuel.write(FuelLevel);
-  /* Set warning lights
-  //warning light functions will change when leds change to ARGBs
-  if(FuelLevel > 100){
-    //Red    
-    setRGBLED(FUEL_R, FUEL_G, true, false);  
-  }
-  else{
-    //Off
-    setRGBLED(FUEL_R, FUEL_G, false, false);  
-  }
-  //Display output
-  Serial.print(" Fuel:");
-  Serial.print(FuelLevel);*/
 }
 
 void oilPress(){
@@ -394,73 +359,13 @@ void oilPress(){
   else                       OilPress = 85;
   // Map PSI to servo angle and write
   OilPress = map(OilPress, 0, 85, OILMIN, OILMAX);
-  servoOil.write(OilPress);
-  /* Set warning light
-  //warning light functions will change when leds change to ARGBs
-  if(OilPress < 40 || OilPress > 100){
-    //Red
-    setRGBLED(OIL_R, OIL_G, true, false);  
-  }
-  else{
-    //Off
-    setRGBLED(OIL_R, OIL_G, false, false);  
-  }
-  //Display output
-  Serial.print("Oil:");
-  Serial.print(OilPress);*/  
+  servoOil.write(OilPress); 
 }
 
-//Startup Animation
-//Set all warning lights to red
-//Sweep from 0 to max for all gauges
-//Set all warnign lights to white
-//Sweep from max to 0 for all gauges
-void startupAnimation(){/*
-  //make sure all guages sweep properly, may need to change min and max values
-  //led functions will have to change once leds are changed to ARGBs
-  Serial.println("  Setting servo ranges...");
-  int servoMin[6] = {OILMIN, FUELMIN, BATTMIN, TEMPMIN, SPDMIN, TACHMIN};
-  int servoMax[6] = {OILMAX, FUELMAX, BATTMAX, TEMPMAX, SPDMAX, TACHMAX};
-  
-  Serial.println("  Turning all lights RED...");
-  //All warning lights turn red
-  setRGBLED(OIL_R, OIL_G, true, false);
-  setRGBLED(FUEL_R, FUEL_G, true, false);
-  setRGBLED(BATT_R, BATT_G, true, false);
-  setRGBLED(TEMP_R, TEMP_G, true, false);
-  delay(500);
-  
-  Serial.println("  Sweeping gauges...");
-  //Sweep each gauge from min to max
-  int steps = 20;
-  for (int step = 0; step <= steps; step++) {
-    for (int i = 0; i < 6; i++) {
-      int pos = map(step, 0, steps, servoMin[i], servoMax[i]);
-      setServoAngle(i, pos);
-    }
-    delay(50);
-  }
-  //Change to white when leds are swithced to ARGB leds
-  Serial.println("  Turning all lights GREEN...");
-  //All warning lights turn green
-  setRGBLED(OIL_R, OIL_G, false, true);
-  setRGBLED(FUEL_R, FUEL_G, false, true);
-  setRGBLED(BATT_R, BATT_G, false, true);
-  setRGBLED(TEMP_R, TEMP_G, false, true);
-  delay(500);
-  
-  Serial.println("  Returning gauges to zero...");
-  //Return gauges to zero position (min values)
-  for (int i = 0; i < 6; i++) {
-    setServoAngle(i, servoMin[i]);
-  }
-  delay(500);
-  
-  Serial.println("  Turning all lights OFF...");
-  //All lights off
-  setRGBLED(OIL_R, OIL_G, false, false);
-  setRGBLED(FUEL_R, FUEL_G, false, false);
-  setRGBLED(BATT_R, BATT_G, false, false);
-  setRGBLED(TEMP_R, TEMP_G, false, false);
-  delay(500);*/
+void startupAnimation(){
+  //Startup Animation
+  //Set all warning lights on
+  //Sweep from 0 to max for all gauges
+  //Set all warnign lights to white
+  //Sweep from max to 0 for all gauges
 }
