@@ -98,6 +98,12 @@ int Temp;
 
 //Digital values
 //int vssCount = 0 //variable to store number of pulses from VSS sensor, may be changed as needed
+
+/*mileage variables, actual value stored in EEPROM and value for when program is running to be incramented
+currently ints but change to floats if necessary*/
+//int milesCount //variable to store odometer and trip values. gets incramented by 1 for each mile driven, not the actual mileage value
+//int storedMilage //variable that stores mileage in EEPROM
+
 const int R1 = 39000; //Voltage divider R1 39K
 const int R2 = 10000; //Voltage diider R2 10K
 bool powerState = false;
@@ -116,6 +122,8 @@ void writeEEPROM();
 void setLEDs(/*add variables here if needed*/);
 void readUltraSonic();
 void generateTone();
+void scanFaultDetection();
+void displayLCD();
 
 void setup() {
   pinMode(trip_rest, INPUT_PULLUP);
@@ -189,6 +197,22 @@ void loop(){
   delay(10);
 }
 
+void displayLCD(){
+  /*write data to 2-3 lcd displays
+  display odometer on 1 lcd
+  display tripmeter on 1 lcd
+  if not using leds, display high/low beams and brake warning lights*/
+}
+
+void scanFaultDetection(){
+  /*read light input pins to see if any lights are currently on
+  if yes scan the i2c current sensor for that light
+  if current is below threshold for a light, set the warning light red
+  if the current is normal, set the light a standard color, green for turn signal, blue for high/low beams, none for brakes
+  ~9 amps for low beam, ~ 10 amps for high beam
+  ~1 amp for tail lights, ~4 amps for brake lights, ~2 amps for turn light*/
+}
+
 void generateTone(){
   //code not needed for turn or hazard signal, speaker will click on its own
   //rapid beeping for distance warning from ultrasonic sensor
@@ -242,19 +266,6 @@ void setLEDs(/*add variables here if needed*/){
   set fuel light to yellow if too low
   */
 }
-
-/******FUNCTIONS NEED TO MODIFIED OR REMOVED TO FIT CURRENT PLAN******/
-//Function to set servo angle
-//may not be needed if so delete, if needed modify to work
-void setServoAngle(uint8_t channel, int angle) {/*
-  //Constrain angle to 0-180
-  angle = constrain(angle, 0, 180);
-  //Map angle to pulse length (SERVOMIN to SERVOMAX)
-  int pulse = map(angle, 0, 180, SERVOMIN, SERVOMAX);
-  //Set PWM on the channel
-  pwm.setPWM(channel, 0, pulse);*/
-}
-
 
 void speed(){/*
   //Read raw ADC values (0-4095 for ESP32)
