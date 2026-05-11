@@ -6678,6 +6678,12 @@
 		(uuid "2b0e3b14-52b8-4625-8082-446c1a374b81")
 	)
 	(junction
+		(at 342.9 228.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2f8c2e5b-54da-4126-96e4-0d3236e5b312")
+	)
+	(junction
 		(at 153.67 214.63)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6694,6 +6700,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "36c396ec-91d0-46f1-96b9-5981635d404d")
+	)
+	(junction
+		(at 350.52 241.3)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4052f2f6-f85d-4f17-baf1-2faf5cd01ab8")
 	)
 	(junction
 		(at 111.76 194.31)
@@ -6976,10 +6988,6 @@
 		(uuid "14d4fc8b-c666-467c-93ab-bdae88739bf6")
 	)
 	(no_connect
-		(at 317.5 241.3)
-		(uuid "19091f1b-459c-402b-8364-0d916299a2ae")
-	)
-	(no_connect
 		(at 317.5 165.1)
 		(uuid "3070704a-edb0-4fb7-8b67-0d21172b2e7b")
 	)
@@ -7010,6 +7018,10 @@
 	(no_connect
 		(at 317.5 175.26)
 		(uuid "c0c59b21-fecb-4bdd-b4cc-31e02a9e5430")
+	)
+	(no_connect
+		(at 317.5 167.64)
+		(uuid "c6815d19-2117-4561-8fcc-a2ced5e8569c")
 	)
 	(no_connect
 		(at 80.01 92.71)
@@ -7137,6 +7149,16 @@
 	)
 	(wire
 		(pts
+			(xy 331.47 215.9) (xy 325.12 215.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "181ed34e-9b9e-4510-87ac-0e2d135835da")
+	)
+	(wire
+		(pts
 			(xy 114.3 224.79) (xy 118.11 224.79)
 		)
 		(stroke
@@ -7224,6 +7246,16 @@
 			(type default)
 		)
 		(uuid "1f6415a8-e776-48ed-947c-c9399b53ec03")
+	)
+	(wire
+		(pts
+			(xy 331.47 208.28) (xy 325.12 208.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "210fd5a7-14b3-439f-9553-86d8eae59351")
 	)
 	(wire
 		(pts
@@ -7427,6 +7459,16 @@
 	)
 	(wire
 		(pts
+			(xy 331.47 210.82) (xy 325.12 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3bc2ad88-6ea2-4e6d-953f-b59eaca33138")
+	)
+	(wire
+		(pts
 			(xy 99.06 102.87) (xy 110.49 102.87)
 		)
 		(stroke
@@ -7494,6 +7536,16 @@
 			(type default)
 		)
 		(uuid "41fc7ce7-6144-4d0a-9413-99a2b9466ba6")
+	)
+	(wire
+		(pts
+			(xy 320.04 231.14) (xy 317.5 231.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "423e8ee6-e444-404b-b5cb-7067f023b35d")
 	)
 	(wire
 		(pts
@@ -7587,13 +7639,13 @@
 	)
 	(wire
 		(pts
-			(xy 331.47 228.6) (xy 325.12 228.6)
+			(xy 331.47 213.36) (xy 325.12 213.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "52b1024f-7eda-4174-9de6-bf5df3041b54")
+		(uuid "53544d20-259e-415d-bf35-0e04cd5f7823")
 	)
 	(wire
 		(pts
@@ -7757,16 +7809,6 @@
 	)
 	(wire
 		(pts
-			(xy 331.47 226.06) (xy 325.12 226.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "675ab3d7-e5ad-46c7-84ce-9cc5932e09a6")
-	)
-	(wire
-		(pts
 			(xy 128.27 113.03) (xy 110.49 113.03)
 		)
 		(stroke
@@ -7797,6 +7839,16 @@
 	)
 	(wire
 		(pts
+			(xy 342.9 228.6) (xy 346.71 228.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6aecb65a-9faf-4671-8265-eb78ed964891")
+	)
+	(wire
+		(pts
 			(xy 41.91 245.11) (xy 50.8 245.11)
 		)
 		(stroke
@@ -7817,6 +7869,16 @@
 	)
 	(wire
 		(pts
+			(xy 212.09 185.42) (xy 226.06 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "702de2c3-a28d-41e8-b902-84d3072d5fdf")
+	)
+	(wire
+		(pts
 			(xy 50.8 92.71) (xy 62.23 92.71)
 		)
 		(stroke
@@ -7824,6 +7886,16 @@
 			(type default)
 		)
 		(uuid "702e6d27-0a49-42d6-9cd0-e3211fedbd2a")
+	)
+	(wire
+		(pts
+			(xy 201.93 193.04) (xy 226.06 193.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70652bc3-0a86-4f83-abbf-bb38bbcc96d1")
 	)
 	(wire
 		(pts
@@ -7957,6 +8029,16 @@
 	)
 	(wire
 		(pts
+			(xy 320.04 236.22) (xy 317.5 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d674421-fc2c-4f66-8dd0-ce484b64ccad")
+	)
+	(wire
+		(pts
 			(xy 92.71 245.11) (xy 92.71 247.65)
 		)
 		(stroke
@@ -7964,26 +8046,6 @@
 			(type default)
 		)
 		(uuid "7d6fe54b-d4b8-42a3-843b-dbc1ff95068d")
-	)
-	(wire
-		(pts
-			(xy 331.47 218.44) (xy 325.12 218.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7d833486-cd6b-4aa2-8b55-6ac1a7303649")
-	)
-	(wire
-		(pts
-			(xy 317.5 167.64) (xy 325.12 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7dbfc0dc-83fc-48f6-92ed-356bed1633ad")
 	)
 	(wire
 		(pts
@@ -8147,6 +8209,16 @@
 	)
 	(wire
 		(pts
+			(xy 212.09 182.88) (xy 226.06 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f7269cd-d9f7-408b-b5c6-510374dab465")
+	)
+	(wire
+		(pts
 			(xy 41.91 194.31) (xy 45.72 194.31)
 		)
 		(stroke
@@ -8297,16 +8369,6 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 193.04) (xy 226.06 193.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a2138cac-61d2-4fc6-a714-1a733da8f75c")
-	)
-	(wire
-		(pts
 			(xy 110.49 97.79) (xy 110.49 102.87)
 		)
 		(stroke
@@ -8327,13 +8389,33 @@
 	)
 	(wire
 		(pts
-			(xy 325.12 233.68) (xy 317.5 233.68)
+			(xy 326.39 218.44) (xy 317.5 218.44)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a7a4bd7a-1113-49bf-8c0e-a252bd7183c7")
+		(uuid "a823d7c3-8328-4061-8769-57528b07b6ba")
+	)
+	(wire
+		(pts
+			(xy 210.82 187.96) (xy 226.06 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8fa4c57-e8f6-4598-bac8-19edf9e2b589")
+	)
+	(wire
+		(pts
+			(xy 331.47 205.74) (xy 325.12 205.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab691d9e-8b5d-417b-be2e-3b804462fca7")
 	)
 	(wire
 		(pts
@@ -8357,6 +8439,16 @@
 	)
 	(wire
 		(pts
+			(xy 212.09 172.72) (xy 218.44 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae37507b-0509-4091-ae16-9861fcbaeff9")
+	)
+	(wire
+		(pts
 			(xy 190.5 99.06) (xy 195.58 99.06)
 		)
 		(stroke
@@ -8364,6 +8456,16 @@
 			(type default)
 		)
 		(uuid "b04db8c2-e420-4e07-91d4-f697f9db7426")
+	)
+	(wire
+		(pts
+			(xy 205.74 180.34) (xy 210.82 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b0cb2687-98f9-4bcb-86a4-49857ecccc34")
 	)
 	(wire
 		(pts
@@ -8497,6 +8599,16 @@
 	)
 	(wire
 		(pts
+			(xy 350.52 238.76) (xy 350.52 241.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c650e6d7-a79c-44e4-b433-779c08b29385")
+	)
+	(wire
+		(pts
 			(xy 336.55 48.26) (xy 349.25 48.26)
 		)
 		(stroke
@@ -8527,6 +8639,16 @@
 	)
 	(wire
 		(pts
+			(xy 317.5 228.6) (xy 342.9 228.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8e4d353-80f7-41b0-b194-93a97c038096")
+	)
+	(wire
+		(pts
 			(xy 128.27 111.76) (xy 128.27 113.03)
 		)
 		(stroke
@@ -8554,16 +8676,6 @@
 			(type default)
 		)
 		(uuid "cb9b3637-b813-49b5-9973-dcb85bd6411e")
-	)
-	(wire
-		(pts
-			(xy 331.47 231.14) (xy 325.12 231.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cc3b05da-f6ae-4e3c-a63c-b07ec504dc9e")
 	)
 	(wire
 		(pts
@@ -8617,16 +8729,6 @@
 	)
 	(wire
 		(pts
-			(xy 331.47 220.98) (xy 325.12 220.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d13f4f3b-1847-4fc1-b94a-446dce2e2af0")
-	)
-	(wire
-		(pts
 			(xy 41.91 255.27) (xy 45.72 255.27)
 		)
 		(stroke
@@ -8657,6 +8759,16 @@
 	)
 	(wire
 		(pts
+			(xy 350.52 241.3) (xy 351.79 241.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4689018-0783-4bdb-90a0-36598b5351f3")
+	)
+	(wire
+		(pts
 			(xy 149.86 194.31) (xy 153.67 194.31)
 		)
 		(stroke
@@ -8664,16 +8776,6 @@
 			(type default)
 		)
 		(uuid "d87b5cd4-be23-4566-8ca9-b301392250c2")
-	)
-	(wire
-		(pts
-			(xy 331.47 223.52) (xy 325.12 223.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d9d111ba-b01b-4a3a-a382-7c02d7e2627d")
 	)
 	(wire
 		(pts
@@ -8717,7 +8819,7 @@
 	)
 	(wire
 		(pts
-			(xy 218.44 175.26) (xy 226.06 175.26)
+			(xy 212.09 175.26) (xy 226.06 175.26)
 		)
 		(stroke
 			(width 0)
@@ -8747,6 +8849,26 @@
 	)
 	(wire
 		(pts
+			(xy 212.09 180.34) (xy 226.06 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2e35c91-f19d-4497-9298-dfc44327bebf")
+	)
+	(wire
+		(pts
+			(xy 350.52 241.3) (xy 317.5 241.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e33a8a12-22a6-4858-9681-f9a1001462e0")
+	)
+	(wire
+		(pts
 			(xy 252.73 48.26) (xy 265.43 48.26)
 		)
 		(stroke
@@ -8767,16 +8889,6 @@
 	)
 	(wire
 		(pts
-			(xy 212.09 172.72) (xy 226.06 172.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e872a813-b41a-47ca-af0a-f34a45cf5007")
-	)
-	(wire
-		(pts
 			(xy 39.37 107.95) (xy 39.37 113.03)
 		)
 		(stroke
@@ -8784,6 +8896,16 @@
 			(type default)
 		)
 		(uuid "e9900e84-9cdb-471e-a691-6cb9f77dd171")
+	)
+	(wire
+		(pts
+			(xy 342.9 226.06) (xy 342.9 228.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea0aa2c6-bd23-429c-88fc-789a90a0d80b")
 	)
 	(wire
 		(pts
@@ -8834,6 +8956,16 @@
 			(type default)
 		)
 		(uuid "ede6a213-24fd-4175-9a66-1d6b6d568f38")
+	)
+	(wire
+		(pts
+			(xy 210.82 180.34) (xy 210.82 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef16a564-d971-4ec6-bf6d-88be22dd30ae")
 	)
 	(wire
 		(pts
@@ -8965,25 +9097,25 @@
 		)
 		(uuid "04aaa77c-fac7-4c1b-a0d5-8981344a52c1")
 	)
-	(label "Brake Adjusted"
-		(at 317.5 210.82 0)
+	(label "Servo 5"
+		(at 331.47 215.9 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "0b2825b5-c941-4109-b41c-0a9b7faba97e")
+		(uuid "0a274dab-e24b-4a6d-843d-dc2e4923dfb4")
 	)
-	(label "SCL"
-		(at 317.5 238.76 0)
+	(label "LED Data Out"
+		(at 212.09 185.42 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "0e003187-93a9-4114-9e19-f3d130dfb502")
+		(uuid "163de1bf-7953-4dfa-9c51-bf68db3aec32")
 	)
 	(label "Batt In"
 		(at 57.15 72.39 90)
@@ -9005,6 +9137,16 @@
 		)
 		(uuid "19d0ef07-f165-43c4-813a-68083d6e15f0")
 	)
+	(label "SDA"
+		(at 317.5 200.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1ab2a971-170c-43ce-95a5-95576acaad6b")
+	)
 	(label "Echo In"
 		(at 60.96 255.27 0)
 		(effects
@@ -9015,25 +9157,25 @@
 		)
 		(uuid "1b94dffb-485b-47a2-be6a-5ea108bb7872")
 	)
-	(label "Headlights High Adjusted"
-		(at 317.5 203.2 0)
+	(label "Left Turn Adjusted"
+		(at 317.5 220.98 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "2cf70e20-fda1-481a-b756-524721f4363a")
+		(uuid "1e70f8e9-45f6-4a7d-acbe-f2bb5af55762")
 	)
-	(label "DC"
-		(at 226.06 185.42 180)
+	(label "Servo 1"
+		(at 331.47 205.74 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
-		(uuid "2fc766f3-16e7-4dc3-ac87-adc9cea44b80")
+		(uuid "2eb6d4f0-57cf-4357-a816-60d128d70583")
 	)
 	(label "Servo 5"
 		(at 102.87 44.45 90)
@@ -9045,6 +9187,16 @@
 		)
 		(uuid "30b234f7-e35a-4a20-8e4b-b825247e46eb")
 	)
+	(label "Ignition Sensor"
+		(at 212.09 180.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "31b6ac4a-f958-4e0f-b393-4a0ba2a80f34")
+	)
 	(label "Headlights Low Adjusted"
 		(at 124.46 194.31 0)
 		(effects
@@ -9055,15 +9207,15 @@
 		)
 		(uuid "320f41bf-2b96-4e79-b0d4-1360d8ad6b5e")
 	)
-	(label "Power Off"
-		(at 317.5 215.9 0)
+	(label "CS0"
+		(at 346.71 228.6 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
-		(uuid "347ffa73-c33a-4cdf-9304-b4c8e52a2a14")
+		(uuid "3590fa5e-4442-4fa6-9372-8a5b047487e8")
 	)
 	(label "Tach Adjusted"
 		(at 78.74 194.31 0)
@@ -9085,16 +9237,6 @@
 		)
 		(uuid "363dc517-f97d-4ff1-aa6b-b590ca4eb9f9")
 	)
-	(label "Servo 5"
-		(at 331.47 228.6 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "384cfa24-7056-4a63-b9c1-8c9c7fa783d9")
-	)
 	(label "Oil In"
 		(at 62.23 72.39 90)
 		(effects
@@ -9104,16 +9246,6 @@
 			(justify left bottom)
 		)
 		(uuid "39565595-e065-4616-a646-473e1bb25640")
-	)
-	(label "Right Turn Adjusted"
-		(at 317.5 208.28 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3c1b1058-b170-48d1-a6f3-d489600d43ca")
 	)
 	(label "Tach In"
 		(at 113.03 194.31 0)
@@ -9134,16 +9266,6 @@
 			(justify left bottom)
 		)
 		(uuid "3e6737e9-3c67-416d-bd6f-704c5ffc6d10")
-	)
-	(label "SDA"
-		(at 317.5 236.22 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4301656f-e3be-4cab-8186-d6233bae766f")
 	)
 	(label "Brake In"
 		(at 83.82 72.39 90)
@@ -9185,16 +9307,6 @@
 		)
 		(uuid "4c81bc0f-6b6f-432c-bc97-68a090b9a4a1")
 	)
-	(label "Servo 4"
-		(at 331.47 226.06 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "52f3763c-031c-4231-899b-3728e6817bc5")
-	)
 	(label "Left Turn In"
 		(at 119.38 224.79 0)
 		(effects
@@ -9214,6 +9326,16 @@
 			(justify left bottom)
 		)
 		(uuid "58b7e33e-a3fb-42bb-b965-c2c6d8af5ffb")
+	)
+	(label "CS1"
+		(at 351.79 241.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "59f7aa1b-5012-407c-bfd1-54e585d516c1")
 	)
 	(label "Right Turn In"
 		(at 172.72 224.79 0)
@@ -9235,6 +9357,16 @@
 		)
 		(uuid "603f156b-044d-4fbf-9c00-e294822d9fd7")
 	)
+	(label "SCL"
+		(at 317.5 203.2 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6332fd4d-cd52-4e40-aef8-f62fd844070a")
+	)
 	(label "Servo 4"
 		(at 83.82 44.45 90)
 		(effects
@@ -9245,15 +9377,15 @@
 		)
 		(uuid "63bdd3c8-09a1-41a7-a8b7-6cf54efd40cb")
 	)
-	(label "Ignition Sensor"
-		(at 317.5 213.36 0)
+	(label "Headlights Low Adjusted"
+		(at 201.93 193.04 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "6633e379-7065-4160-b278-d95675ea40d1")
+		(uuid "67b2a4f6-6c66-4577-9582-9f1590ce2b53")
 	)
 	(label "Tach In"
 		(at 52.07 72.39 90)
@@ -9284,16 +9416,6 @@
 			(justify left bottom)
 		)
 		(uuid "6e4877fd-1053-4e61-b35f-86ee9858b903")
-	)
-	(label "Servo 3"
-		(at 331.47 223.52 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6f7100d1-8dbf-4526-94fc-d99462260cc7")
 	)
 	(label "Fuel In"
 		(at 59.69 72.39 90)
@@ -9345,6 +9467,16 @@
 		)
 		(uuid "8b6e7839-40f5-431b-b672-cc1096e3939b")
 	)
+	(label "Echo Adjusted"
+		(at 326.39 218.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8d5a6392-84f5-4588-917c-3cae11bfda78")
+	)
 	(label "Speed In"
 		(at 49.53 72.39 90)
 		(effects
@@ -9354,16 +9486,6 @@
 			(justify left bottom)
 		)
 		(uuid "8eed4033-75d3-40ed-a1b0-dbad6121d5f8")
-	)
-	(label "CL"
-		(at 223.52 193.04 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "92a58c47-46ec-46f0-83ef-17fc204a3633")
 	)
 	(label "Fuel In"
 		(at 317.5 193.04 0)
@@ -9375,6 +9497,36 @@
 		)
 		(uuid "92eea9a7-0cac-409f-b85d-931d86fc3cfe")
 	)
+	(label "Servo 3"
+		(at 331.47 210.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "93efc1d2-e8f6-417e-b761-a3d4115ff729")
+	)
+	(label "Headlights High Adjusted"
+		(at 317.5 238.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "975ea387-e3ee-483e-8041-77397e831571")
+	)
+	(label "Power Off"
+		(at 212.09 182.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9baa9f0c-f026-419e-a6ce-8b75336fe061")
+	)
 	(label "Brake In"
 		(at 111.76 255.27 0)
 		(effects
@@ -9384,16 +9536,6 @@
 			(justify left bottom)
 		)
 		(uuid "9d3d4c55-d640-4cbb-be9d-4a685fc0c1af")
-	)
-	(label "Headlights Low Adjusted"
-		(at 317.5 200.66 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9d9982bc-9d67-4104-a9b2-a4885794810a")
 	)
 	(label "SCL"
 		(at 273.05 95.25 0)
@@ -9415,16 +9557,6 @@
 		)
 		(uuid "a379e9be-af2d-46a0-a995-1001cbf50e93")
 	)
-	(label "Left Turn Adjusted"
-		(at 317.5 205.74 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a3ddd5c0-b596-4164-b435-3e1a40e64202")
-	)
 	(label "Speed Adjusted"
 		(at 317.5 185.42 0)
 		(effects
@@ -9434,6 +9566,16 @@
 			(justify left bottom)
 		)
 		(uuid "a41b8463-a275-4682-be44-ec31f3b176e5")
+	)
+	(label "Servo 6"
+		(at 212.09 172.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a4286564-c2ca-4fa0-84ca-e50c5011e31d")
 	)
 	(label "Echo In"
 		(at 121.92 72.39 90)
@@ -9445,16 +9587,6 @@
 		)
 		(uuid "a663a57c-15b9-4ffd-bcd4-915f05088e2b")
 	)
-	(label "Servo 6"
-		(at 331.47 231.14 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a782092d-2070-4df8-b354-5e0f76f6fcc5")
-	)
 	(label "Tach Adjusted"
 		(at 317.5 182.88 0)
 		(effects
@@ -9464,6 +9596,16 @@
 			(justify left bottom)
 		)
 		(uuid "a7ea6110-1ae4-42d8-ad9e-8b70e23585ce")
+	)
+	(label "CL"
+		(at 317.5 233.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "aa345ac4-8e1d-4c1a-ae98-5b405c18aa59")
 	)
 	(label "CS"
 		(at 26.67 72.39 90)
@@ -9495,6 +9637,16 @@
 		)
 		(uuid "b1ea9e51-40e7-4165-b27f-e87b28230da2")
 	)
+	(label "Right Turn Adjusted"
+		(at 317.5 223.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b2d8ea85-ad7a-472d-af9e-588e6de64eb7")
+	)
 	(label "DC"
 		(at 24.13 72.39 90)
 		(effects
@@ -9504,6 +9656,16 @@
 			(justify left bottom)
 		)
 		(uuid "b48cbbd7-adef-4e01-8b29-b8653cdc2911")
+	)
+	(label "DC"
+		(at 320.04 236.22 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "baa4e5a4-814b-4ab7-8430-02af812f97e4")
 	)
 	(label "Headlights Low In"
 		(at 73.66 72.39 90)
@@ -9525,15 +9687,15 @@
 		)
 		(uuid "bde0bd1f-3a5c-460f-88e9-4d1f9f6ae42e")
 	)
-	(label "Echo Adjusted"
-		(at 212.09 172.72 0)
+	(label "DA"
+		(at 320.04 231.14 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
-		(uuid "c437fb78-a154-4faa-b824-2721ede6c61e")
+		(uuid "be952feb-d590-4adc-927a-e63d17f86db7")
 	)
 	(label "Left Turn In"
 		(at 78.74 72.39 90)
@@ -9575,6 +9737,16 @@
 		)
 		(uuid "d1c4911d-a0ec-494a-96b8-62509084de9f")
 	)
+	(label "Brake Adjusted"
+		(at 317.5 226.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d4524438-ef5c-4bf9-827e-a696166de2d5")
+	)
 	(label "Trip Reset"
 		(at 184.15 130.81 0)
 		(effects
@@ -9584,16 +9756,6 @@
 			(justify left bottom)
 		)
 		(uuid "d56fd331-4af5-44d4-ae87-928d88a3a698")
-	)
-	(label "LED Data Out"
-		(at 325.12 233.68 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d8c834c9-f875-4356-8be1-331aec979158")
 	)
 	(label "LED Data Out"
 		(at 144.78 48.26 0)
@@ -9615,16 +9777,6 @@
 		)
 		(uuid "dbb2dcb6-3576-41b4-9c63-12989f3f0075")
 	)
-	(label "BL"
-		(at 226.06 187.96 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "ddd9f658-b9c6-48a7-a8a5-37a1b82543f0")
-	)
 	(label "Power Off"
 		(at 190.5 118.11 90)
 		(effects
@@ -9634,26 +9786,6 @@
 			(justify left bottom)
 		)
 		(uuid "e6e459a7-c790-4d95-b234-f411a1a215c0")
-	)
-	(label "Servo 2"
-		(at 331.47 220.98 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "e9b183dd-aee2-4b90-8e6f-8303327e81d2")
-	)
-	(label "DA"
-		(at 226.06 180.34 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "e9f79426-5e59-4b32-b8e5-5b56386a5b98")
 	)
 	(label "Servo 6"
 		(at 121.92 44.45 90)
@@ -9685,8 +9817,18 @@
 		)
 		(uuid "ef892115-abfc-49c9-8541-c6399b7dbb01")
 	)
+	(label "Servo 2"
+		(at 331.47 208.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f022e1c1-f94d-44a6-952a-fa2fd70f7d19")
+	)
 	(label "Trigger"
-		(at 218.44 175.26 0)
+		(at 212.09 175.26 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9705,26 +9847,6 @@
 		)
 		(uuid "f443a679-7479-4947-b396-49d3516a33c0")
 	)
-	(label "CS"
-		(at 226.06 182.88 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "f4df24fb-5e50-4241-b7c8-f3cd081338c2")
-	)
-	(label "Servo 1"
-		(at 331.47 218.44 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f5e82f79-2b38-492d-b5c8-c419d8a08246")
-	)
 	(label "Ignition Sensor"
 		(at 210.82 97.79 0)
 		(effects
@@ -9734,6 +9856,16 @@
 			(justify left bottom)
 		)
 		(uuid "f74d5118-b2c2-452d-a05f-b535f0fad7a8")
+	)
+	(label "Servo 4"
+		(at 331.47 213.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fb9d4630-55e6-4cfe-8346-88ccd35497a5")
 	)
 	(symbol
 		(lib_id "power:+5V")
@@ -10297,85 +10429,6 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 321.31 218.44 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "09039e63-6eed-49f9-9b1c-ddb85998e7b4")
-		(property "Reference" "R15"
-			(at 326.136 217.424 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220"
-			(at 321.31 218.44 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 321.31 220.218 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 321.31 218.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 321.31 218.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "516fe3ac-be17-4c94-8f0b-a01798153f07")
-		)
-		(pin "1"
-			(uuid "8b34a1db-5bde-48d5-95e1-da942309bfcb")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "R15")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
 		(at 118.11 220.98 0)
 		(unit 1)
 		(body_style 1)
@@ -10851,85 +10904,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 321.31 228.6 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "12dae93d-1431-4081-bcf7-e571e0967078")
-		(property "Reference" "R19"
-			(at 326.136 227.584 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220"
-			(at 321.31 228.6 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 321.31 230.378 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 321.31 228.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 321.31 228.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "b96ded19-8ac5-4bbf-a7e7-5597e8520459")
-		)
-		(pin "1"
-			(uuid "5bffa762-5116-40bf-8b06-2bd4b14241f0")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "R19")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Simulation_SPICE:NMOS")
 		(at 158.75 191.77 270)
 		(unit 1)
@@ -11277,84 +11251,6 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "#PWR042")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 325.12 170.18 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1682eed7-a1b7-499d-8124-4eb3a2a3bf58")
-		(property "Reference" "#PWR073"
-			(at 325.12 176.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 325.12 175.26 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 325.12 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 325.12 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 325.12 170.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "4837d6d4-6326-49e2-bc1b-7dc01c151686")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "#PWR073")
 					(unit 1)
 				)
 			)
@@ -11851,6 +11747,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 342.9 222.25 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1f8cbc32-2570-41bf-aa4e-498d5e92d96c")
+		(property "Reference" "R13"
+			(at 345.44 220.9799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 345.44 223.5199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 341.122 222.25 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 342.9 222.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 342.9 222.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7b31aba8-68b7-44dc-8eba-77b20babe976")
+		)
+		(pin "2"
+			(uuid "46e3aa91-d1b2-4fef-95b8-dd75f00a3746")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "R13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3.3V")
 		(at 41.91 210.82 0)
 		(unit 1)
@@ -12259,6 +12237,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 350.52 234.95 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2ae8644e-b0b4-4f23-9276-a05cc76bfc5a")
+		(property "Reference" "R12"
+			(at 353.06 233.6799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 353.06 236.2199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 348.742 234.95 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 350.52 234.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 350.52 234.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "57cf4c98-887e-4f99-a969-a935c9f1a4da")
+		)
+		(pin "2"
+			(uuid "de86c56d-3c3a-4a7d-9b4b-cb8666965761")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "LED:APA-106-F5")
 		(at 245.11 50.8 0)
 		(unit 1)
@@ -12341,6 +12401,89 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Speaker")
+		(at 200.66 180.34 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2e0b76b4-e2d4-4bb9-8a1a-b50075592224")
+		(property "Reference" "LS1"
+			(at 195.58 180.3399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Speaker"
+			(at 195.58 182.8799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_Molex:Molex_KK-396_5273-02A_1x02_P3.96mm_Vertical"
+			(at 200.66 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 200.914 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Speaker"
+			(at 200.66 180.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "f9c5de1a-708a-4b69-885a-fb05611dfebe")
+		)
+		(pin "1"
+			(uuid "9177998b-7841-4db8-b580-0d47c6aaa076")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "LS1")
 					(unit 1)
 				)
 			)
@@ -13225,85 +13368,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 321.31 220.98 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "3f3c3be3-9865-4b7f-bd6b-e51bc2b0c420")
-		(property "Reference" "R16"
-			(at 326.136 219.964 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220"
-			(at 321.31 220.98 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 321.31 222.758 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 321.31 220.98 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 321.31 220.98 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "38e756a2-f15f-4635-a097-d756a9853972")
-		)
-		(pin "1"
-			(uuid "6bcad946-1bcb-4a67-9127-ea9c5927d05a")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "R16")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 245.11 58.42 0)
 		(unit 1)
@@ -14037,6 +14101,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 321.31 205.74 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4fac8717-9d7a-4985-9e60-c16b192a5823")
+		(property "Reference" "R15"
+			(at 326.136 204.724 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 321.31 205.74 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 321.31 207.518 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 321.31 205.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 321.31 205.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "922601bc-0ff6-459e-b382-643ee1c1f64f")
+		)
+		(pin "1"
+			(uuid "48de6493-fbbc-4941-8ec6-1fcc250591be")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "R15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+VDC")
 		(at 195.58 91.44 0)
 		(unit 1)
@@ -14454,6 +14597,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 321.31 210.82 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5bcf168d-8220-4007-8d18-778608cf4776")
+		(property "Reference" "R17"
+			(at 326.136 209.804 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 321.31 210.82 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 321.31 212.598 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 321.31 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 321.31 210.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "783d39ce-f0c7-4444-81f4-68fe0ed11506")
+		)
+		(pin "1"
+			(uuid "4deaee6c-fdf0-43cf-8a63-23e7b3b68216")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 356.87 58.42 0)
 		(unit 1)
@@ -14604,6 +14826,84 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "#PWR060")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 342.9 218.44 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5dadaa89-5905-4aa6-8f87-1f78cf56b081")
+		(property "Reference" "#PWR081"
+			(at 342.9 222.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 342.9 213.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 342.9 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 342.9 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 342.9 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "05d17738-9470-429d-8664-f7cfd11cdcd8")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "#PWR081")
 					(unit 1)
 				)
 			)
@@ -15339,85 +15639,6 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "#PWR014")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 321.31 223.52 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "6c93f3c2-3c3c-43fe-a076-149291be1526")
-		(property "Reference" "R17"
-			(at 326.136 222.504 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220"
-			(at 321.31 223.52 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 321.31 225.298 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 321.31 223.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 321.31 223.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "ada2053c-19b3-4ec4-9576-83d459ebc1e8")
-		)
-		(pin "1"
-			(uuid "bcd67308-b7fd-4fc4-9c4d-9f2b0b217919")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "R17")
 					(unit 1)
 				)
 			)
@@ -18275,6 +18496,86 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 222.25 172.72 270)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "922644f4-3a4e-4b5b-a9bb-41020a48ea46")
+		(property "Reference" "R20"
+			(at 217.424 171.704 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 222.25 172.72 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 222.25 174.498 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 222.25 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 222.25 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "1954b16d-9ae9-44a6-a94a-00be8f619716")
+		)
+		(pin "1"
+			(uuid "7172b2c9-58ea-4737-8fc3-80a513a14650")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "R20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 248.92 97.79 90)
 		(unit 1)
 		(body_style 1)
@@ -19454,85 +19755,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 321.31 231.14 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "a20f6737-6867-4461-ae63-7f57f512fd42")
-		(property "Reference" "R20"
-			(at 326.136 230.124 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220"
-			(at 321.31 231.14 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 321.31 232.918 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 321.31 231.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 321.31 231.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "4ceb1e1e-a470-4ba4-bfe9-e184a98910e3")
-		)
-		(pin "1"
-			(uuid "6933ccda-9647-493e-a4a2-27e4cf32406d")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "R20")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3.3V")
 		(at 19.05 21.59 180)
 		(unit 1)
@@ -20114,6 +20336,85 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 321.31 215.9 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "afb426c9-2ed0-4a62-a575-ad0bb1c2af06")
+		(property "Reference" "R19"
+			(at 326.136 214.884 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 321.31 215.9 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 321.31 217.678 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 321.31 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 321.31 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "dddf4485-eb67-43ca-bad5-1f01bd01ed91")
+		)
+		(pin "1"
+			(uuid "111eede1-9857-4f9d-b59d-9e820971bdd9")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "R19")
 					(unit 1)
 				)
 			)
@@ -21331,6 +21632,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 350.52 231.14 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c2f82d92-e24d-4e6b-80b1-f8b26dbf847b")
+		(property "Reference" "#PWR082"
+			(at 350.52 234.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 350.52 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 350.52 231.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 350.52 231.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 350.52 231.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "02998021-1dcb-4486-9bea-be78e503c93c")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "#PWR082")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+VDC")
 		(at 97.79 72.39 0)
 		(unit 1)
@@ -21665,6 +22044,85 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "D12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 321.31 208.28 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "caaef68b-3cb7-472d-8b30-60c9153420e7")
+		(property "Reference" "R16"
+			(at 326.136 207.264 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "220"
+			(at 321.31 208.28 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 321.31 210.058 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 321.31 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 321.31 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "090ce219-818c-41bc-b900-569ff38c0547")
+		)
+		(pin "1"
+			(uuid "3f6bbee5-788c-479e-afb8-81f199436725")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "R16")
 					(unit 1)
 				)
 			)
@@ -23693,85 +24151,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 321.31 226.06 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "e61c3c51-e679-4e50-98bd-ed9afccec3bf")
-		(property "Reference" "R18"
-			(at 326.136 225.044 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220"
-			(at 321.31 226.06 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 321.31 227.838 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 321.31 226.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 321.31 226.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "ae447e09-05ae-4d5d-8dcd-75343c24ac12")
-		)
-		(pin "1"
-			(uuid "081090ee-94f2-4b33-8219-ea3eaf01c549")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "R18")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "LED:APA-106-F5")
 		(at 328.93 50.8 0)
 		(unit 1)
@@ -24258,8 +24637,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Speaker")
-		(at 330.2 167.64 0)
+		(lib_id "Device:R")
+		(at 321.31 213.36 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -24267,32 +24646,29 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ef5e766f-3a3f-4fd8-9184-ff710f991c4a")
-		(property "Reference" "LS1"
-			(at 335.28 167.6399 0)
+		(uuid "f2ac2469-7cd2-4e0b-bc24-fab6fcfa1729")
+		(property "Reference" "R18"
+			(at 326.136 212.344 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Value" "Speaker"
-			(at 335.28 170.1799 0)
+		(property "Value" "220"
+			(at 321.31 213.36 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_Molex:Molex_KK-396_5273-02A_1x02_P3.96mm_Vertical"
-			(at 330.2 172.72 0)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 321.31 215.138 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24303,7 +24679,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 329.946 168.91 0)
+			(at 321.31 213.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24313,8 +24689,8 @@
 				)
 			)
 		)
-		(property "Description" "Speaker"
-			(at 330.2 167.64 0)
+		(property "Description" "Resistor"
+			(at 321.31 213.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24325,15 +24701,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "23a4946f-2203-4a3c-bd3b-8387baedb051")
+			(uuid "08788f71-b4eb-4464-82bb-9b7c5f92bbd3")
 		)
 		(pin "1"
-			(uuid "80e50cb5-aa4d-406f-8eb9-5a202d024f89")
+			(uuid "b21dafd9-be43-4863-8f98-66432efbadee")
 		)
 		(instances
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "LS1")
+					(reference "R18")
 					(unit 1)
 				)
 			)
@@ -25053,6 +25429,85 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "#PWR080")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 205.74 182.88 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ff0d8499-fc57-42db-8129-839a43a7c818")
+		(property "Reference" "#PWR073"
+			(at 205.74 189.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 205.74 187.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 205.74 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 205.74 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 205.74 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "56ddca1b-b729-470c-b554-36b1af9eed38")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "#PWR073")
 					(unit 1)
 				)
 			)
