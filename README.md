@@ -2,6 +2,9 @@
 KiCAD schematics and PCB files for instrument pannel project
 
 Change Log
+5/11/26
+    Updated pin assignments
+
 04/13/26
     Began drawing pcb for prototype circuit. Will need to be changed once desgin is finalized
 
