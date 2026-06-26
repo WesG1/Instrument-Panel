@@ -2,6 +2,9 @@
 KiCAD schematics and PCB files for instrument pannel project
 
 Change Log
+6/25/26
+    Reverted to older logic shifter design. Added single stage amplifier. Added voltage dividers for gauges.
+
 5/11/26
     Updated pin assignments
 
