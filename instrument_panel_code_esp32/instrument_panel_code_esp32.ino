@@ -450,6 +450,18 @@ const int SERVO_MIN[6]     = { 118, 116, 115,  97,  95, 100 };
 const int SERVO_MAX[6]     = {  29,  20,   0,  15,  20,  17 };
 
 // ─────────────────────────────────────────────
+//  GAUGE POTENTIOMETER DEFINITIONS
+//  Servos 1–4 (indices 0–3) are now driven live by a potentiometer
+//  instead of the preprogrammed sweep. Wire each pot as a simple voltage
+//  divider: outer legs to 3.3V and GND, wiper to the ADC pin below.
+//  The pot's total resistance value doesn't matter (10K, 100 ohm, etc.) —
+//  only the wiper's position along that range, read as a voltage ratio.
+//  These are ESP32-S2 ADC1 pins (GPIO1–10), which stay usable even if
+//  WiFi is added later (ADC2 pins conflict with WiFi and are avoided here).
+// ─────────────────────────────────────────────
+const int POT_PINS[4] = { 3, 4, 5, 6 };  // Pot wipers for gauges 1-4 (servo indices 0-3)
+
+// ─────────────────────────────────────────────
 //  NEOPIXEL DEFINITIONS
 // ─────────────────────────────────────────────
 
@@ -799,92 +811,110 @@ void tftShowEEPROM(Adafruit_ST7789 &tft, uint8_t devAddr,
 
 // ════════════════════════════════════════════════════════════
 //  FREERTOS TASK: SERVOS
-//  Sweeps all 6 servos between their min and max angles.
-//  1 second min→max, 1 second max→min, simultaneously.
+//  Servos 1–4 (indices 0–3): driven LIVE by their potentiometers.
+//  Servos 5–6 (indices 4–5): unchanged — still sweep min→max→min,
+//    1 second per direction, exactly as before.
 // ════════════════════════════════════════════════════════════
 
-// FreeRTOS task function that continuously sweeps all 6 servos back and forth.
-// The void* param argument is required by the FreeRTOS API but unused here
-// (it allows passing data into the task at creation time if needed).
+// Reads potentiometer i, low-pass filters it, and maps it onto that
+// gauge's servo range. Returns the new angle and updates gaugeAngle[i]
+// so neoTask's LED-color logic keeps working unchanged.
+// potSmooth[] must be a 4-element float array persisted by the caller.
+int readGaugeServoAngle(int i, float potSmooth[4]) {
+  // Raw ADC reading. ESP32-S2's ADC is 12-bit by default → range 0-4095.
+  int raw = analogRead(POT_PINS[i]);
+
+  // Exponential moving-average filter to smooth out ADC/wiper noise so the
+  // needle doesn't twitch. ALPHA closer to 1.0 = snappier but jitterier;
+  // closer to 0.0 = smoother but slower to respond to fast pot movements.
+  const float ALPHA = 0.15;
+  potSmooth[i] += ALPHA * ((float)raw - potSmooth[i]);
+
+  // Map the smoothed 0–4095 ADC range onto this gauge's calibrated angle
+  // range. map() handles the case where SERVO_MIN > SERVO_MAX correctly
+  // (some servos are mounted in reverse), so no special-casing is needed.
+  int angle = map((int)potSmooth[i], 0, 4095, SERVO_MIN[i], SERVO_MAX[i]);
+
+  // Clamp defensively in case of ADC noise at the extremes (e.g. a stray
+  // reading just past 0 or 4095 rounding outside the intended angle range).
+  int lo = min(SERVO_MIN[i], SERVO_MAX[i]);
+  int hi = max(SERVO_MIN[i], SERVO_MAX[i]);
+  angle  = constrain(angle, lo, hi);
+
+  // Publish for neoTask (LED proximity-color logic reads this).
+  gaugeAngle[i] = angle;
+  return angle;
+}
+
+// FreeRTOS task function. The void* param argument is required by the
+// FreeRTOS API but unused here (it allows passing data into the task at
+// creation time if needed).
 void servoTask(void *param) {
-  // Number of discrete angle steps per sweep direction.
+  // Number of discrete angle steps per sweep direction (servos 5-6 only).
   // 100 steps over 1000 ms = 10 ms per step, giving smooth motion.
   const int STEPS       = 100;
 
   // Delay in milliseconds between each step (1000 ms / 100 steps = 10 ms per step).
-  // This controls how fast the sweep moves — smaller = faster but potentially jerky.
+  // This also sets how often the potentiometers (servos 1-4) are re-read.
   const int STEP_DELAY  = 1000 / STEPS; // ms per step = 10 ms
 
-  // Attach all 6 servos to their assigned GPIO pins and move each to its minimum angle.
-  // attach() sets up the PWM signal on that pin. write() sends the initial position
-  // so servos start from a known state rather than wherever they happened to be.
+  // Attach all 6 servos to their assigned GPIO pins.
+  // attach() sets up the PWM signal on that pin.
   for (int i = 0; i < 6; i++) {
-    servos[i].attach(SERVO_PINS[i]); // Bind servo i to its GPIO pin, enabling PWM output
-    servos[i].write(SERVO_MIN[i]);   // Move servo i to its defined minimum (home) angle
+    servos[i].attach(SERVO_PINS[i]);
+  }
+
+  // Servos 5-6 still need a known starting position for the sweep animation.
+  // Servos 1-4 don't — they'll immediately take whatever angle their pot reads.
+  for (int i = 4; i < 6; i++) {
+    servos[i].write(SERVO_MIN[i]);
   }
 
   // Wait 500 ms after attaching to give the servos time to physically reach their
-  // start positions before the sweep loop begins. Skipping this could cause a jerk
-  // at the start if the servos are far from SERVO_MIN when power is applied.
+  // start positions before the main loop begins.
   vTaskDelay(pdMS_TO_TICKS(500));
 
+  // Per-channel smoothing state for the 4 potentiometers, seeded with a real
+  // first reading so the gauges don't sweep up from 0 on power-up.
+  static float potSmooth[4];
+  for (int i = 0; i < 4; i++) {
+    potSmooth[i] = (float)analogRead(POT_PINS[i]);
+  }
+
+  bool sweepingUp = true; // Direction for the servo 5-6 sweep
+  int  step       = 0;    // Current step within the current sweep direction
+
   // Infinite loop — FreeRTOS tasks must never return, so they loop forever.
-  // The task scheduler handles running other tasks between vTaskDelay() calls.
   for (;;) {
-    // ── Sweep Min → Max over 1 second ──
-    for (int step = 0; step <= STEPS; step++) {
-      // Normalize step to a 0.0–1.0 float (linear interpolation parameter 't').
-      // t = 0.0 at the start of the sweep, t = 1.0 at the end.
-      float t = (float)step / STEPS;   // 0.0 → 1.0
-
-      // Update each servo's angle based on interpolation between MIN and MAX.
-      for (int i = 0; i < 6; i++) {
-        // Linear interpolation formula: angle = MIN + t * (MAX - MIN)
-        // When t=0 → angle = MIN (start). When t=1 → angle = MAX (end).
-        // Cast to int because Servo.write() expects a whole-degree value.
-        int angle = (int)(SERVO_MIN[i] + t * (SERVO_MAX[i] - SERVO_MIN[i]));
-
-        // Command servo i to move to the computed angle.
-        // write() converts degrees to the appropriate PWM pulse width internally.
-        servos[i].write(angle);
-
-        // Publish the current angle for gauges 1–4 (servo indices 0–3) so that
-        // neoTask can read it and update the corresponding status LED color.
-        // Servos 5–6 (indices 4–5) have no paired LED, so they are skipped.
-        if (i < 4) gaugeAngle[i] = angle;
-      }
-
-      // Yield to the FreeRTOS scheduler for STEP_DELAY milliseconds.
-      // pdMS_TO_TICKS() converts milliseconds to RTOS tick counts (tick rate is
-      // configurable; usually 1 ms/tick on ESP32). This is the correct RTOS-aware
-      // delay — unlike Arduino's delay(), it lets other tasks run during the wait.
-      vTaskDelay(pdMS_TO_TICKS(STEP_DELAY));
+    // ── Servos 1–4 (indices 0–3): live potentiometer control ──
+    // Re-read and re-write every tick (every STEP_DELAY ms) so the gauges
+    // track the physical knobs in near real-time.
+    for (int i = 0; i < 4; i++) {
+      int angle = readGaugeServoAngle(i, potSmooth);
+      servos[i].write(angle);
     }
 
-    // ── Sweep Max → Min over 1 second ──
-    for (int step = 0; step <= STEPS; step++) {
-      // Same normalization as above — t goes 0.0 → 1.0 again, but the
-      // interpolation direction is reversed in the formula below.
-      float t = (float)step / STEPS;   // 0.0 → 1.0
-
-      for (int i = 0; i < 6; i++) {
-        // Reverse interpolation: angle = MAX + t * (MIN - MAX)
-        // When t=0 → angle = MAX (start of return sweep).
-        // When t=1 → angle = MIN (end of return sweep, back to home).
-        int angle = (int)(SERVO_MAX[i] + t * (SERVO_MIN[i] - SERVO_MAX[i]));
-
-        // Command servo i to the newly computed return-sweep angle.
-        servos[i].write(angle);
-
-        // Publish the return-sweep angle for gauges 1–4 into the shared state.
-        // neoTask reads this each second to determine the correct LED color.
-        if (i < 4) gaugeAngle[i] = angle;
-      }
-
-      // Delay for one step duration before computing the next angle.
-      vTaskDelay(pdMS_TO_TICKS(STEP_DELAY));
+    // ── Servos 5–6 (indices 4–5): original sweep animation, unchanged ──
+    float t = (float)step / STEPS; // 0.0 → 1.0 across the current direction
+    for (int i = 4; i < 6; i++) {
+      int angle = sweepingUp
+        ? (int)(SERVO_MIN[i] + t * (SERVO_MAX[i] - SERVO_MIN[i])) // Min → Max
+        : (int)(SERVO_MAX[i] + t * (SERVO_MIN[i] - SERVO_MAX[i])); // Max → Min
+      servos[i].write(angle);
     }
-    // Loop repeats: next iteration starts a new Min→Max sweep.
+
+    // Advance the sweep; flip direction once a full 1-second pass completes.
+    step++;
+    if (step > STEPS) {
+      step = 0;
+      sweepingUp = !sweepingUp;
+    }
+
+    // Yield to the FreeRTOS scheduler for STEP_DELAY milliseconds.
+    // pdMS_TO_TICKS() converts milliseconds to RTOS tick counts. This is the
+    // correct RTOS-aware delay — unlike Arduino's delay(), it lets other
+    // tasks run during the wait.
+    vTaskDelay(pdMS_TO_TICKS(STEP_DELAY));
   }
 }
 
@@ -1177,6 +1207,14 @@ void setup() {
   // Print a startup banner so you can identify in the serial monitor
   // that the ESP32 has freshly booted and reached this point in setup().
   Serial.println("\n=== ESP32-S2 N4R2 Component Test ===");
+
+  // ── Gauge potentiometers ──
+
+  // Set ADC attenuation to 11dB so analogRead() covers the full 0–3.3V range.
+  // Without this the ADC's usable input range is much narrower (~0-1.1V default),
+  // which would make the potentiometers only sweep through part of the gauge's angle.
+  Serial.println("Setting ADC attenuation for gauge pots...");
+  analogSetAttenuation(ADC_11db);
 
   // ── Backlight ON ──
 
