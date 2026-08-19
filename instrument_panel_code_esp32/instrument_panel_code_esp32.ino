@@ -436,18 +436,18 @@ void startupAnimation(){
 // Array of 6 GPIO pin numbers, one per servo motor.
 // Using an array lets us loop over all servos rather than writing
 // individual lines for each one, keeping the code concise and scalable.
-const int SERVO_PINS[6]    = { 10, 11, 12, 13, 14, 15 };  // GPIO 34 freed for TFT CS
+const int SERVO_PINS[6] = {10, 11, 12, 13, 14, 15};  // GPIO 34 freed for TFT CS
 
 // Minimum angle (in degrees) for each servo — the "closed" or "home" position.
 // Each servo may have a different mechanical range, so per-servo min values
 // allow precise calibration rather than assuming all servos share the same limits.
 // Order matches SERVO_PINS[] above: S1, S2, S3, S4, S5, S6
-const int SERVO_MIN[6]     = { 118, 116, 115,  97,  95, 100 };
+const int SERVO_MIN[6] = {118, 116, 115,  97,  95, 100};
 
 // Maximum angle (in degrees) for each servo — the "open" or "extended" position.
 // Note these values are intentionally lower than SERVO_MIN because some servos
 // are mounted in reverse, so their physical "open" direction is a smaller degree value.
-const int SERVO_MAX[6]     = {  29,  20,   0,  15,  20,  17 };
+const int SERVO_MAX[6] = {29,  20,   0,  15,  20,  17};
 
 // ─────────────────────────────────────────────
 //  GAUGE POTENTIOMETER DEFINITIONS
@@ -459,7 +459,7 @@ const int SERVO_MAX[6]     = {  29,  20,   0,  15,  20,  17 };
 //  These are ESP32-S2 ADC1 pins (GPIO1–10), which stay usable even if
 //  WiFi is added later (ADC2 pins conflict with WiFi and are avoided here).
 // ─────────────────────────────────────────────
-const int POT_PINS[4] = { 3, 4, 5, 6 };  // Pot wipers for gauges 1-4 (servo indices 0-3)
+const int POT_PINS[4] = {3, 4, 5, 6};  // Pot wipers for gauges 1-4 (servo indices 0-3)
 
 // ─────────────────────────────────────────────
 //  NEOPIXEL DEFINITIONS
@@ -511,10 +511,23 @@ const uint32_t LED_COLORS[10] = {
 // Same wiring convention as BTN_LED5_PIN.
 #define BTN_LED6_PIN   21
 
+// GPIO pin for the button that controls LED 7.
+// Wired as active-LOW: pin reads HIGH at rest, LOW when pressed.
+#define BTN_LED7_PIN   46
+
+// GPIO pin for the button that controls LED 8.
+// Same wiring convention as BTN_LED5_PIN.
+#define BTN_LED8_PIN   38
+
 // Color applied to LEDs 5 and 6 when their respective button is held.
 // 0xFF0000 is the "Green" entry already defined in LED_COLORS[] (index 3).
 // Using the same constant keeps the color consistent across the codebase.
-#define BTN_LED_COLOR  0xFF0000   // Green (matches LED_COLORS[3])
+#define TURN_LED_COLOR  0xFF0000   // Green (matches LED_COLORS[3])
+
+// Color applied to LEDs 7 and 8 when their respective button is held.
+// 0x0000FF is the "BLUE" entry already defined in LED_COLORS[] (index 4).
+// Using the same constant keeps the color consistent across the codebase.
+#define HEADLIGHT_LED_COLOR  0x0000FF
 
 // ─────────────────────────────────────────────
 //  I2C / EEPROM DEFINITIONS
@@ -621,11 +634,19 @@ TaskHandle_t hEepromTask;
 // Updated unconditionally on every neoTask tick by polling the pin directly,
 // so the LED state always matches the live hardware level regardless of any
 // interrupt timing edge cases.
-volatile bool btn5State = false;
+volatile bool leftTurnState = false;
 
 // True while the GPIO 21 button is physically held down.
 // Same polling strategy as btn5State.
-volatile bool btn6State = false;
+volatile bool rightTurnState = false;
+
+// True while the GPIO 46 button is physically held down.
+// Same polling strategy as lowBeamState.
+volatile bool lowBeamState = false;
+
+// True while the GPIO 38 button is physically held down.
+// Same polling strategy as highBeamState.
+volatile bool highBeamState = false;
 
 // ─────────────────────────────────────────────
 //  SHARED GAUGE STATE
@@ -986,8 +1007,10 @@ void neoTask(void *param) {
     // INPUT_PULLUP means the pin rests HIGH; pressing the button pulls it
     // LOW through GND, so LOW == pressed, HIGH == released.
     // If your buttons are wired to VCC instead of GND, change LOW to HIGH.
-    btn5State = (digitalRead(BTN_LED5_PIN) == HIGH);  // true = button held
-    btn6State = (digitalRead(BTN_LED6_PIN) == HIGH);  // true = button held
+    leftTurnState = (digitalRead(BTN_LED5_PIN) == HIGH);  // true = switch on left
+    rightTurnState = (digitalRead(BTN_LED6_PIN) == HIGH);  // true = switch on right
+    lowBeamState = (digitalRead(BTN_LED7_PIN) == HIGH); //true = low beams on
+    highBeamState = (digitalRead(BTN_LED8_PIN) == HIGH);  //true = high beams on
 
     // ── LEDs 1–4 (indices 0–3): gauge proximity indicators ──
 
@@ -1042,55 +1065,33 @@ void neoTask(void *param) {
     // ── LEDs 5–6 (indices 4–5): hardware interrupt button indicators ──
 
     // LED 5 (index 4) is controlled exclusively by the GPIO 18 button interrupt.
-    // When btn5State is true (button held), the LED lights green (BTN_LED_COLOR).
-    // When btn5State is false (button released), 0 turns the LED fully off.
+    // When leftTurnState is true (button held), the LED lights green (BTN_LED_COLOR).
+    // When leftTurnState is false (button released), 0 turns the LED fully off.
     // This LED does NOT participate in the chase animation.
-    strip.setPixelColor(4, btn5State ? BTN_LED_COLOR : 0);
+    strip.setPixelColor(4, leftTurnState ? TURN_LED_COLOR : 0);
 
     // LED 6 (index 5) is controlled exclusively by the GPIO 21 button interrupt.
     // Same active-LOW logic: green while pressed, off while released.
     // This LED does NOT participate in the chase animation.
-    strip.setPixelColor(5, btn6State ? BTN_LED_COLOR : 0);
+    strip.setPixelColor(5, rightTurnState ? TURN_LED_COLOR : 0);
 
-    // ── LEDs 7–10 (indices 6–9): chase animation ──
-    // LEDs 5 and 6 have been removed from the chase; the pattern now runs
-    // across the remaining four LEDs (indices 6–9) only.
+    // ── LEDs 7–8 (indices 6–7): hardware interrupt button indicators ──
 
-    // Restore all four remaining chase LEDs to their unique assigned colors.
-    // This resets whichever LED was dark in the previous iteration.
-    for (int i = 6; i < NEO_COUNT; i++) {
-      // Re-apply each LED's color from the lookup table into the buffer.
-      strip.setPixelColor(i, LED_COLORS[i]);
-    }
+    // LED 7 (index 6) is controlled exclusively by the GPIO 46 button interrupt.
+    // When lowBeamState is true (button held), the LED lights blue (BTN_LED_COLOR).
+    // When lowBeamState is false (button released), 0 turns the LED fully off.
+    // This LED does NOT participate in the chase animation.
+    strip.setPixelColor(6, lowBeamState ? HEADLIGHT_LED_COLOR : 0);
 
-    // Blank the single chase LED for this iteration.
-    // chaseOffset 0 maps to strip index 6 (LED 7), offset 3 maps to index 9 (LED 10).
-    strip.setPixelColor(6 + chaseOffset, 0);
+    // LED 8 (index 7) is controlled exclusively by the GPIO 38 button interrupt.
+    // Same active-LOW logic: blue while pressed, off while released.
+    // This LED does NOT participate in the chase animation.
+    strip.setPixelColor(7, highBeamState ? HEADLIGHT_LED_COLOR : 0);
 
     // Transmit the complete updated buffer — gauge LEDs (0–3) and chase LEDs (4–9) —
     // to all NeoPixels in one call. Batching into one show() call prevents visible
     // flicker that would occur if the two segments were pushed separately.
     strip.show();
-
-    // ── Chase advance (once per second, independent of gauge sample rate) ──
-
-    // Increment the tick counter on every loop iteration (every NEO_SAMPLE_MS ms).
-    chaseTick++;
-
-    if (chaseTick >= CHASE_TICKS) {
-      // One second has elapsed — advance the dark position and reset the counter.
-      chaseTick = 0;
-
-      // Advance the chase dark-position by one LED, wrapping around after the last
-      // chase LED. There are now 4 chase LEDs (NEO_COUNT − 6 = 4), so modulo 4 keeps
-      // chaseOffset within [0, 3]. LEDs 5 and 6 (indices 4–5) are excluded.
-      chaseOffset = (chaseOffset + 1) % (NEO_COUNT - 6);
-
-      // Print the chase position only when it actually changes (once per second),
-      // keeping Serial output readable rather than repeating the same line 20 times.
-      Serial.printf("[NEO] Chase dark → LED %d  (strip index %d)\n",
-                    7 + chaseOffset, 6 + chaseOffset);
-    }
 
     // Sleep for NEO_SAMPLE_MS (50 ms) before the next gauge color evaluation.
     // At 50 ms per tick the gauge color is re-evaluated ~20 times per sweep cycle,
