@@ -681,6 +681,12 @@ void IRAM_ATTR isr_btn5() { /* state read by neoTask polling */ }
 // ISR for the GPIO 21 button (LED 6 controller). State is read by neoTask.
 void IRAM_ATTR isr_btn6() { /* state read by neoTask polling */ }
 
+// ISR for the GPIO 41 button (LED 7 controller). State is read by neoTask.
+void IRAM_ATTR isr_btn7() { /* state read by neoTask polling */ }
+
+// ISR for the GPIO 38 button (LED 8 controller). State is read by neoTask.
+void IRAM_ATTR isr_btn8() { /* state read by neoTask polling */ }
+
 // ════════════════════════════════════════════════════════════
 //  EEPROM HELPERS
 // ════════════════════════════════════════════════════════════
