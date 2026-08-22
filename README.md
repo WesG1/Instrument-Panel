@@ -3,7 +3,7 @@ KiCAD schematics and PCB files for instrument pannel project
 
 Change Log
 08/21/26
-    Added potentiometers to test gauges to the schematic.
+    Added potentiometers to test gauges to the schematic. Changed resistor values on potentiometers to prevent accidental over voltage on gpio pins
 
 6/25/26
     Reverted to older logic shifter design. Added single stage amplifier. Added voltage dividers for gauges.
