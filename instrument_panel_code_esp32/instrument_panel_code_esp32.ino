@@ -459,7 +459,16 @@ const int SERVO_MAX[6] = {29,  20,   0,  15,  20,  17};
 //  These are ESP32-S2 ADC1 pins (GPIO1–10), which stay usable even if
 //  WiFi is added later (ADC2 pins conflict with WiFi and are avoided here).
 // ─────────────────────────────────────────────
-const int POT_PINS[4] = {3, 4, 5, 6};  // Pot wipers for gauges 1-4 (servo indices 0-3)
+// IMPORTANT: this array must use the same gauge order as SERVO_PINS,
+// SERVO_MIN and SERVO_MAX: Oil, Fuel, Temp, Batt.
+// The previous {3,4,5,6} order paired every pot with the wrong gauge.
+const int POT_PINS[4] = {6, 5, 3, 4};
+
+// Per-channel ADC calibration. Leave at 0/4095 initially; if a pot does not
+// quite reach an endpoint, replace these with the observed raw values printed
+// by the servo task. Each channel remains independently calibrated.
+const int POT_ADC_MIN[4] = {0, 0, 0, 0};
+const int POT_ADC_MAX[4] = {4095, 4095, 4095, 4095};
 
 // ─────────────────────────────────────────────
 //  NEOPIXEL DEFINITIONS
@@ -483,10 +492,10 @@ Adafruit_NeoPixel strip(NEO_COUNT, NEO_PIN, NEO_GRB + NEO_KHZ800);
 // Stored as hex values in 0xRRGGBB format. Having a unique color per LED
 // makes it visually obvious which specific LED is active during the chase pattern.
 const uint32_t LED_COLORS[10] = {
-  0x00FF00,  // Red
+  0x00FF00,  // Red (correct for this LED hardware/channel order)
   0xFF6600,  // Orange
   0xFFFF00,  // Yellow
-  0xFF0000,  // Green
+  0xFF0000,  // Green (correct for this LED hardware/channel order)
   0x0000FF,  // Blue
   0x8B00FF,  // Purple
   0xFFFFFF,  // White
@@ -520,7 +529,7 @@ const uint32_t LED_COLORS[10] = {
 #define BTN_LED8_PIN   38
 
 // Color applied to LEDs 5 and 6 when their respective button is held.
-// 0xFF0000 is the "Green" entry already defined in LED_COLORS[] (index 3).
+// 0xFF0000 is the green entry already defined in LED_COLORS[] (index 3).
 // Using the same constant keeps the color consistent across the codebase.
 #define TURN_LED_COLOR  0xFF0000   // Green (matches LED_COLORS[3])
 
@@ -660,6 +669,12 @@ volatile bool highBeamState = false;
 // Pre-initialized to each servo's SERVO_MIN value so the LED state is valid
 // before the servo task executes its first sweep step.
 volatile int gaugeAngle[4] = { SERVO_MIN[0], SERVO_MIN[1], SERVO_MIN[2], SERVO_MIN[3] };
+
+// Position along each pot's calibrated sweep, 0..1000. The LED task uses
+// this directly so its thresholds are exactly 10% and 20%, independent of
+// servo direction and integer angle rounding.
+volatile int gaugePosition[4] = {0, 0, 0, 0};
+volatile int gaugeRaw[4] = {0, 0, 0, 0};
 
 // ════════════════════════════════════════════════════════════
 //  HARDWARE INTERRUPT SERVICE ROUTINES
@@ -850,6 +865,7 @@ void tftShowEEPROM(Adafruit_ST7789 &tft, uint8_t devAddr,
 int readGaugeServoAngle(int i, float potSmooth[4]) {
   // Raw ADC reading. ESP32-S2's ADC is 12-bit by default → range 0-4095.
   int raw = analogRead(POT_PINS[i]);
+  gaugeRaw[i] = raw;
 
   // Exponential moving-average filter to smooth out ADC/wiper noise so the
   // needle doesn't twitch. ALPHA closer to 1.0 = snappier but jitterier;
@@ -860,7 +876,10 @@ int readGaugeServoAngle(int i, float potSmooth[4]) {
   // Map the smoothed 0–4095 ADC range onto this gauge's calibrated angle
   // range. map() handles the case where SERVO_MIN > SERVO_MAX correctly
   // (some servos are mounted in reverse), so no special-casing is needed.
-  int angle = map((int)potSmooth[i], 0, 4095, SERVO_MIN[i], SERVO_MAX[i]);
+  int filteredRaw = constrain((int)potSmooth[i], POT_ADC_MIN[i], POT_ADC_MAX[i]);
+  int position = map(filteredRaw, POT_ADC_MIN[i], POT_ADC_MAX[i], 0, 1000);
+  position = constrain(position, 0, 1000);
+  int angle = map(position, 0, 1000, SERVO_MIN[i], SERVO_MAX[i]);
 
   // Clamp defensively in case of ADC noise at the extremes (e.g. a stray
   // reading just past 0 or 4095 rounding outside the intended angle range).
@@ -870,6 +889,7 @@ int readGaugeServoAngle(int i, float potSmooth[4]) {
 
   // Publish for neoTask (LED proximity-color logic reads this).
   gaugeAngle[i] = angle;
+  gaugePosition[i] = position;
   return angle;
 }
 
@@ -957,7 +977,7 @@ const char* colorName(uint32_t color) {
   switch (color) {
     case 0xFFFFFF: return "WHITE ";   // Trailing space aligns columns in Serial output
     case 0xFFFF00: return "YELLOW";
-    case 0x00FF00: return "RED   ";   // Trailing spaces align columns in Serial output
+    case 0x00FF00: return "RED   ";   // Correct for this LED hardware/channel order
     default:       return "UNKNOWN";
   }
 }
@@ -1021,31 +1041,19 @@ void neoTask(void *param) {
     // ── LEDs 1–4 (indices 0–3): gauge proximity indicators ──
 
     for (int i = 0; i < 4; i++) {
-      // Compute the full angular span of this gauge (always positive regardless
-      // of whether SERVO_MIN is numerically larger than SERVO_MAX, as some
-      // servos are mounted in reverse and have inverted min/max values).
-      int range = abs(SERVO_MAX[i] - SERVO_MIN[i]);
-
       // Read the most-recently-published angle for this gauge.
       // The volatile qualifier on gaugeAngle ensures we always get the latest
       // value written by servoTask rather than a stale cached copy.
       int angle = gaugeAngle[i];
-
-      // Distance (in degrees) from each mechanical limit.
-      // Using abs() makes this direction-independent for reversed servos.
-      int distFromMin = abs(angle - SERVO_MIN[i]);
-      int distFromMax = abs(angle - SERVO_MAX[i]);
-
-      // The proximity warning is based on the closer of the two limits.
-      // A gauge near either end is equally at risk, so we take the minimum.
-      int nearestEdge = min(distFromMin, distFromMax);
+      int position = gaugePosition[i];
+      int nearestEdgePercent = min(position, 1000 - position) / 10;
 
       // Select LED color based on proximity to the nearest limit.
       uint32_t color;
-      if (nearestEdge <= range / 10) {
+      if (nearestEdgePercent <= 10) {
         // Within 10% of min or max → Red (critical: gauge is very close to its limit)
         color = 0x00FF00;
-      } else if (nearestEdge <= range / 5) {
+      } else if (nearestEdgePercent <= 20) {
         // Within 20% but more than 10% away → Yellow (caution: approaching limit)
         color = 0xFFFF00;
       } else {
@@ -1058,8 +1066,9 @@ void neoTask(void *param) {
       // Format: [NEO] G1  angle=  95°  range=89°  edge=  0°  → RED
       // Columns are fixed-width (%3d) so values stay vertically aligned across
       // the four gauge lines, making it easy to compare them at a glance.
-      Serial.printf("[NEO] G%d  angle=%3d\xC2\xB0  range=%3d\xC2\xB0  edge=%3d\xC2\xB0  -> %s\n",
-                    i + 1, angle, range, nearestEdge, colorName(color));
+      Serial.printf("[GAUGE] G%d GPIO%d raw=%4d pos=%3d%% angle=%3d\xC2\xB0 -> %s\n",
+                    i + 1, POT_PINS[i], gaugeRaw[i],
+                    position / 10, angle, colorName(color));
       // Note: \xC2\xB0 is the UTF-8 encoding of the degree symbol (°).
       // Most serial monitors (Arduino IDE, VSCode, PlatformIO) handle UTF-8 correctly.
 
@@ -1222,6 +1231,10 @@ void setup() {
   // which would make the potentiometers only sweep through part of the gauge's angle.
   Serial.println("Setting ADC attenuation for gauge pots...");
   analogSetAttenuation(ADC_11db);
+  analogReadResolution(12);
+  for (int i = 0; i < 4; i++) {
+    pinMode(POT_PINS[i], INPUT);
+  }
 
   // ── Backlight ON ──
 
