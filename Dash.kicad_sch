@@ -10498,7 +10498,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47"
+		(property "Value" "62"
 			(at 381 169.164 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11366,7 +11366,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47"
+		(property "Value" "62"
 			(at 353.06 169.164 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17548,7 +17548,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47"
+		(property "Value" "62"
 			(at 369.57 169.164 90)
 			(show_name no)
 			(do_not_autoplace no)
