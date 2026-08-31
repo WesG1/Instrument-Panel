@@ -488,20 +488,14 @@ const int POT_ADC_MAX[4] = {4095, 4095, 4095, 4095};
 // NEO_KHZ800 sets the 800 kHz signal rate required by WS2812B chips.
 Adafruit_NeoPixel strip(NEO_COUNT, NEO_PIN, NEO_GRB + NEO_KHZ800);
 
-// Array of 10 pre-defined 24-bit RGB colors, one assigned to each LED.
-// Stored as hex values in 0xRRGGBB format. Having a unique color per LED
-// makes it visually obvious which specific LED is active during the chase pattern.
-const uint32_t LED_COLORS[10] = {
+// Array of pre-defined 24-bit RGB colors used across the LED strip.
+// Stored as hex values in 0xRRGGBB format.
+const uint32_t LED_COLORS[5] = {
   0x00FF00,  // Red (correct for this LED hardware/channel order)
-  0xFF6600,  // Orange
   0xFFFF00,  // Yellow
   0xFF0000,  // Green (correct for this LED hardware/channel order)
   0x0000FF,  // Blue
-  0x8B00FF,  // Purple
   0xFFFFFF,  // White
-  0x00FFFF,  // Cyan
-  0xFF00FF,  // Magenta
-  0x4B2000   // Brown
 };
 
 // ─────────────────────────────────────────────
@@ -517,7 +511,7 @@ const uint32_t LED_COLORS[10] = {
 #define BTN_LED5_PIN   18
 
 // GPIO pin for the button that controls LED 6.
-// Same wiring convention as BTN_LED5_PIN.
+// Same wiring convention as BTN_LED6_PIN.
 #define BTN_LED6_PIN   21
 
 // GPIO pin for the button that controls LED 7.
@@ -525,18 +519,23 @@ const uint32_t LED_COLORS[10] = {
 #define BTN_LED7_PIN   46
 
 // GPIO pin for the button that controls LED 8.
-// Same wiring convention as BTN_LED5_PIN.
+// Same wiring convention as BTN_LED8_PIN.
 #define BTN_LED8_PIN   38
 
 // Color applied to LEDs 5 and 6 when their respective button is held.
-// 0xFF0000 is the green entry already defined in LED_COLORS[] (index 3).
+// 0xFF0000 is the green entry already defined in LED_COLORS[] (index 2).
 // Using the same constant keeps the color consistent across the codebase.
-#define TURN_LED_COLOR  0xFF0000   // Green (matches LED_COLORS[3])
+#define TURN_LED_COLOR  0xFF0000   // Green (matches LED_COLORS[2])
+
+// Defines a half second flash timer for the Turn LEDs
+#define FLASH_INTERVAL_MS 500
 
 // Color applied to LEDs 7 and 8 when their respective button is held.
-// 0x0000FF is the "BLUE" entry already defined in LED_COLORS[] (index 4).
+// 0x0000FF is the "BLUE" entry already defined in LED_COLORS[] (index 3).
+// 0xFFFFFF is "WHITE" for the backlight when the headlight switch is "ON"
 // Using the same constant keeps the color consistent across the codebase.
 #define HEADLIGHT_LED_COLOR  0x0000FF
+#define BACKLIGHT_LED_COLOR 0xFFFFFF
 
 // ─────────────────────────────────────────────
 //  I2C / EEPROM DEFINITIONS
@@ -648,6 +647,14 @@ volatile bool leftTurnState = false;
 // True while the GPIO 21 button is physically held down.
 // Same polling strategy as btn5State.
 volatile bool rightTurnState = false;
+
+// Variable to define whether or not the left turn LED is currently ON
+// used to determine flashing based on FLASH_INTERVAL_MS 
+volatile bool leftLedOn = false;
+
+// Variable to define whether or not the right turn LED is currently ON
+// used to determine flashing based on FLASH_INTERVAL_MS 
+volatile bool rightLedOn = false;
 
 // True while the GPIO 46 button is physically held down.
 // Same polling strategy as lowBeamState.
@@ -988,14 +995,11 @@ const char* colorName(uint32_t color) {
 //    White  = normal range  (> 20% from either limit)
 //    Yellow = approaching   (≤ 20% but > 10% from either limit)
 //    Red    = near limit    (≤ 10% from either limit)
-//  LEDs 5–10 (indices 4–9): classic chase animation.
 // ════════════════════════════════════════════════════════════
 
 // FreeRTOS task function that drives the NeoPixel strip.
 // LEDs 1–4 reflect the live position of their paired gauge servo relative
-// to the servo's mechanical limits. LEDs 5–10 continue the original
-// chase pattern: all lit in their unique colors, one dark position moving
-// along the segment each second.
+// to the servo's mechanical limits.
 void neoTask(void *param) {
   // Brief startup delay to let servoTask attach its servos and write the first
   // angles into gaugeAngle[] before neoTask tries to read them.
@@ -1005,21 +1009,10 @@ void neoTask(void *param) {
   strip.clear();
   strip.show();
 
-  // Tracks which position in the 6-LED chase segment (LEDs 5–10, indices 4–9)
-  // is currently dark. Starts at 0 (= LED index 4) and advances each second.
-  int chaseOffset = 0;  // 0 → LED 5 is dark, 5 → LED 10 is dark
-
   // How often gauge colors are re-evaluated. 50 ms gives ~20 samples across the
   // 1-second servo sweep, so the LED color tracks the needle position in near
   // real-time rather than only once per full sweep cycle.
   const int NEO_SAMPLE_MS = 50;
-
-  // The chase advance is kept at 1 second regardless of NEO_SAMPLE_MS.
-  // This counter counts 50 ms ticks; once it reaches CHASE_TICKS the dark
-  // position moves forward and the counter resets. Decoupling the two rates
-  // means changing NEO_SAMPLE_MS never accidentally speeds up the chase.
-  const int CHASE_TICKS = 1000 / NEO_SAMPLE_MS;  // = 20 ticks per second
-  int       chaseTick   = 0;  // Ticks elapsed since last chase advance
 
   // Infinite loop — FreeRTOS tasks must never return.
   for (;;) {
@@ -1033,8 +1026,6 @@ void neoTask(void *param) {
     // INPUT_PULLUP means the pin rests HIGH; pressing the button pulls it
     // LOW through GND, so LOW == pressed, HIGH == released.
     // If your buttons are wired to VCC instead of GND, change LOW to HIGH.
-    leftTurnState = (digitalRead(BTN_LED5_PIN) == HIGH);  // true = switch on left
-    rightTurnState = (digitalRead(BTN_LED6_PIN) == HIGH);  // true = switch on right
     lowBeamState = (digitalRead(BTN_LED7_PIN) == HIGH); //true = low beams on
     highBeamState = (digitalRead(BTN_LED8_PIN) == HIGH);  //true = high beams on
 
@@ -1077,41 +1068,69 @@ void neoTask(void *param) {
       strip.setPixelColor(i, color);
     }
 
-    // ── LEDs 5–6 (indices 4–5): hardware interrupt button indicators ──
-
-    // LED 5 (index 4) is controlled exclusively by the GPIO 18 button interrupt.
-    // When leftTurnState is true (button held), the LED lights green (BTN_LED_COLOR).
-    // When leftTurnState is false (button released), 0 turns the LED fully off.
-    // This LED does NOT participate in the chase animation.
-    strip.setPixelColor(4, leftTurnState ? TURN_LED_COLOR : 0);
-
-    // LED 6 (index 5) is controlled exclusively by the GPIO 21 button interrupt.
-    // Same active-LOW logic: green while pressed, off while released.
-    // This LED does NOT participate in the chase animation.
-    strip.setPixelColor(5, rightTurnState ? TURN_LED_COLOR : 0);
-
     // ── LEDs 7–8 (indices 6–7): hardware interrupt button indicators ──
 
     // LED 7 (index 6) is controlled exclusively by the GPIO 46 button interrupt.
     // When lowBeamState is true (button held), the LED lights blue (BTN_LED_COLOR).
     // When lowBeamState is false (button released), 0 turns the LED fully off.
-    // This LED does NOT participate in the chase animation.
     strip.setPixelColor(6, lowBeamState ? HEADLIGHT_LED_COLOR : 0);
+    strip.setPixelColor(10, lowBeamState ? BACKLIGHT_LED_COLOR : 0);
 
     // LED 8 (index 7) is controlled exclusively by the GPIO 38 button interrupt.
     // Same active-LOW logic: blue while pressed, off while released.
-    // This LED does NOT participate in the chase animation.
     strip.setPixelColor(7, highBeamState ? HEADLIGHT_LED_COLOR : 0);
+    strip.setPixelColor(10, highBeamState ? BACKLIGHT_LED_COLOR : 0);
 
-    // Transmit the complete updated buffer — gauge LEDs (0–3) and chase LEDs (4–9) —
-    // to all NeoPixels in one call. Batching into one show() call prevents visible
-    // flicker that would occur if the two segments were pushed separately.
+    // Transmit the complete updated buffer — gauge LEDs (0–3) and remaining
+    // status LEDs (4–9) — to all NeoPixels in one call. Batching into one
+    // show() call prevents visible flicker that would occur if the two
+    // segments were pushed separately.
     strip.show();
 
     // Sleep for NEO_SAMPLE_MS (50 ms) before the next gauge color evaluation.
     // At 50 ms per tick the gauge color is re-evaluated ~20 times per sweep cycle,
     // giving near real-time LED response to needle position changes.
     vTaskDelay(pdMS_TO_TICKS(NEO_SAMPLE_MS));
+  }
+}
+
+void turnSignalTask(void *pvParameters) {
+  // Clear the strip and push the blank state before entering the main loop.
+  strip.clear();
+  strip.show();
+  
+  for (;;) {
+    // ── LEDs 5–6 (indices 4–5): hardware interrupt button indicators ──
+    // Reads the current state of the Left and Right turn signals
+    // Only one can be ON at any time based on the physical desgin of the switch
+    // Both can be OFF at the same time
+    leftTurnState  = (digitalRead(BTN_LED5_PIN) == HIGH);
+    rightTurnState = (digitalRead(BTN_LED6_PIN) == HIGH);
+
+    // LED 5 (index 4) is controlled exclusively by the GPIO 18 button interrupt.
+    // When leftTurnState is true (button held), the LED lights green (BTN_LED_COLOR).
+    // When leftTurnState is false (button released), 0 turns the LED fully off.
+    if (leftTurnState) {/*if left turn signal is ON*/
+      leftLedOn = !leftLedOn;
+      strip.setPixelColor(4, leftLedOn ? TURN_LED_COLOR : 0);
+    } else {/*if left turn signal is OFF*/
+      leftLedOn = false;
+      strip.setPixelColor(4, 0);
+    }
+
+    // LED 6 (index 5) is controlled exclusively by the GPIO 21 button interrupt.
+    // Same active-LOW logic: green while pressed, off while released.
+    if (rightTurnState) {/*if right thurn signal is ON*/
+      rightLedOn = !rightLedOn;
+      strip.setPixelColor(5, rightLedOn ? TURN_LED_COLOR : 0);
+    } else {/*if right turn signal is OFF*/
+      rightLedOn = false;
+      strip.setPixelColor(5, 0);
+    }
+
+    strip.show();
+    // Delays state for one half second
+    vTaskDelay(pdMS_TO_TICKS(FLASH_INTERVAL_MS));
   }
 }
 
