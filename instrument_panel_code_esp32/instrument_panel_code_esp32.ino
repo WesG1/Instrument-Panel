@@ -6,40 +6,6 @@
 ************************************************************************************************
 ************************************************************************************************
 
-******65 Mustang Custom Modern Gauge Panel******
-************************************************
-**Description**
-
-* ADD CODE TO REFLECT NEW TFT LCD, Adafruit 
-1.14" 240x135 Color Newxie TFT Display - ST7789. CHANGE GROUPINGS OF PINS TO BE
-NUMERICAL ORDER TO REDUCE CONFUSION IN WIRING. ORGANIZE PIN DEFINITIONS TO BE CLEANER
-DELETE THIS NOTE ONCE CHANGES HAVE BEEN MADE*
-
-#include <Wire.h>
-#include <ESP32Servo.h>
-
-******Variables and function delarations******
-
-//i2c addresses
-*change addresses based off current dection breakouts
-if implemented current boards will use 0x40, 0x41, 0x44, 0x45
-current plan is to use Adafruit INA260 breakout boards*
-const int EEPROM_ADDR_1 = 0x50; //Primary EEPROM to store milage and trip
-const int EEPROM_ADDR_2 = 0x51; //Backuo EEPROM to store copy of mileage
-
-//lcd
-
-//I2C pins for ESP32-S2
-#define SDA_PIN 37
-#define SCL_PIN 38
-
-//Servo settings
-Servo servoOil;
-Servo servoFuel;
-Servo servoTemp;
-Servo servoBatt;
-Servo servoTach;
-Servo servoSpd;
 
 //Gauge ranges (in degrees 0-180)
 #define OILMAX 29
@@ -55,162 +21,7 @@ Servo servoSpd;
 #define TACHMAX 20
 #define TACHMIN 95
 
-//ESP32 analog pins
-//Change these to sensors with correct ranges
-const int OilSense = 6;
-const int FuelSense = 5;
-const int BattVoltage = 4;
-const int TempSense = 3;
-const int SpdPot = 2;
-const int TachPot = 1;
 
-//Additional I/O Pins
-const int trip_rest = 7;      //Trip meter reset button
-const int LightsOnOff = 8;    //Input from low bean switch
-const int HighsOnOff = 9;     //Input from high beam swtich
-const int LTurnIn = 10;       //Input from left turn signal
-const int RTurnIn = 11;       //Input from right turn signal
-const int BrakeIn = 12;       //Input forn brake switch
-const int SwtichedSense = 13; //Sensor for key position
-const int PowerOnOff = 14;    //Main power shut off
-const int echoPin = 15;       //Echo pin for ultrasonic sensor
-const int trigPin = 16;       //Trigger pin for ultrasonic sensor
-const int LEDdata = 36;       //Data pin for ARGB LEDs
-const int speaker = 44;       //Speaker for turn signal and hazard beeps
-*speaker may interfere with serial output, leave disconnected or comment 
-out speaker code if not currently using it*
-
-//LCD pins
-//add additional pins for extra LCDs
-const int DA = 39;
-const int CS = 40;
-const int DC = 41;
-const int BL = 42;
-const int CL = 46;
-
-//Raw ADC values
-int OilVal;
-int FuelVal;
-int BattVal;
-int TempVal;
-int SpdVal;
-int TachVal;
-
-//Gauge values (mapped angles)
-int OilPress;
-int FuelLevel;
-int RPM;
-int Speed;
-int Volts;
-int Temp;
-
-//Digital values
-//int vssCount = 0 //variable to store number of pulses from VSS sensor, may be changed as needed
-
-*mileage variables, actual value stored in EEPROM and value for when program is running to be incramented
-currently ints but change to floats if necessary*
-//int milesCount //variable to store odometer and trip values. gets incramented by 1 for each mile driven, not the actual mileage value
-//int storedMilage //variable that stores mileage in EEPROM
-
-const int R1 = 39000; //Voltage divider R1 39K
-const int R2 = 10000; //Voltage diider R2 10K
-bool powerState = false;
-
-//Function declarations
-void speed();
-void tach();
-void temp();
-void volts();
-void fuelLevel();
-void oilPress();
-void startupAnimation();
-void checkPowerOnOff();
-void readEEPROM();
-void writeEEPROM();
-void setLEDs(*add variables here if needed*);
-void readUltraSonic();
-void generateTone();
-void scanFaultDetection();
-void displayLCD();
-
-void setup() {
-  pinMode(trip_rest, INPUT_PULLUP);
-  pinMode(LightsOnOff, INPUT_PULLUP);
-  pinMode(HighsOnOff, INPUT_PULLUP);
-  pinMode(LTurnIn, INPUT_PULLUP);
-  pinMode(RTurnIn, INPUT_PULLUP);
-  pinMode(BrakeIn, INPUT_PULLUP);
-  pinMode(SwtichedSense, INPUT_PULLUP);
-  pinMode(PowerOnOff, OUTPUT);
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-  pinMode(LEDdata, OUTPUT);
-  Serial.begin(115200);
-  //Delay to pause startup when key is first turned
-  //This insures the car is running before the startup begins
-  delay(2000);
-  
-  //Initialize I2C with specific pins
-  Serial.print("Initializing I2C on pins SDA=");
-  Serial.print(SDA_PIN);
-  Serial.print(", SCL=");
-  Serial.println(SCL_PIN);
-  Wire.begin(SDA_PIN, SCL_PIN);
-
-  //*********Scan I2C bus********************************
-  //Remove once prototyping is complete
-  Serial.println("Scanning I2C bus...");
-  byte count = 0;
-  for (byte i = 1; i < 127; i++) {
-    Wire.beginTransmission(i);
-    if (Wire.endTransmission() == 0) {
-      Serial.printf("  Found device at 0x%02X\n", i);
-      count++;
-    }
-  }
-  if (count == 0) {
-    Serial.println("  ERROR: No I2C devices found!");
-  }
-  //*****************************************************
-
-  //Set ADC attenuation for full 0-3.3V range
-  Serial.println("Setting ADC attenuation...");
-  analogSetAttenuation(ADC_11db); 
-
-  //Servo definitions
-  //rename with positions of each servo when updated on schematic
-  servoOil.attach(17);
-  servoFuel.attach(18);
-  servoTemp.attach(21);
-  servoBatt.attach(33);
-  servoTach.attach(34);
-  servoSpd.attach(35);
-  
-  //Startup
-  Serial.println("Setup complete!");
-  Serial.println("\n=== STARTING ANIMATION ===");
-  startupAnimation();
-  Serial.println("=== ANIMATION COMPLETE ===\n");
-  Serial.println("Beginning normal operation...\n");
-}
-
-void loop(){
-  checkPowerOnOff();
-  speed();
-  tach();
-  temp();
-  volts();
-  fuelLevel();
-  oilPress();
-  delay(10);
-}
-
-void displayLCD(){
-  *write data to 2-3 lcd displays
-  display odometer on 1 lcd
-  display tripmeter on 1 lcd
-  if not using leds, display high/low beams and brake warning lights*
-}
 
 void scanFaultDetection(){
   *read light input pins to see if any lights are currently on
@@ -630,6 +441,8 @@ TaskHandle_t hNeoTask;
 // This task is given extra stack (8192 bytes) due to the heavier display operations.
 TaskHandle_t hEepromTask;
 
+TaskHandle_t hTurnSignalTask;
+
 // ─────────────────────────────────────────────
 //  BUTTON INTERRUPT STATE
 //  Written inside ISRs (interrupt context), read by neoTask.
@@ -718,7 +531,7 @@ void IRAM_ATTR isr_btn8() { /* state read by neoTask polling */ }
 // memAddr: the byte location within the EEPROM to write (0x00–0xFF, 256 bytes total)
 // data:    the byte value to store at that location
 void eepromWrite(uint8_t devAddr, uint8_t memAddr, uint8_t data) {
-  // Begin an I2C transmission to the specified device address.
+  // Begin an I2C transmission to the specified device address. p
   // This pulls SDA low (START condition) and sends the 7-bit address + write bit.
   Wire.beginTransmission(devAddr);
 
@@ -1445,6 +1258,8 @@ void setup() {
   // The display helper function (tftShowEEPROM) uses multiple layers of Adafruit_GFX
   // call chains and string formatting, which consumes more stack space than the other tasks.
   xTaskCreate(eepromDisplayTask, "EepromTask", 8192, NULL, 1, &hEepromTask);
+
+  xTaskCreate(turnSignalTask,    "TurnSignalTask", 2048, NULL, 1, &hTurnSignalTask);  
 
   // Confirm all tasks have been submitted to the scheduler.
   // At this point FreeRTOS begins preemptively running all three tasks concurrently.
