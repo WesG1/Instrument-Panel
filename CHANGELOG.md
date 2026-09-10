@@ -1,4 +1,7 @@
 Change Log
+09/10/26: Schematics
+    Added external ADC. Added hazard logic shifter. Removed unused 3.3V converter. 
+
 09/08/26
     Separated ReadMe and ChangeLog into separate files. Combined change logs from different branches into one file
      
