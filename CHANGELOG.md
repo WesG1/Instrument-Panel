@@ -1,4 +1,7 @@
 Change Log
+09/12/26
+    Changed pin assignements to match updated schematic. Added ADS1015 code.
+
 09/10/26: Schematics
     Added external ADC. Added hazard logic shifter. Removed unused 3.3V converter. 
 
