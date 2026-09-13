@@ -317,19 +317,19 @@ const uint32_t LED_COLORS[5] = {
 //  resistor is needed; pressing the button pulls the line LOW.
 // ─────────────────────────────────────────────
 
-// GPIO pin for the button that controls LED 5.
+// GPIO pin for the button that controls LED 5 (left turn indicator).
 // Wired as active-LOW: pin reads HIGH at rest, LOW when pressed.
 #define BTN_LED5_PIN   18
 
-// GPIO pin for the button that controls LED 6.
+// GPIO pin for the button that controls LED 6 (right turn indicator).
 // Same wiring convention as BTN_LED6_PIN.
 #define BTN_LED6_PIN   21
 
-// GPIO pin for the button that controls LED 7.
+// GPIO pin for the button that controls LED 7 (low beam indicator).
 // Wired as active-LOW: pin reads HIGH at rest, LOW when pressed.
-#define BTN_LED7_PIN   46
+#define BTN_LED7_PIN   3
 
-// GPIO pin for the button that controls LED 8.
+// GPIO pin for the button that controls LED 8 (high beam indicator).
 // Same wiring convention as BTN_LED8_PIN.
 #define BTN_LED8_PIN   38
 
@@ -396,7 +396,7 @@ const uint32_t LED_COLORS[5] = {
 
 // Chip Select for Display 1 — same role as TFT_CS0, but for the second display.
 // The library manages toggling CS0 and CS1 automatically when you call tft0 vs tft1.
-#define TFT_CS1        45   // Display 1  (EEPROM 0x51)
+#define TFT_CS1        4   // Display 1  (EEPROM 0x51)
 
 // Reset pin — set to -1 because the display's RESET pin is tied to 3.3V (always-high)
 // or shared with the ESP32's EN line, meaning no software-controlled reset is needed.
