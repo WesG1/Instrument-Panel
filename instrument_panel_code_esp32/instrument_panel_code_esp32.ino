@@ -221,8 +221,13 @@ void startupAnimation(){
 #include <Adafruit_NeoPixel.h>
 
 // Wire: Arduino's built-in I2C library. Used here to communicate with the
-// 24LC02B EEPROM chips over the I2C bus (SDA + SCL lines).
+// 24LC02B EEPROM chips AND the ADS1015 ADC over the shared I2C bus (SDA + SCL lines).
 #include <Wire.h>
+
+// Adafruit_ADS1X15: Driver for the ADS1015/ADS1115 I2C ADC breakout boards.
+// The gauge potentiometers now feed into an ADS1015 instead of the ESP32's
+// own analogRead() pins, so this library replaces the built-in ADC calls.
+#include <Adafruit_ADS1X15.h>
 
 // Adafruit_GFX: Base graphics library providing text, shapes, and drawing primitives.
 // Required by Adafruit_ST7789 — it acts as the abstract drawing layer.
@@ -267,17 +272,30 @@ const int SERVO_MAX[6] = {29,  20,   0,  15,  20,  17};
 //  divider: outer legs to 3.3V and GND, wiper to the ADC pin below.
 //  The pot's total resistance value doesn't matter (10K, 100 ohm, etc.) —
 //  only the wiper's position along that range, read as a voltage ratio.
-//  These are ESP32-S2 ADC1 pins (GPIO1–10), which stay usable even if
-//  WiFi is added later (ADC2 pins conflict with WiFi and are avoided here).
+//  The pots no longer wire into the ESP32's own ADC pins — they now wire
+//  into an ADS1015 I2C ADC breakout board (address 0x48), channels A0–A3.
+//  ALERT, A+, and A- on the breakout are left unconnected.
 // ─────────────────────────────────────────────
+// I2C address of the ADS1015 breakout. 0x48 corresponds to the ADDR pin
+// tied to GND (the board's default).
+#define ADS1015_ADDR 0x48
+
+// ADS1015 driver object, shared over the same I2C bus (Wire) as the EEPROMs.
+Adafruit_ADS1015 ads;
+
 // IMPORTANT: this array must use the same gauge order as SERVO_PINS,
 // SERVO_MIN and SERVO_MAX: Oil, Fuel, Temp, Batt.
-// The previous {3,4,5,6} order paired every pot with the wrong gauge.
-const int POT_PINS[4] = {6, 5, 3, 4};
+// Values are now ADS1015 input channels (0=A0, 1=A1, 2=A2, 3=A3), NOT GPIO
+// numbers. If a gauge tracks the wrong pot, either re-wire that pot to the
+// correct A-pin or reorder these values to match your actual wiring.
+const int POT_PINS[4] = {0, 1, 2, 3};
 
 // Per-channel ADC calibration. Leave at 0/4095 initially; if a pot does not
 // quite reach an endpoint, replace these with the observed raw values printed
 // by the servo task. Each channel remains independently calibrated.
+// NOTE: these assume the ADS1015 gain is set to GAIN_ONE (±4.096V full-scale)
+// in setup(), which keeps its 12-bit single-ended output in the same 0–4095
+// range this code already expects.
 const int POT_ADC_MIN[4] = {0, 0, 0, 0};
 const int POT_ADC_MAX[4] = {4095, 4095, 4095, 4095};
 
@@ -317,19 +335,19 @@ const uint32_t LED_COLORS[5] = {
 //  resistor is needed; pressing the button pulls the line LOW.
 // ─────────────────────────────────────────────
 
-// GPIO pin for the button that controls LED 5.
+// GPIO pin for the button that controls LED 5 (left turn indicator).
 // Wired as active-LOW: pin reads HIGH at rest, LOW when pressed.
 #define BTN_LED5_PIN   18
 
-// GPIO pin for the button that controls LED 6.
+// GPIO pin for the button that controls LED 6 (right turn indicator).
 // Same wiring convention as BTN_LED6_PIN.
 #define BTN_LED6_PIN   21
 
-// GPIO pin for the button that controls LED 7.
+// GPIO pin for the button that controls LED 7 (low beam indicator).
 // Wired as active-LOW: pin reads HIGH at rest, LOW when pressed.
-#define BTN_LED7_PIN   46
+#define BTN_LED7_PIN   3
 
-// GPIO pin for the button that controls LED 8.
+// GPIO pin for the button that controls LED 8 (high beam indicator).
 // Same wiring convention as BTN_LED8_PIN.
 #define BTN_LED8_PIN   38
 
@@ -396,7 +414,7 @@ const uint32_t LED_COLORS[5] = {
 
 // Chip Select for Display 1 — same role as TFT_CS0, but for the second display.
 // The library manages toggling CS0 and CS1 automatically when you call tft0 vs tft1.
-#define TFT_CS1        45   // Display 1  (EEPROM 0x51)
+#define TFT_CS1        4   // Display 1  (EEPROM 0x51)
 
 // Reset pin — set to -1 because the display's RESET pin is tied to 3.3V (always-high)
 // or shared with the ESP32's EN line, meaning no software-controlled reset is needed.
@@ -683,8 +701,9 @@ void tftShowEEPROM(Adafruit_ST7789 &tft, uint8_t devAddr,
 // so neoTask's LED-color logic keeps working unchanged.
 // potSmooth[] must be a 4-element float array persisted by the caller.
 int readGaugeServoAngle(int i, float potSmooth[4]) {
-  // Raw ADC reading. ESP32-S2's ADC is 12-bit by default → range 0-4095.
-  int raw = analogRead(POT_PINS[i]);
+  // Raw ADC reading from the ADS1015 (12-bit single-ended → range 0-4095
+  // with GAIN_ONE, same scale the rest of this code already expects).
+  int raw = ads.readADC_SingleEnded(POT_PINS[i]);
   gaugeRaw[i] = raw;
 
   // Exponential moving-average filter to smooth out ADC/wiper noise so the
@@ -745,7 +764,7 @@ void servoTask(void *param) {
   // first reading so the gauges don't sweep up from 0 on power-up.
   static float potSmooth[4];
   for (int i = 0; i < 4; i++) {
-    potSmooth[i] = (float)analogRead(POT_PINS[i]);
+    potSmooth[i] = (float)ads.readADC_SingleEnded(POT_PINS[i]);
   }
 
   bool sweepingUp = true; // Direction for the servo 5-6 sweep
@@ -870,7 +889,7 @@ void neoTask(void *param) {
       // Format: [NEO] G1  angle=  95°  range=89°  edge=  0°  → RED
       // Columns are fixed-width (%3d) so values stay vertically aligned across
       // the four gauge lines, making it easy to compare them at a glance.
-      Serial.printf("[GAUGE] G%d GPIO%d raw=%4d pos=%3d%% angle=%3d\xC2\xB0 -> %s\n",
+      Serial.printf("[GAUGE] G%d ADS1015 A%d raw=%4d pos=%3d%% angle=%3d\xC2\xB0 -> %s\n",
                     i + 1, POT_PINS[i], gaugeRaw[i],
                     position / 10, angle, colorName(color));
       // Note: \xC2\xB0 is the UTF-8 encoding of the degree symbol (°).
@@ -1056,17 +1075,35 @@ void setup() {
   // that the ESP32 has freshly booted and reached this point in setup().
   Serial.println("\n=== ESP32-S2 N4R2 Component Test ===");
 
-  // ── Gauge potentiometers ──
+  // ── I2C bus (shared by EEPROMs and the ADS1015 gauge-pot ADC) ──
+  // Brought up early, before anything that depends on it, since the
+  // ADS1015 init below needs the bus running first.
 
-  // Set ADC attenuation to 11dB so analogRead() covers the full 0–3.3V range.
-  // Without this the ADC's usable input range is much narrower (~0-1.1V default),
-  // which would make the potentiometers only sweep through part of the gauge's angle.
-  Serial.println("Setting ADC attenuation for gauge pots...");
-  analogSetAttenuation(ADC_11db);
-  analogReadResolution(12);
-  for (int i = 0; i < 4; i++) {
-    pinMode(POT_PINS[i], INPUT);
+  Serial.println("Init I2C...");
+
+  // Start the I2C bus using the defined SDA and SCL pins.
+  // Wire.begin() sets up the ESP32 as I2C master, which means it drives
+  // the clock line and initiates all transactions.
+  Wire.begin(I2C_SDA, I2C_SCL);
+
+  // Set the I2C clock speed to 100 kHz (standard mode). Both the 24LC02B
+  // EEPROMs and the ADS1015 support faster modes, but 100 kHz is more
+  // reliable over longer wires and is more than adequate here.
+  Wire.setClock(100000);  // 100 kHz
+
+  // ── Gauge potentiometers (via ADS1015 ADC) ──
+
+  // Initialize the ADS1015 at its I2C address (0x48 = ADDR pin tied to GND).
+  Serial.println("Init ADS1015 for gauge pots...");
+  if (!ads.begin(ADS1015_ADDR)) {
+    Serial.println("  WARNING: ADS1015 not found at 0x48 — check wiring!");
   }
+
+  // Set the programmable gain to ±4.096V full-scale. This keeps the 3.3V
+  // pot signal well within range while using as much of the ADC's 12-bit
+  // resolution as possible (the default gain's ±6.144V range would waste
+  // roughly half the ADC's counts on voltages the pots never produce).
+  ads.setGain(GAIN_ONE);
 
   // ── Backlight ON ──
 
@@ -1142,19 +1179,8 @@ void setup() {
   // Print identification label for Display 1 / EEPROM 0x51 pairing.
   tft1.print("TFT 1 - EEPROM 0x51");
 
-  // ── I2C for EEPROMs ──
-
-  Serial.println("Init I2C...");
-
-  // Start the I2C bus using the defined SDA and SCL pins.
-  // Wire.begin() sets up the ESP32 as I2C master, which means it drives
-  // the clock line and initiates all transactions.
-  Wire.begin(I2C_SDA, I2C_SCL);
-
-  // Set the I2C clock speed to 100 kHz (standard mode).
-  // The 24LC02B supports up to 400 kHz (fast mode), but 100 kHz is more
-  // reliable over longer wires and is more than adequate for this test.
-  Wire.setClock(100000);  // 100 kHz — safe for 24LC02B
+  // ── EEPROM presence check ──
+  // (I2C bus itself was already brought up earlier, before the ADS1015 init.)
 
   // Scan the I2C bus for both expected EEPROM addresses and report results.
   // This is a diagnostic step — if an EEPROM is missing or miswired,
