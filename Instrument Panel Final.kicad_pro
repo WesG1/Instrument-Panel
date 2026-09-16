@@ -507,7 +507,7 @@
   "pcbnew": {
     "last_paths": {
       "idf": "",
-      "netlist": "",
+      "netlist": "./",
       "plot": "",
       "specctra_dsn": "",
       "vrml": ""
@@ -632,13 +632,53 @@
         "uuid": "22f5f027-bafc-4272-aa28-1126b4970ace"
       }
     ],
-    "used_designators": "F1,D14-15,#PWR60,#PWR119-120",
+    "used_designators": "#PWR58,#PWR60,#PWR62,#PWR70,#PWR72,#PWR74,#PWR82,#PWR84,#PWR86",
     "variants": []
   },
   "sheets": [
     [
       "22f5f027-bafc-4272-aa28-1126b4970ace",
       "Root"
+    ],
+    [
+      "9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8",
+      "Power"
+    ],
+    [
+      "afe494a6-54b5-418d-80bd-839a2e43fd8e",
+      "Connections"
+    ],
+    [
+      "90e20d49-c9cb-47ad-b623-7b33df6ff0a7",
+      "ESP32 S2"
+    ],
+    [
+      "5fd9d65d-5001-4398-be39-addeb6e61b26",
+      "Logic Shifters"
+    ],
+    [
+      "0837cea4-358a-40f1-bbf7-6a75051c87e4",
+      "USB"
+    ],
+    [
+      "2ad11598-9cab-4b7c-a92a-65de5aae2e44",
+      "ADC"
+    ],
+    [
+      "56adc1b9-1bfa-4f0f-a412-6b7cf4bab6fe",
+      "EEPROM"
+    ],
+    [
+      "de902965-07cf-4981-b0da-d3d22eef4bbe",
+      "LEDs"
+    ],
+    [
+      "3310c162-745c-4878-8dd0-c8a714a1b25b",
+      "Amplifier"
+    ],
+    [
+      "0f762c76-f41e-4d20-9905-3d76f1db519f",
+      "Push Buttons"
     ]
   ],
   "text_variables": {},
