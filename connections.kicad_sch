@@ -2560,7 +2560,7 @@
 	)
 	(global_label "Echo_In"
 		(shape input)
-		(at 158.75 118.11 90)
+		(at 125.73 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2570,7 +2570,7 @@
 		)
 		(uuid "0552ee2b-ca86-44f6-a8d7-bde650ad7ba3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 158.75 107.8678 90)
+			(at 125.73 107.8678 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2608,7 +2608,7 @@
 	)
 	(global_label "Left_Turn_In"
 		(shape input)
-		(at 135.89 118.11 90)
+		(at 123.19 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2618,7 +2618,7 @@
 		)
 		(uuid "0a630372-ce10-4094-bfe6-713d211442ba")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 135.89 103.8159 90)
+			(at 123.19 103.8159 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2728,7 +2728,7 @@
 	)
 	(global_label "Right_Turn_In"
 		(shape input)
-		(at 138.43 118.11 90)
+		(at 120.65 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2738,7 +2738,7 @@
 		)
 		(uuid "1053664c-dabc-44b6-87b9-7849d3a9cae6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 138.43 102.4855 90)
+			(at 120.65 102.4855 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2776,7 +2776,7 @@
 	)
 	(global_label "Hazard_In"
 		(shape input)
-		(at 140.97 118.11 90)
+		(at 128.27 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2786,7 +2786,7 @@
 		)
 		(uuid "1999a08c-264b-426c-b96c-fc97fb057ba3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 140.97 105.8116 90)
+			(at 128.27 105.8116 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2824,7 +2824,7 @@
 	)
 	(global_label "Tach_In"
 		(shape input)
-		(at 118.11 118.11 90)
+		(at 135.89 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2834,7 +2834,7 @@
 		)
 		(uuid "260be774-8404-4f57-96d1-9dd3217ec486")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 118.11 108.0492 90)
+			(at 135.89 108.0492 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2872,7 +2872,7 @@
 	)
 	(global_label "Speed_In"
 		(shape input)
-		(at 115.57 118.11 90)
+		(at 133.35 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2882,7 +2882,7 @@
 		)
 		(uuid "2a43fa83-c71b-4eca-8f3e-fc69132ad41f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 115.57 106.7187 90)
+			(at 133.35 106.7187 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2992,7 +2992,7 @@
 	)
 	(global_label "Fuel_In"
 		(shape input)
-		(at 125.73 118.11 90)
+		(at 140.97 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3002,7 +3002,7 @@
 		)
 		(uuid "56beadf5-80ac-4ca9-8cba-8ac87fdfb08e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 125.73 108.412 90)
+			(at 140.97 108.412 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3016,7 +3016,7 @@
 	)
 	(global_label "Temp_In"
 		(shape input)
-		(at 120.65 118.11 90)
+		(at 143.51 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3026,7 +3026,7 @@
 		)
 		(uuid "5a544b9a-584c-4f4e-b670-308936534e8f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 120.65 107.5049 90)
+			(at 143.51 107.5049 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3040,7 +3040,7 @@
 	)
 	(global_label "Brake_In"
 		(shape input)
-		(at 143.51 118.11 90)
+		(at 118.11 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3050,7 +3050,7 @@
 		)
 		(uuid "6c467090-2e17-40ae-bff3-2a062fb84a40")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 143.51 107.0815 90)
+			(at 118.11 107.0815 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3064,7 +3064,7 @@
 	)
 	(global_label "Batt_In"
 		(shape input)
-		(at 123.19 118.11 90)
+		(at 146.05 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3074,7 +3074,7 @@
 		)
 		(uuid "7226681f-789d-4c9a-b0b3-1f64745cea12")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 123.19 108.533 90)
+			(at 146.05 108.533 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3184,7 +3184,7 @@
 	)
 	(global_label "Oil_In"
 		(shape input)
-		(at 128.27 118.11 90)
+		(at 138.43 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3194,7 +3194,7 @@
 		)
 		(uuid "dbaf96fa-a83a-4706-9069-414096709332")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 128.27 109.8029 90)
+			(at 138.43 109.8029 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3208,7 +3208,7 @@
 	)
 	(global_label "Headlights_High_In"
 		(shape input)
-		(at 133.35 118.11 90)
+		(at 115.57 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3218,7 +3218,7 @@
 		)
 		(uuid "e3447985-6961-4b55-928e-0c427b06b7a5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 133.35 97.1636 90)
+			(at 115.57 97.1636 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3232,7 +3232,7 @@
 	)
 	(global_label "Trigger"
 		(shape input)
-		(at 156.21 118.11 90)
+		(at 158.75 118.11 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3242,7 +3242,7 @@
 		)
 		(uuid "e5e34039-c30b-49d4-8b25-30bbb2251d9b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 156.21 108.5934 90)
+			(at 158.75 108.5934 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3328,7 +3328,7 @@
 	)
 	(symbol
 		(lib_id "power:+VDC")
-		(at 146.05 118.11 0)
+		(at 148.59 118.11 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3338,7 +3338,7 @@
 		(dnp no)
 		(uuid "0083b72c-d83c-407b-bc6a-f2a1aa949a9a")
 		(property "Reference" "#PWR031"
-			(at 146.05 120.65 0)
+			(at 148.59 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3349,7 +3349,7 @@
 			)
 		)
 		(property "Value" "+VDC"
-			(at 146.304 111.252 0)
+			(at 148.844 111.252 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3359,7 +3359,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 146.05 118.11 0)
+			(at 148.59 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3370,7 +3370,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 146.05 118.11 0)
+			(at 148.59 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3381,7 +3381,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+VDC\""
-			(at 146.05 118.11 0)
+			(at 148.59 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4050,7 +4050,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 153.67 118.11 0)
+		(at 156.21 118.11 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4060,7 +4060,7 @@
 		(dnp no)
 		(uuid "3cdc3f95-fef5-4d08-ab8a-3c7d6643eb09")
 		(property "Reference" "#PWR034"
-			(at 153.67 121.92 0)
+			(at 156.21 121.92 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4071,7 +4071,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 153.67 124.714 0)
+			(at 156.21 124.714 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4081,7 +4081,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 153.67 118.11 0)
+			(at 156.21 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4092,7 +4092,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 153.67 118.11 0)
+			(at 156.21 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4103,7 +4103,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 153.67 118.11 0)
+			(at 156.21 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4506,7 +4506,7 @@
 	)
 	(symbol
 		(lib_id "power:+BATT")
-		(at 148.59 118.11 0)
+		(at 151.13 118.11 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4516,7 +4516,7 @@
 		(dnp no)
 		(uuid "595c8351-dfd0-4cec-b2f4-2d1a7601d997")
 		(property "Reference" "#PWR032"
-			(at 148.59 121.92 0)
+			(at 151.13 121.92 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4527,7 +4527,7 @@
 			)
 		)
 		(property "Value" "+BATT"
-			(at 148.59 124.968 0)
+			(at 151.13 124.968 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4537,7 +4537,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 148.59 118.11 0)
+			(at 151.13 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4548,7 +4548,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 148.59 118.11 0)
+			(at 151.13 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4559,7 +4559,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+BATT\""
-			(at 148.59 118.11 0)
+			(at 151.13 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6006,7 +6006,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 151.13 118.11 180)
+		(at 153.67 118.11 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6016,7 +6016,7 @@
 		(dnp no)
 		(uuid "f2c256a3-0b98-410c-bcc7-118e49a22983")
 		(property "Reference" "#PWR033"
-			(at 151.13 111.76 0)
+			(at 153.67 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6027,7 +6027,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 151.13 114.046 0)
+			(at 153.67 114.046 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6037,7 +6037,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 151.13 118.11 0)
+			(at 153.67 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6048,7 +6048,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 151.13 118.11 0)
+			(at 153.67 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6059,7 +6059,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 151.13 118.11 0)
+			(at 153.67 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
