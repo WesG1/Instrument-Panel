@@ -2630,7 +2630,7 @@
 			)
 		)
 	)
-	(global_label "Servo_5"
+	(global_label "Temp_Servo"
 		(shape input)
 		(at 173.99 63.5 90)
 		(fields_autoplaced yes)
@@ -2642,7 +2642,7 @@
 		)
 		(uuid "0a8079b9-dab6-4a8d-a411-5638948da223")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 173.99 53.1368 90)
+			(at 173.99 49.4478 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2702,7 +2702,7 @@
 			)
 		)
 	)
-	(global_label "Servo_1"
+	(global_label "Oil_Servo"
 		(shape input)
 		(at 97.79 63.5 90)
 		(fields_autoplaced yes)
@@ -2714,7 +2714,7 @@
 		)
 		(uuid "0d7a29d2-98c8-4631-96eb-9ff980afcb78")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 97.79 53.1368 90)
+			(at 97.79 51.7458 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2918,7 +2918,7 @@
 			)
 		)
 	)
-	(global_label "Servo_4"
+	(global_label "Tach_Servo"
 		(shape input)
 		(at 154.94 63.5 90)
 		(fields_autoplaced yes)
@@ -2930,7 +2930,7 @@
 		)
 		(uuid "47f11999-30a1-40f9-a540-04a35bd98e14")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 154.94 53.1368 90)
+			(at 154.94 49.9921 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3086,7 +3086,7 @@
 			)
 		)
 	)
-	(global_label "Servo_2"
+	(global_label "Fuel_Servo"
 		(shape input)
 		(at 116.84 63.5 90)
 		(fields_autoplaced yes)
@@ -3098,7 +3098,7 @@
 		)
 		(uuid "73dbe77a-f5d9-4cb4-be8b-98a993d78627")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 116.84 53.1368 90)
+			(at 116.84 50.3549 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3110,7 +3110,7 @@
 			)
 		)
 	)
-	(global_label "Servo_3"
+	(global_label "Speed_Servo"
 		(shape input)
 		(at 135.89 63.5 90)
 		(fields_autoplaced yes)
@@ -3122,7 +3122,7 @@
 		)
 		(uuid "9e8925fe-4940-4925-b290-b3ea249a6603")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 135.89 53.1368 90)
+			(at 135.89 48.6616 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3254,7 +3254,7 @@
 			)
 		)
 	)
-	(global_label "Servo_6"
+	(global_label "Batt_Servo"
 		(shape input)
 		(at 193.04 63.5 90)
 		(fields_autoplaced yes)
@@ -3266,7 +3266,7 @@
 		)
 		(uuid "e89a6e7c-572f-40a8-9431-4f3cf1e82573")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 193.04 53.1368 90)
+			(at 193.04 50.4759 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
