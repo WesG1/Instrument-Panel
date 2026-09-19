@@ -6947,7 +6947,7 @@
 		(uuid "2735a5f8-236f-4f1a-8f86-3e1114bbee37")
 	)
 	(junction
-		(at 342.9 213.36)
+		(at 345.44 177.8)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2f8c2e5b-54da-4126-96e4-0d3236e5b312")
@@ -6965,7 +6965,7 @@
 		(uuid "36c396ec-91d0-46f1-96b9-5981635d404d")
 	)
 	(junction
-		(at 344.17 175.26)
+		(at 335.28 175.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3e3997e7-3110-4320-9704-8f53013dc9a6")
@@ -7145,7 +7145,7 @@
 		(uuid "fc16af52-48e7-4d93-9ee0-b8a02046cc1c")
 	)
 	(no_connect
-		(at 317.5 165.1)
+		(at 226.06 177.8)
 		(uuid "14d4fc8b-c666-467c-93ab-bdae88739bf6")
 	)
 	(no_connect
@@ -7153,11 +7153,11 @@
 		(uuid "3070704a-edb0-4fb7-8b67-0d21172b2e7b")
 	)
 	(no_connect
-		(at 226.06 149.86)
+		(at 317.5 226.06)
 		(uuid "4db10b4a-d03b-48df-b7f7-356f1164306b")
 	)
 	(no_connect
-		(at 226.06 177.8)
+		(at 226.06 149.86)
 		(uuid "76f00dea-e0dc-49f3-b1c8-0a17ea6699b2")
 	)
 	(no_connect
@@ -7185,7 +7185,7 @@
 		(uuid "c6815d19-2117-4561-8fcc-a2ced5e8569c")
 	)
 	(no_connect
-		(at 317.5 226.06)
+		(at 317.5 180.34)
 		(uuid "e37762da-9e1b-4a47-9390-9b6de9826486")
 	)
 	(no_connect
@@ -7193,7 +7193,7 @@
 		(uuid "e8d822d9-2db6-42ff-a6c5-08087b07ea3d")
 	)
 	(no_connect
-		(at 317.5 180.34)
+		(at 317.5 165.1)
 		(uuid "f802609c-0ec7-403e-b7dc-3d73611f4b99")
 	)
 	(wire
@@ -7558,7 +7558,7 @@
 	)
 	(wire
 		(pts
-			(xy 317.5 175.26) (xy 344.17 175.26)
+			(xy 317.5 175.26) (xy 335.28 175.26)
 		)
 		(stroke
 			(width 0)
@@ -7658,7 +7658,7 @@
 	)
 	(wire
 		(pts
-			(xy 320.04 215.9) (xy 317.5 215.9)
+			(xy 320.04 172.72) (xy 317.5 172.72)
 		)
 		(stroke
 			(width 0)
@@ -7948,7 +7948,7 @@
 	)
 	(wire
 		(pts
-			(xy 342.9 213.36) (xy 346.71 213.36)
+			(xy 345.44 177.8) (xy 349.25 177.8)
 		)
 		(stroke
 			(width 0)
@@ -7988,7 +7988,7 @@
 	)
 	(wire
 		(pts
-			(xy 212.09 170.18) (xy 226.06 170.18)
+			(xy 331.47 167.64) (xy 317.5 167.64)
 		)
 		(stroke
 			(width 0)
@@ -8118,7 +8118,7 @@
 	)
 	(wire
 		(pts
-			(xy 320.04 220.98) (xy 317.5 220.98)
+			(xy 320.04 170.18) (xy 317.5 170.18)
 		)
 		(stroke
 			(width 0)
@@ -8228,7 +8228,7 @@
 	)
 	(wire
 		(pts
-			(xy 212.09 167.64) (xy 226.06 167.64)
+			(xy 335.28 203.2) (xy 317.5 203.2)
 		)
 		(stroke
 			(width 0)
@@ -8348,7 +8348,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 172.72) (xy 226.06 172.72)
+			(xy 332.74 210.82) (xy 317.5 210.82)
 		)
 		(stroke
 			(width 0)
@@ -8375,16 +8375,6 @@
 			(type default)
 		)
 		(uuid "a5a1df2e-dd15-438c-b869-8b0489a52d5f")
-	)
-	(wire
-		(pts
-			(xy 326.39 203.2) (xy 317.5 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a823d7c3-8328-4061-8769-57528b07b6ba")
 	)
 	(wire
 		(pts
@@ -8558,16 +8548,6 @@
 	)
 	(wire
 		(pts
-			(xy 317.5 213.36) (xy 342.9 213.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c8e4d353-80f7-41b0-b194-93a97c038096")
-	)
-	(wire
-		(pts
 			(xy 46.99 95.25) (xy 46.99 102.87)
 		)
 		(stroke
@@ -8658,6 +8638,16 @@
 	)
 	(wire
 		(pts
+			(xy 317.5 177.8) (xy 345.44 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d70bb486-8bb4-435c-8ac6-a25c826a1628")
+	)
+	(wire
+		(pts
 			(xy 114.3 138.43) (xy 114.3 139.7)
 		)
 		(stroke
@@ -8708,7 +8698,7 @@
 	)
 	(wire
 		(pts
-			(xy 212.09 165.1) (xy 226.06 165.1)
+			(xy 335.28 205.74) (xy 317.5 205.74)
 		)
 		(stroke
 			(width 0)
@@ -8738,7 +8728,7 @@
 	)
 	(wire
 		(pts
-			(xy 344.17 175.26) (xy 345.44 175.26)
+			(xy 335.28 175.26) (xy 336.55 175.26)
 		)
 		(stroke
 			(width 0)
@@ -8768,7 +8758,7 @@
 	)
 	(wire
 		(pts
-			(xy 342.9 210.82) (xy 342.9 213.36)
+			(xy 345.44 175.26) (xy 345.44 177.8)
 		)
 		(stroke
 			(width 0)
@@ -8898,7 +8888,7 @@
 	)
 	(wire
 		(pts
-			(xy 344.17 172.72) (xy 344.17 175.26)
+			(xy 335.28 172.72) (xy 335.28 175.26)
 		)
 		(stroke
 			(width 0)
@@ -8956,7 +8946,7 @@
 		)
 		(uuid "04aaa77c-fac7-4c1b-a0d5-8981344a52c1")
 	)
-	(label "Servo 5"
+	(label "Temp_Servo"
 		(at 331.47 200.66 0)
 		(effects
 			(font
@@ -8967,7 +8957,7 @@
 		(uuid "0a274dab-e24b-4a6d-843d-dc2e4923dfb4")
 	)
 	(label "CS1"
-		(at 345.44 175.26 0)
+		(at 336.55 175.26 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8987,12 +8977,12 @@
 		(uuid "136efcdd-448d-491c-86ec-bea3b5359c82")
 	)
 	(label "LED Data Out"
-		(at 212.09 170.18 0)
+		(at 331.47 167.64 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "163de1bf-7953-4dfa-9c51-bf68db3aec32")
 	)
@@ -9047,7 +9037,7 @@
 		(uuid "1dc658c9-7531-4fc6-be28-bcca81731021")
 	)
 	(label "Left Turn Adjusted"
-		(at 317.5 205.74 0)
+		(at 317.5 220.98 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9056,7 +9046,7 @@
 		)
 		(uuid "1e70f8e9-45f6-4a7d-acbe-f2bb5af55762")
 	)
-	(label "Servo 1"
+	(label "Oil_Servo"
 		(at 331.47 190.5 0)
 		(effects
 			(font
@@ -9077,17 +9067,17 @@
 		(uuid "30b234f7-e35a-4a20-8e4b-b825247e46eb")
 	)
 	(label "Ignition Sensor"
-		(at 212.09 165.1 0)
+		(at 335.28 205.74 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "31b6ac4a-f958-4e0f-b393-4a0ba2a80f34")
 	)
 	(label "CS0"
-		(at 346.71 213.36 180)
+		(at 349.25 177.8 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9197,7 +9187,7 @@
 		(uuid "4d58cf88-2d21-4e91-9869-c05b4f63a694")
 	)
 	(label "Trip Reset"
-		(at 317.5 182.88 0)
+		(at 317.5 208.28 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9207,22 +9197,22 @@
 		(uuid "58b7e33e-a3fb-42bb-b965-c2c6d8af5ffb")
 	)
 	(label "Speaker Signal"
-		(at 210.82 172.72 0)
+		(at 332.74 210.82 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "58dca2b4-0159-4cfd-adf1-a4fe6a738f76")
 	)
 	(label "Hazard Adjusted"
-		(at 317.5 177.8 0)
+		(at 226.06 165.1 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "5ad8725f-8e64-4aa1-a3a3-0a8ad890f6e8")
 	)
@@ -9337,7 +9327,7 @@
 		(uuid "849dfe3a-b926-4ec8-88b9-898f590c65a1")
 	)
 	(label "Echo Adjusted"
-		(at 326.39 203.2 0)
+		(at 317.5 223.52 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9356,7 +9346,7 @@
 		)
 		(uuid "8eed4033-75d3-40ed-a1b0-dbad6121d5f8")
 	)
-	(label "Servo 3"
+	(label "Speed_Servo"
 		(at 331.47 195.58 0)
 		(effects
 			(font
@@ -9367,7 +9357,7 @@
 		(uuid "93efc1d2-e8f6-417e-b761-a3d4115ff729")
 	)
 	(label "Headlights High Adjusted"
-		(at 317.5 223.52 0)
+		(at 317.5 213.36 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9377,12 +9367,12 @@
 		(uuid "975ea387-e3ee-483e-8041-77397e831571")
 	)
 	(label "Power Off"
-		(at 212.09 167.64 0)
+		(at 335.28 203.2 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "9baa9f0c-f026-419e-a6ce-8b75336fe061")
 	)
@@ -9407,16 +9397,16 @@
 		(uuid "a379e9be-af2d-46a0-a995-1001cbf50e93")
 	)
 	(label "Speed Adjusted"
-		(at 317.5 170.18 0)
+		(at 226.06 170.18 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "a41b8463-a275-4682-be44-ec31f3b176e5")
 	)
-	(label "Servo 6"
+	(label "Batt_Servo"
 		(at 212.09 157.48 180)
 		(effects
 			(font
@@ -9437,12 +9427,12 @@
 		(uuid "a663a57c-15b9-4ffd-bcd4-915f05088e2b")
 	)
 	(label "Tach Adjusted"
-		(at 317.5 167.64 0)
+		(at 226.06 172.72 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "a7ea6110-1ae4-42d8-ad9e-8b70e23585ce")
 	)
@@ -9457,7 +9447,7 @@
 		(uuid "a8be0ccc-eb89-4143-a5e7-8194358599c4")
 	)
 	(label "CL"
-		(at 317.5 218.44 0)
+		(at 317.5 182.88 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9497,7 +9487,7 @@
 		(uuid "b1035730-0e64-4297-877b-72dfc0db365d")
 	)
 	(label "Right Turn Adjusted"
-		(at 317.5 208.28 0)
+		(at 317.5 218.44 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9527,7 +9517,7 @@
 		(uuid "b8155dce-7c3f-4e3c-858f-6f65d992f6a6")
 	)
 	(label "DC"
-		(at 320.04 220.98 180)
+		(at 320.04 170.18 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9547,7 +9537,7 @@
 		(uuid "bda64f4e-a547-4923-b011-5a973e9e6237")
 	)
 	(label "DA"
-		(at 320.04 215.9 180)
+		(at 320.04 172.72 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9567,7 +9557,7 @@
 		(uuid "c7979536-46b6-46fa-8d86-4fe25eead397")
 	)
 	(label "Brake Adjusted"
-		(at 317.5 210.82 0)
+		(at 317.5 215.9 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9656,7 +9646,7 @@
 		)
 		(uuid "ef955a24-5124-4f3e-a849-753109b02c36")
 	)
-	(label "Servo 2"
+	(label "Fuel_Servo"
 		(at 331.47 193.04 0)
 		(effects
 			(font
@@ -9697,16 +9687,16 @@
 		(uuid "f74d5118-b2c2-452d-a05f-b535f0fad7a8")
 	)
 	(label "Headlights Low Adjusted"
-		(at 317.5 172.72 0)
+		(at 226.06 167.64 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "f8c0e8a5-591d-4a19-a0f3-91f294c430c4")
 	)
-	(label "Servo 4"
+	(label "Tach_Servo"
 		(at 331.47 198.12 0)
 		(effects
 			(font
@@ -12337,7 +12327,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 342.9 207.01 0)
+		(at 345.44 171.45 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12348,7 +12338,7 @@
 		(fields_autoplaced yes)
 		(uuid "1f8cbc32-2570-41bf-aa4e-498d5e92d96c")
 		(property "Reference" "R13"
-			(at 345.44 205.7399 0)
+			(at 347.98 170.1799 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12359,7 +12349,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 345.44 208.2799 0)
+			(at 347.98 172.7199 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12370,7 +12360,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 341.122 207.01 90)
+			(at 343.662 171.45 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12381,7 +12371,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 342.9 207.01 0)
+			(at 345.44 171.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12392,7 +12382,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 342.9 207.01 0)
+			(at 345.44 171.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16984,7 +16974,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 342.9 203.2 0)
+		(at 345.44 167.64 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -16995,7 +16985,7 @@
 		(fields_autoplaced yes)
 		(uuid "5dadaa89-5905-4aa6-8f87-1f78cf56b081")
 		(property "Reference" "#PWR081"
-			(at 342.9 207.01 0)
+			(at 345.44 171.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17006,7 +16996,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 342.9 198.12 0)
+			(at 345.44 162.56 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17016,7 +17006,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 342.9 203.2 0)
+			(at 345.44 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17027,7 +17017,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 342.9 203.2 0)
+			(at 345.44 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17038,7 +17028,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 342.9 203.2 0)
+			(at 345.44 167.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20062,7 +20052,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 344.17 165.1 0)
+		(at 335.28 165.1 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -20073,7 +20063,7 @@
 		(fields_autoplaced yes)
 		(uuid "855c8e7e-e9b6-464c-9fcc-61e49e943068")
 		(property "Reference" "#PWR082"
-			(at 344.17 168.91 0)
+			(at 335.28 168.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20084,7 +20074,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 344.17 160.02 0)
+			(at 335.28 160.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -20094,7 +20084,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 344.17 165.1 0)
+			(at 335.28 165.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20105,7 +20095,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 344.17 165.1 0)
+			(at 335.28 165.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20116,7 +20106,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 344.17 165.1 0)
+			(at 335.28 165.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23279,7 +23269,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 344.17 168.91 0)
+		(at 335.28 168.91 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -23290,7 +23280,7 @@
 		(fields_autoplaced yes)
 		(uuid "a24684aa-8c32-4ab9-8fd1-22c39f15a14d")
 		(property "Reference" "R12"
-			(at 346.71 167.6399 0)
+			(at 337.82 167.6399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -23301,7 +23291,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 346.71 170.1799 0)
+			(at 337.82 170.1799 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -23312,7 +23302,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 342.392 168.91 90)
+			(at 333.502 168.91 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23323,7 +23313,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 344.17 168.91 0)
+			(at 335.28 168.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23334,7 +23324,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 344.17 168.91 0)
+			(at 335.28 168.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
