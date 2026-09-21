@@ -632,7 +632,7 @@
         "uuid": "22f5f027-bafc-4272-aa28-1126b4970ace"
       }
     ],
-    "used_designators": "",
+    "used_designators": "D1-20,#PWR1-160,C1-20,FB1,U1-8,J1-12,#FLG1-8,R1-62,SW1-3,Q1-21,F1-2,IC1,L1",
     "variants": []
   },
   "sheets": [
@@ -641,44 +641,12 @@
       "Root"
     ],
     [
-      "9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8",
-      "Power"
-    ],
-    [
-      "afe494a6-54b5-418d-80bd-839a2e43fd8e",
-      "Connections"
-    ],
-    [
-      "90e20d49-c9cb-47ad-b623-7b33df6ff0a7",
-      "ESP32 S2"
-    ],
-    [
-      "5fd9d65d-5001-4398-be39-addeb6e61b26",
+      "9edd6735-d347-4c5b-966b-f0db314908dc",
       "Logic Shifters"
     ],
     [
-      "0837cea4-358a-40f1-bbf7-6a75051c87e4",
-      "USB"
-    ],
-    [
-      "2ad11598-9cab-4b7c-a92a-65de5aae2e44",
-      "ADC"
-    ],
-    [
-      "56adc1b9-1bfa-4f0f-a412-6b7cf4bab6fe",
-      "EEPROM"
-    ],
-    [
-      "de902965-07cf-4981-b0da-d3d22eef4bbe",
-      "LEDs"
-    ],
-    [
-      "3310c162-745c-4878-8dd0-c8a714a1b25b",
-      "Amplifier"
-    ],
-    [
-      "0f762c76-f41e-4d20-9905-3d76f1db519f",
-      "Push Buttons"
+      "0ee3d854-c4ec-4633-ba9e-56f828781fb2",
+      "USB and Power"
     ]
   ],
   "text_variables": {},
