@@ -869,6 +869,171 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:Polyfuse"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "F"
+				(at -2.54 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Polyfuse"
+				(at 2.54 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 1.27 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Resettable fuse, polymeric positive temperature coefficient"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "resettable fuse PTC PPTC polyfuse polyswitch"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*polyfuse* *PTC*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Polyfuse_0_1"
+				(polyline
+					(pts
+						(xy -1.524 2.54) (xy -1.524 1.524) (xy 1.524 -1.524) (xy 1.524 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -0.762 2.54)
+					(end 0.762 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Polyfuse_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:R"
 			(pin_numbers
 				(hide yes)
@@ -992,6 +1157,347 @@
 					(at 0 -3.81 90)
 					(length 1.27)
 					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Diode:1N914"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1N914"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
+				(at 0 -4.445 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "http://www.vishay.com/docs/85622/1n914.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "100V 0.3A Small Signal Fast Switching Diode, DO-35"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Device" "D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Pins" "1=K 2=A"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "D*DO?35*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "1N914_0_1"
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "1N914_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Diode:SMF18A"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SMF18A"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Diode_SMD:D_SMF"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.vishay.com/doc?85881"
+				(at -1.27 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "200W unidirectional Transil Transient Voltage Suppressor, 18Vrwm, SMF"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "diode TVS voltage suppressor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "D*SMF*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SMF18A_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy -1.27 1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SMF18A_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3445,6 +3951,18 @@
 		)
 	)
 	(rectangle
+		(start 204.47 64.77)
+		(end 257.81 93.98)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "04bd87be-7237-4b5f-80f9-26b040a2bf66")
+	)
+	(rectangle
 		(start 24.13 90.17)
 		(end 73.152 124.206)
 		(stroke
@@ -3481,7 +3999,19 @@
 		(uuid "78c6d91c-58d7-4bb2-99ab-5f6d6180a3a8")
 	)
 	(rectangle
-		(start 105.41 83.058)
+		(start 204.47 29.21)
+		(end 257.81 57.15)
+		(stroke
+			(width 0.254)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "d02998ce-c7d8-4f26-8d96-8da8bf77516b")
+	)
+	(rectangle
+		(start 105.41 83.82)
 		(end 182.372 124.206)
 		(stroke
 			(width 0.254)
@@ -3492,15 +4022,36 @@
 		)
 		(uuid "da3beb7b-42d8-4e6b-95a1-306a2e6ca67f")
 	)
-	(text "Switched +12 from battery\n"
+	(text "V8PAM10HM3"
 		(exclude_from_sim no)
-		(at 147.32 84.836 0)
+		(at 233.172 40.894 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 		)
-		(uuid "a3070a02-9ddb-45c2-b0d6-d3585ea6a806")
+		(uuid "4b37d5fc-43d2-43fd-a58b-1da0e599f8a6")
+	)
+	(text "0ZRB0400FF1A"
+		(exclude_from_sim no)
+		(at 216.916 40.894 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "6f1e6c44-39b5-45ad-81cc-b1c032651888")
+	)
+	(text "Constant power protection"
+		(exclude_from_sim no)
+		(at 230.378 59.436 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+				(thickness 0.3175)
+			)
+		)
+		(uuid "884f21f0-1d2a-4354-a0de-8800ba74b275")
 	)
 	(text "Key On/Off Circuit"
 		(exclude_from_sim no)
@@ -3513,17 +4064,6 @@
 			)
 		)
 		(uuid "a484185f-0ccd-4d45-8471-861f23d115ee")
-	)
-	(text "Constant +12 from battery"
-		(exclude_from_sim no)
-		(at 119.888 89.154 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.1588)
-			)
-		)
-		(uuid "b8afa128-34a6-4c83-8236-79c9ce714415")
 	)
 	(text "+12 out to regulator"
 		(exclude_from_sim no)
@@ -3545,6 +4085,16 @@
 			)
 		)
 		(uuid "ce99272a-92bc-4d16-8e1c-3a5359539c08")
+	)
+	(text "B59807A0090A062"
+		(exclude_from_sim no)
+		(at 215.9 77.724 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "d2a9393f-fdd7-49a6-9770-545a58807c56")
 	)
 	(text "Power Flags"
 		(exclude_from_sim no)
@@ -3568,6 +4118,17 @@
 			)
 		)
 		(uuid "e0a44fa0-1a8c-46c7-8bc0-29fd62c45d0b")
+	)
+	(text "Switched power protection"
+		(exclude_from_sim no)
+		(at 230.886 96.52 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+				(thickness 0.3175)
+			)
+		)
+		(uuid "fb3c6f8e-cebd-46c1-bafb-1ca7f77d4cc8")
 	)
 	(junction
 		(at 148.59 38.1)
@@ -3711,7 +4272,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 93.98) (xy 146.05 95.25)
+			(xy 146.05 87.63) (xy 146.05 95.25)
 		)
 		(stroke
 			(width 0)
@@ -3871,6 +4432,16 @@
 	)
 	(wire
 		(pts
+			(xy 236.22 38.1) (xy 240.03 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32f44172-9a62-41bc-a12d-35d0e1e5aa14")
+	)
+	(wire
+		(pts
 			(xy 64.77 53.34) (xy 64.77 58.42)
 		)
 		(stroke
@@ -3908,6 +4479,16 @@
 			(type default)
 		)
 		(uuid "4084165c-b24a-47cb-a377-57c19b3b445c")
+	)
+	(wire
+		(pts
+			(xy 240.03 74.93) (xy 240.03 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41a096e8-7e76-461f-b78b-2066a6231f60")
 	)
 	(wire
 		(pts
@@ -4091,6 +4672,16 @@
 	)
 	(wire
 		(pts
+			(xy 240.03 38.1) (xy 240.03 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78647010-7470-4b02-888b-452f3a6573a9")
+	)
+	(wire
+		(pts
 			(xy 148.59 38.1) (xy 148.59 66.04)
 		)
 		(stroke
@@ -4141,6 +4732,16 @@
 	)
 	(wire
 		(pts
+			(xy 213.36 74.93) (xy 215.9 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9314bc1b-d061-41c0-85c5-714f94d8b1d9")
+	)
+	(wire
+		(pts
 			(xy 77.47 38.1) (xy 77.47 40.64)
 		)
 		(stroke
@@ -4158,6 +4759,16 @@
 			(type default)
 		)
 		(uuid "985cc674-b0f6-4909-91a3-0db641746174")
+	)
+	(wire
+		(pts
+			(xy 223.52 38.1) (xy 228.6 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e7c49e0-88eb-4967-a93b-299270627b00")
 	)
 	(wire
 		(pts
@@ -4201,6 +4812,16 @@
 	)
 	(wire
 		(pts
+			(xy 223.52 74.93) (xy 228.6 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c67bd38b-38f1-42a1-acf4-eea502e4d473")
+	)
+	(wire
+		(pts
 			(xy 129.54 101.6) (xy 130.81 101.6)
 		)
 		(stroke
@@ -4208,6 +4829,16 @@
 			(type default)
 		)
 		(uuid "c9d01587-ea99-4595-a76a-1f423bfe7d28")
+	)
+	(wire
+		(pts
+			(xy 236.22 74.93) (xy 240.03 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3181d5d-b089-41b2-a622-1ec28daa0720")
 	)
 	(wire
 		(pts
@@ -4281,6 +4912,16 @@
 	)
 	(wire
 		(pts
+			(xy 213.36 38.1) (xy 215.9 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f599c78a-e293-4a7e-b8d8-a65da87749ba")
+	)
+	(wire
+		(pts
 			(xy 152.4 48.26) (xy 134.62 48.26)
 		)
 		(stroke
@@ -4328,6 +4969,46 @@
 			(type default)
 		)
 		(uuid "ffddf301-d439-4c51-b0c8-4ba9afc0f99d")
+	)
+	(label "Switched Power"
+		(at 146.05 87.63 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3e95654e-b755-413d-8aa9-ac9eedbeadd7")
+	)
+	(label "Switched Power"
+		(at 240.03 74.93 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "859259ab-d5e4-43b3-92f8-0dac9708258d")
+	)
+	(label "Constant Power"
+		(at 121.92 96.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a3c13d15-3758-4406-b7bc-a52c60f2a6f0")
+	)
+	(label "Constant Power"
+		(at 240.03 38.1 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a49848f9-6579-49dd-9c94-139c16ccebef")
 	)
 	(global_label "Power_Off"
 		(shape input)
@@ -5215,6 +5896,166 @@
 		)
 	)
 	(symbol
+		(lib_id "Diode:SMF18A")
+		(at 240.03 44.45 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2f1628e9-73b5-4ade-8dee-fdb52e7c1999")
+		(property "Reference" "D18"
+			(at 242.57 43.1799 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SMF18A"
+			(at 242.57 45.7199 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMF"
+			(at 234.95 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/doc?85881"
+			(at 240.03 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "200W unidirectional Transil Transient Voltage Suppressor, 18Vrwm, SMF"
+			(at 240.03 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "ae94d27b-e025-44a8-ad7b-6c76650e1264")
+		)
+		(pin "1"
+			(uuid "a0e329fa-c75b-421c-8668-39fff3d6a789")
+		)
+		(instances
+			(project "Instrument Panel Final"
+				(path "/22f5f027-bafc-4272-aa28-1126b4970ace/9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8"
+					(reference "D18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 240.03 85.09 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "38338ac7-c67d-4961-9746-40e0e0f94ca1")
+		(property "Reference" "#PWR0160"
+			(at 240.03 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 240.03 90.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 240.03 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 240.03 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 240.03 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "121f126b-ff7b-49e4-bdb2-5df0b49fc990")
+		)
+		(instances
+			(project "Instrument Panel Final"
+				(path "/22f5f027-bafc-4272-aa28-1126b4970ace/9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8"
+					(reference "#PWR0160")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 64.77 49.53 0)
 		(unit 1)
@@ -5458,7 +6299,7 @@
 	)
 	(symbol
 		(lib_id "power:+BATT")
-		(at 121.92 96.52 0)
+		(at 213.36 38.1 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -5470,7 +6311,7 @@
 		(fields_autoplaced yes)
 		(uuid "4f4b942d-d965-446e-aee5-1fbb34314455")
 		(property "Reference" "#PWR013"
-			(at 121.92 100.33 0)
+			(at 213.36 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5481,7 +6322,7 @@
 			)
 		)
 		(property "Value" "+BATT"
-			(at 121.92 91.44 0)
+			(at 213.36 33.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5491,7 +6332,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 121.92 96.52 0)
+			(at 213.36 38.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5502,7 +6343,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 121.92 96.52 0)
+			(at 213.36 38.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5513,7 +6354,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+BATT\""
-			(at 121.92 96.52 0)
+			(at 213.36 38.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5558,7 +6399,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "150"
+		(property "Value" "470"
 			(at 148.59 109.2199 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6001,6 +6842,88 @@
 			(project "Instrument Panel Final"
 				(path "/22f5f027-bafc-4272-aa28-1126b4970ace/9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8"
 					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Polyfuse")
+		(at 219.71 38.1 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "845f91b0-5c67-4359-a2c0-e4fa33750d9f")
+		(property "Reference" "F1"
+			(at 217.17 32.512 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Polyfuse"
+			(at 217.17 35.052 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_BelFuse_0ZRE0005FF_L8.3mm_W3.8mm"
+			(at 214.63 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" ""
+			(at 219.71 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resettable fuse, polymeric positive temperature coefficient"
+			(at 219.71 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "08e5fdad-00d8-49ca-8c0c-781f2b2011ed")
+		)
+		(pin "1"
+			(uuid "0dd933f4-f5f4-40d2-a200-1ea32fcd452c")
+		)
+		(instances
+			(project "Instrument Panel Final"
+				(path "/22f5f027-bafc-4272-aa28-1126b4970ace/9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8"
+					(reference "F1")
 					(unit 1)
 				)
 			)
@@ -6604,6 +7527,108 @@
 			(project "Instrument Panel Final"
 				(path "/22f5f027-bafc-4272-aa28-1126b4970ace/9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8"
 					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N914")
+		(at 232.41 74.93 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a253188b-98f9-44f2-9ef6-b5e30c6dddcc")
+		(property "Reference" "D19"
+			(at 232.41 68.58 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1N914"
+			(at 232.41 71.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
+			(at 232.41 70.485 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.vishay.com/docs/85622/1n914.pdf"
+			(at 232.41 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "100V 0.3A Small Signal Fast Switching Diode, DO-35"
+			(at 232.41 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 232.41 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 232.41 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "16f39672-046c-4aa0-9036-fbe9618f4bcc")
+		)
+		(pin "1"
+			(uuid "147e0de0-f6b3-496b-9ee2-5455388bfb78")
+		)
+		(instances
+			(project "Instrument Panel Final"
+				(path "/22f5f027-bafc-4272-aa28-1126b4970ace/9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8"
+					(reference "D19")
 					(unit 1)
 				)
 			)
@@ -7410,6 +8435,164 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 240.03 48.26 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ca72d592-21fd-411d-a220-1fbbe6580819")
+		(property "Reference" "#PWR0159"
+			(at 240.03 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 240.03 53.34 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 240.03 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 240.03 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 240.03 48.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "acf880da-0350-4331-9d9b-f51ec9ddd9fc")
+		)
+		(instances
+			(project "Instrument Panel Final"
+				(path "/22f5f027-bafc-4272-aa28-1126b4970ace/9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8"
+					(reference "#PWR0159")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 232.41 38.1 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d08fe419-2a64-49ef-b41d-401ec18edca6")
+		(property "Reference" "D17"
+			(at 232.7275 31.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D_Schottky"
+			(at 232.7275 34.29 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:Vishay_SMPA"
+			(at 232.41 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 232.41 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Schottky diode"
+			(at 232.41 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ce5a5475-75e0-4fbe-a4b8-c253e37bb44c")
+		)
+		(pin "2"
+			(uuid "c5bdbb39-2b8b-4122-bc43-49b07061d46b")
+		)
+		(instances
+			(project "Instrument Panel Final"
+				(path "/22f5f027-bafc-4272-aa28-1126b4970ace/9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8"
+					(reference "D17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 88.9 143.51 0)
 		(unit 1)
@@ -7566,6 +8749,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:Polyfuse")
+		(at 219.71 74.93 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "dcdae6e7-540b-49c1-b699-7f207b795fc4")
+		(property "Reference" "F2"
+			(at 216.662 69.342 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Polyfuse"
+			(at 216.662 71.882 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_1210_3225Metric"
+			(at 214.63 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" ""
+			(at 219.71 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resettable fuse, polymeric positive temperature coefficient"
+			(at 219.71 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "3ab8489a-442b-4719-8767-a88aac20129c")
+		)
+		(pin "1"
+			(uuid "ea16a1df-0d4c-40f3-826e-0f5ea65e9080")
+		)
+		(instances
+			(project "Instrument Panel Final"
+				(path "/22f5f027-bafc-4272-aa28-1126b4970ace/9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8"
+					(reference "F2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 68.58 143.51 180)
 		(unit 1)
@@ -7638,6 +8903,88 @@
 			(project "Instrument Panel Final"
 				(path "/22f5f027-bafc-4272-aa28-1126b4970ace/9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8"
 					(reference "#PWR07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:SMF18A")
+		(at 240.03 81.28 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e83e4e6e-cbcd-4177-bbd4-550273475c81")
+		(property "Reference" "D20"
+			(at 242.57 80.0099 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SMF18A"
+			(at 242.57 82.5499 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMF"
+			(at 234.95 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/doc?85881"
+			(at 240.03 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "200W unidirectional Transil Transient Voltage Suppressor, 18Vrwm, SMF"
+			(at 240.03 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "22a1514b-84c8-4eb4-83c5-52c6fe1c7a52")
+		)
+		(pin "1"
+			(uuid "7ef2a344-bb80-4e14-bdae-61b2364132d4")
+		)
+		(instances
+			(project "Instrument Panel Final"
+				(path "/22f5f027-bafc-4272-aa28-1126b4970ace/9a3d177b-00f0-4bb0-b3bc-dd7ffd8c49c8"
+					(reference "D20")
 					(unit 1)
 				)
 			)
@@ -7968,7 +9315,7 @@
 	)
 	(symbol
 		(lib_id "power:+VDC")
-		(at 146.05 93.98 0)
+		(at 213.36 74.93 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7979,7 +9326,7 @@
 		(fields_autoplaced yes)
 		(uuid "f78f00dc-26ed-4a5a-840b-76373ce8da0c")
 		(property "Reference" "#PWR017"
-			(at 146.05 96.52 0)
+			(at 213.36 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7990,7 +9337,7 @@
 			)
 		)
 		(property "Value" "+VDC"
-			(at 146.05 86.36 0)
+			(at 213.36 67.31 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8000,7 +9347,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 146.05 93.98 0)
+			(at 213.36 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8011,7 +9358,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 146.05 93.98 0)
+			(at 213.36 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8022,7 +9369,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+VDC\""
-			(at 146.05 93.98 0)
+			(at 213.36 74.93 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
