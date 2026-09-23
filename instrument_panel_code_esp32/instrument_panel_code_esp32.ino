@@ -6,23 +6,6 @@
 ************************************************************************************************
 ************************************************************************************************
 
-
-//Gauge ranges (in degrees 0-180)
-#define OILMAX 29
-#define OILMIN 118
-#define FUELMAX 20
-#define FUELMIN 116
-#define BATTMAX 15
-#define BATTMIN 97
-#define TEMPMAX 0
-#define TEMPMIN 115
-#define SPDMAX 17
-#define SPDMIN 100
-#define TACHMAX 20
-#define TACHMIN 95
-
-
-
 void scanFaultDetection(){
   *read light input pins to see if any lights are currently on
   if yes scan the i2c current sensor for that light
@@ -252,27 +235,34 @@ void startupAnimation(){
 // Array of 6 GPIO pin numbers, one per servo motor.
 // Using an array lets us loop over all servos rather than writing
 // individual lines for each one, keeping the code concise and scalable.
+// Oil=10, Fuel=11, Speed=12, Tach=13, Temp=14, Batt=15
 const int SERVO_PINS[6] = {10, 11, 12, 13, 14, 15};  // GPIO 34 freed for TFT CS
 
 // Minimum angle (in degrees) for each servo — the "closed" or "home" position.
 // Each servo may have a different mechanical range, so per-servo min values
 // allow precise calibration rather than assuming all servos share the same limits.
 // Order matches SERVO_PINS[] above: S1, S2, S3, S4, S5, S6
-const int SERVO_MIN[6] = {118, 116, 115,  97,  95, 100};
+const int SERVO_MIN[6] = {118, 116, 100,  95,  115, 97};
 
 // Maximum angle (in degrees) for each servo — the "open" or "extended" position.
 // Note these values are intentionally lower than SERVO_MIN because some servos
 // are mounted in reverse, so their physical "open" direction is a smaller degree value.
-const int SERVO_MAX[6] = {29,  20,   0,  15,  20,  17};
+const int SERVO_MAX[6] = {29,  20,   17,  20,  0,  15};
 
 // ─────────────────────────────────────────────
 //  GAUGE POTENTIOMETER DEFINITIONS
-//  Servos 1–4 (indices 0–3) are now driven live by a potentiometer
-//  instead of the preprogrammed sweep. Wire each pot as a simple voltage
-//  divider: outer legs to 3.3V and GND, wiper to the ADC pin below.
-//  The pot's total resistance value doesn't matter (10K, 100 ohm, etc.) —
-//  only the wiper's position along that range, read as a voltage ratio.
-//  The pots no longer wire into the ESP32's own ADC pins — they now wire
+//  Oil, Fuel, Temp (servo indices 0, 1, 4) are driven live by a
+//  potentiometer instead of the preprogrammed sweep. Wire each pot as a
+//  simple voltage divider: outer legs to +5V and GND, wiper to the ADC
+//  pin below. The pot's total resistance value doesn't matter (10K, 100
+//  ohm, etc.) — only the wiper's position along that range, read as a
+//  voltage ratio.
+//  Batt (servo index 5) is also driven live, but from a fixed 51k/10k
+//  resistor divider straight off VAA (battery voltage) rather than a pot —
+//  there are only three physical potentiometers on this board.
+//  Speed and Tach (indices 2, 3) have no sender wired up at all and just
+//  sweep — see servoTask().
+//  None of these four inputs use the ESP32's own ADC pins — they wire
 //  into an ADS1015 I2C ADC breakout board (address 0x48), channels A0–A3.
 //  ALERT, A+, and A- on the breakout are left unconnected.
 // ─────────────────────────────────────────────
@@ -285,10 +275,10 @@ Adafruit_ADS1015 ads;
 
 // IMPORTANT: this array must use the same gauge order as SERVO_PINS,
 // SERVO_MIN and SERVO_MAX: Oil, Fuel, Temp, Batt.
-// Values are now ADS1015 input channels (0=A0, 1=A1, 2=A2, 3=A3), NOT GPIO
-// numbers. If a gauge tracks the wrong pot, either re-wire that pot to the
-// correct A-pin or reorder these values to match your actual wiring.
-const int POT_PINS[4] = {0, 1, 2, 3};
+// Values are ADS1015 input channels (0=A0, 1=A1, 2=A2, 3=A3), NOT GPIO
+// numbers. Per the wiring schematic: AIN0=Temp (RV1), AIN1=Batt (fixed
+// 51k/10k divider off VAA — no pot), AIN2=Fuel (RV2), AIN3=Oil (RV3).
+const int POT_PINS[4] = {3, 2, 0, 1};
 
 // Per-channel ADC calibration. Leave at 0/4095 initially; if a pot does not
 // quite reach an endpoint, replace these with the observed raw values printed
@@ -298,6 +288,18 @@ const int POT_PINS[4] = {0, 1, 2, 3};
 // range this code already expects.
 const int POT_ADC_MIN[4] = {0, 0, 0, 0};
 const int POT_ADC_MAX[4] = {4095, 4095, 4095, 4095};
+
+// Maps each "pot slot" above (0=Oil, 1=Fuel, 2=Temp, 3=Batt — same order as
+// POT_PINS) to that gauge's actual index within SERVO_PINS / SERVO_MIN /
+// SERVO_MAX / servos[]. Needed because SERVO_PINS is ordered by physical
+// GPIO layout (Oil=10, Fuel=11, Speed=12, Tach=13, Temp=14, Batt=15), which
+// is no longer a contiguous 0–3 range once Speed and Tach sit in the middle.
+const int POT_SERVO_INDEX[4] = {0, 1, 4, 5};
+
+// The two servos that are NOT potentiometer-driven. Speed (SERVO_PINS
+// index 2, GPIO 12) and Tach (index 3, GPIO 13) have no real sender signal
+// wired up, so they instead run the original min→max→min sweep animation.
+const int SWEEP_SERVO_INDEX[2] = {2, 3};
 
 // ─────────────────────────────────────────────
 //  NEOPIXEL DEFINITIONS
@@ -520,10 +522,10 @@ volatile bool highBeamState = false;
 //  FreeRTOS tasks running on separate scheduler time-slices share a variable.
 // ─────────────────────────────────────────────
 
-// Current angle (in degrees) of gauges 1–4 (servo indices 0–3).
+// Current angle (in degrees) of gauges 1, 2, 5, 6 (servo indices 0, 1, 4, 5).
 // Pre-initialized to each servo's SERVO_MIN value so the LED state is valid
 // before the servo task executes its first sweep step.
-volatile int gaugeAngle[4] = { SERVO_MIN[0], SERVO_MIN[1], SERVO_MIN[2], SERVO_MIN[3] };
+volatile int gaugeAngle[4] = { SERVO_MIN[0], SERVO_MIN[1], SERVO_MIN[4], SERVO_MIN[5] };
 
 // Position along each pot's calibrated sweep, 0..1000. The LED task uses
 // this directly so its thresholds are exactly 10% and 20%, independent of
@@ -796,14 +798,16 @@ void tftShowUltrasonic(Adafruit_ST7789 &tft, float distanceCM) {
 
 // ════════════════════════════════════════════════════════════
 //  FREERTOS TASK: SERVOS
-//  Servos 1–4 (indices 0–3): driven LIVE by their potentiometers.
-//  Servos 5–6 (indices 4–5): unchanged — still sweep min→max→min,
+//  Oil, Fuel, Temp, Batt (indices 0, 1, 4, 5): driven LIVE by their
+//    potentiometers (Batt reads the fixed VAA divider, not a real pot).
+//  Speed, Tach (indices 2, 3): unchanged — still sweep min→max→min,
 //    1 second per direction, exactly as before.
 // ════════════════════════════════════════════════════════════
 
-// Reads potentiometer i, low-pass filters it, and maps it onto that
-// gauge's servo range. Returns the new angle and updates gaugeAngle[i]
-// so neoTask's LED-color logic keeps working unchanged.
+// Reads potentiometer slot i (0=Oil,1=Fuel,2=Temp,3=Batt — see POT_PINS),
+// low-pass filters it, and maps it onto that gauge's servo range. Returns
+// the new angle and updates gaugeAngle[i] so neoTask's LED-color logic
+// keeps working unchanged.
 // potSmooth[] must be a 4-element float array persisted by the caller.
 int readGaugeServoAngle(int i, float potSmooth[4]) {
   // Raw ADC reading from the ADS1015 (12-bit single-ended → range 0-4095
@@ -817,18 +821,23 @@ int readGaugeServoAngle(int i, float potSmooth[4]) {
   const float ALPHA = 0.15;
   potSmooth[i] += ALPHA * ((float)raw - potSmooth[i]);
 
+  // This pot slot's actual SERVO_PINS/SERVO_MIN/SERVO_MAX/servos[] index —
+  // slot order (Oil,Fuel,Temp,Batt) isn't the same as the physical GPIO
+  // order, so every lookup below has to go through this mapping.
+  int servoIdx = POT_SERVO_INDEX[i];
+
   // Map the smoothed 0–4095 ADC range onto this gauge's calibrated angle
   // range. map() handles the case where SERVO_MIN > SERVO_MAX correctly
   // (some servos are mounted in reverse), so no special-casing is needed.
   int filteredRaw = constrain((int)potSmooth[i], POT_ADC_MIN[i], POT_ADC_MAX[i]);
   int position = map(filteredRaw, POT_ADC_MIN[i], POT_ADC_MAX[i], 0, 1000);
   position = constrain(position, 0, 1000);
-  int angle = map(position, 0, 1000, SERVO_MIN[i], SERVO_MAX[i]);
+  int angle = map(position, 0, 1000, SERVO_MIN[servoIdx], SERVO_MAX[servoIdx]);
 
   // Clamp defensively in case of ADC noise at the extremes (e.g. a stray
   // reading just past 0 or 4095 rounding outside the intended angle range).
-  int lo = min(SERVO_MIN[i], SERVO_MAX[i]);
-  int hi = max(SERVO_MIN[i], SERVO_MAX[i]);
+  int lo = min(SERVO_MIN[servoIdx], SERVO_MAX[servoIdx]);
+  int hi = max(SERVO_MIN[servoIdx], SERVO_MAX[servoIdx]);
   angle  = constrain(angle, lo, hi);
 
   // Publish for neoTask (LED proximity-color logic reads this).
@@ -846,7 +855,7 @@ void servoTask(void *param) {
   const int STEPS       = 100;
 
   // Delay in milliseconds between each step (1000 ms / 100 steps = 10 ms per step).
-  // This also sets how often the potentiometers (servos 1-4) are re-read.
+  // This also sets how often the potentiometers/divider (Oil, Fuel, Temp, Batt) are re-read.
   const int STEP_DELAY  = 1000 / STEPS; // ms per step = 10 ms
 
   // Attach all 6 servos to their assigned GPIO pins.
@@ -855,10 +864,11 @@ void servoTask(void *param) {
     servos[i].attach(SERVO_PINS[i]);
   }
 
-  // Servos 5-6 still need a known starting position for the sweep animation.
-  // Servos 1-4 don't — they'll immediately take whatever angle their pot reads.
-  for (int i = 4; i < 6; i++) {
-    servos[i].write(SERVO_MIN[i]);
+  // Speed and Tach still need a known starting position for the sweep animation.
+  // Oil, Fuel, Temp, and Batt don't — they'll immediately take whatever
+  // angle their pot/divider reads.
+  for (int idx : SWEEP_SERVO_INDEX) {
+    servos[idx].write(SERVO_MIN[idx]);
   }
 
   // Wait 500 ms after attaching to give the servos time to physically reach their
@@ -872,26 +882,29 @@ void servoTask(void *param) {
     potSmooth[i] = (float)ads.readADC_SingleEnded(POT_PINS[i]);
   }
 
-  bool sweepingUp = true; // Direction for the servo 5-6 sweep
+  bool sweepingUp = true; // Direction for the Speed/Tach sweep
   int  step       = 0;    // Current step within the current sweep direction
 
   // Infinite loop — FreeRTOS tasks must never return, so they loop forever.
   for (;;) {
-    // ── Servos 1–4 (indices 0–3): live potentiometer control ──
-    // Re-read and re-write every tick (every STEP_DELAY ms) so the gauges
-    // track the physical knobs in near real-time.
+    // ── Oil, Fuel, Temp, Batt (indices 0, 1, 4, 5): live potentiometer/
+    //    divider control ── Re-read and re-write every tick (every
+    //    STEP_DELAY ms) so the gauges track the physical inputs in
+    //    near real-time.
     for (int i = 0; i < 4; i++) {
       int angle = readGaugeServoAngle(i, potSmooth);
-      servos[i].write(angle);
+      servos[POT_SERVO_INDEX[i]].write(angle);
     }
 
-    // ── Servos 5–6 (indices 4–5): original sweep animation, unchanged ──
+    // ── Speed, Tach (indices 2, 3): original sweep animation, unchanged ──
+    // These two have no real sender wired up, so they just sweep between
+    // their calibrated min/max to visually confirm the servos are alive.
     float t = (float)step / STEPS; // 0.0 → 1.0 across the current direction
-    for (int i = 4; i < 6; i++) {
+    for (int idx : SWEEP_SERVO_INDEX) {
       int angle = sweepingUp
-        ? (int)(SERVO_MIN[i] + t * (SERVO_MAX[i] - SERVO_MIN[i])) // Min → Max
-        : (int)(SERVO_MAX[i] + t * (SERVO_MIN[i] - SERVO_MAX[i])); // Max → Min
-      servos[i].write(angle);
+        ? (int)(SERVO_MIN[idx] + t * (SERVO_MAX[idx] - SERVO_MIN[idx])) // Min → Max
+        : (int)(SERVO_MAX[idx] + t * (SERVO_MIN[idx] - SERVO_MAX[idx])); // Max → Min
+      servos[idx].write(angle);
     }
 
     // Advance the sweep; flip direction once a full 1-second pass completes.
