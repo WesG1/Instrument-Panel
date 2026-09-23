@@ -387,6 +387,23 @@ const uint32_t LED_COLORS[5] = {
 #define EEPROM_ADDR_1  0x51
 
 // ─────────────────────────────────────────────
+//  HC-SR04 ULTRASONIC DISTANCE SENSOR DEFINITIONS
+// ─────────────────────────────────────────────
+
+// GPIO pin that drives the HC-SR04's TRIG input. The ESP32 pulses this
+// HIGH for 10 µs to start each ranging cycle.
+#define ULTRASONIC_TRIG_PIN    16
+
+// GPIO pin connected to the HC-SR04's ECHO output. The sensor holds this
+// HIGH for the duration of the sound wave's round trip; pulseIn() times it.
+#define ULTRASONIC_ECHO_PIN    38
+
+// Max time (µs) to wait for an echo before giving up. 30000 µs (~30 ms)
+// corresponds to roughly 5 m round trip, beyond the sensor's usable ~4 m
+// range, so a valid reading is never cut off early.
+#define ULTRASONIC_TIMEOUT_US  30000UL
+
+// ─────────────────────────────────────────────
 //  TFT DISPLAY DEFINITIONS
 //  Both displays share: DA(MOSI)=39, DC=41, BL=42, CL(SCK)=46
 //  CS: Display 0 = GPIO 34, Display 1 = GPIO 26
@@ -687,6 +704,94 @@ void tftShowEEPROM(Adafruit_ST7789 &tft, uint8_t devAddr,
   // Print hex representation on the same line for side-by-side comparison.
   tft.print("  Hex:0x");
   tft.print(value, HEX);
+}
+
+// ════════════════════════════════════════════════════════════
+//  HC-SR04 HELPERS
+// ════════════════════════════════════════════════════════════
+
+// Triggers the HC-SR04 and measures the echo pulse width to compute
+// distance in centimeters. Returns -1.0 if no echo was received within
+// ULTRASONIC_TIMEOUT_US (out of range, no target, or sensor not wired).
+float readUltrasonicDistanceCM() {
+  // Force TRIG low first so the pulse below starts from a clean, known edge.
+  digitalWrite(ULTRASONIC_TRIG_PIN, LOW);
+  delayMicroseconds(2);
+
+  // HC-SR04 datasheet: a >=10 µs HIGH pulse on TRIG starts one ranging cycle.
+  digitalWrite(ULTRASONIC_TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(ULTRASONIC_TRIG_PIN, LOW);
+
+  // ECHO goes HIGH for exactly the round-trip time of the sound pulse.
+  // pulseIn() blocks until it sees that HIGH pulse end, or times out.
+  unsigned long duration = pulseIn(ULTRASONIC_ECHO_PIN, HIGH, ULTRASONIC_TIMEOUT_US);
+
+  // duration == 0 means pulseIn() timed out — no echo came back.
+  if (duration == 0) {
+    return -1.0;
+  }
+
+  // Speed of sound ≈ 0.0343 cm/µs. Divide by 2 since duration covers the
+  // trip out AND back.
+  return (duration * 0.0343f) / 2.0f;
+}
+
+// Renders the HC-SR04 distance reading onto one TFT display. Used for
+// Display 1 (tft1 / CS1) in place of the EEPROM 0x51 read-back it used
+// to show.
+// tft:        reference to the display object to draw on
+// distanceCM: measured distance in centimeters, or -1.0 if out of range
+void tftShowUltrasonic(Adafruit_ST7789 &tft, float distanceCM) {
+  // Clear the screen before drawing the new frame.
+  tft.fillScreen(ST77XX_BLACK);
+
+  // ── Header row ──
+  tft.setTextColor(ST77XX_CYAN);
+  tft.setTextSize(2);
+  tft.setCursor(10, 10);
+  tft.print("HC-SR04 Distance");
+
+  // ── Pin row: shows which GPIOs are wired, for traceability at a glance ──
+  tft.setTextColor(ST77XX_YELLOW);
+  tft.setTextSize(2);
+  tft.setCursor(10, 50);
+  tft.print("Trig:16 Echo:38");
+
+  if (distanceCM < 0) {
+    // No echo received within the timeout — out of range or sensor fault.
+    tft.setTextColor(ST77XX_RED);
+    tft.setTextSize(3);
+    tft.setCursor(10, 100);
+    tft.print("Out of");
+    tft.setCursor(10, 130);
+    tft.print("Range");
+    return;
+  }
+
+  // ── Value row: distance shown large, color-coded by proximity ──
+  // Mirrors the "rapid beeping for distance warning" idea already noted
+  // elsewhere in this sketch (see generateTone()) — red/yellow/green gives
+  // the same at-a-glance urgency cue visually.
+  if (distanceCM < 15.0) {
+    tft.setTextColor(ST77XX_RED);
+  } else if (distanceCM < 50.0) {
+    tft.setTextColor(ST77XX_YELLOW);
+  } else {
+    tft.setTextColor(ST77XX_GREEN);
+  }
+  tft.setTextSize(4);
+  tft.setCursor(10, 100);
+  tft.print(distanceCM, 1);
+  tft.print("cm");
+
+  // ── Secondary row: same value in inches for cross-reference ──
+  tft.setTextColor(ST77XX_WHITE);
+  tft.setTextSize(2);
+  tft.setCursor(10, 160);
+  tft.print("(");
+  tft.print(distanceCM / 2.54, 1);
+  tft.print(" in)");
 }
 
 // ════════════════════════════════════════════════════════════
@@ -1020,15 +1125,23 @@ void eepromDisplayTask(void *param) {
     // The helper function clears the screen and lays out the address and value in color-coded text.
     tftShowEEPROM(tft0, EEPROM_ADDR_0, addr0, readBack0);
 
-    // Render the EEPROM 0x51 read-back data onto Display 1 (tft1).
-    // Each display shows only its paired EEPROM's data, making both simultaneously readable.
-    tftShowEEPROM(tft1, EEPROM_ADDR_1, addr1, readBack1);
+    // Display 1 (tft1 / CS1) now shows the HC-SR04 distance reading instead
+    // of the EEPROM 0x51 read-back it used to show. EEPROM 0x51 is still
+    // written/read above so that chip keeps getting exercised on the bus —
+    // its value just isn't drawn on-screen anymore.
+    float distanceCM = readUltrasonicDistanceCM();
+    tftShowUltrasonic(tft1, distanceCM);
 
     // Print the same information to Serial for monitoring/debugging over USB.
     // %02X formats the address as a 2-digit uppercase hex value (e.g., "0A" not "A").
     // %d formats the value as a decimal integer for easy comparison with the TFT readout.
-    Serial.printf("[EEPROM] 0x50 @ 0x%02X = %d  |  0x51 @ 0x%02X = %d\n",
-                  addr0, readBack0, addr1, readBack1);
+    if (distanceCM < 0) {
+      Serial.printf("[EEPROM] 0x50 @ 0x%02X = %d  |  0x51 @ 0x%02X = %d  |  [HC-SR04] out of range\n",
+                    addr0, readBack0, addr1, readBack1);
+    } else {
+      Serial.printf("[EEPROM] 0x50 @ 0x%02X = %d  |  0x51 @ 0x%02X = %d  |  [HC-SR04] %.1f cm\n",
+                    addr0, readBack0, addr1, readBack1, distanceCM);
+    }
 
     // Wait 1 second before the next write cycle.
     // This makes each EEPROM write event visible on the TFT long enough to read,
@@ -1176,8 +1289,9 @@ void setup() {
   // Position cursor at top-left with margin.
   tft1.setCursor(10, 10);
 
-  // Print identification label for Display 1 / EEPROM 0x51 pairing.
-  tft1.print("TFT 1 - EEPROM 0x51");
+  // Print identification label for Display 1, now paired with the HC-SR04
+  // ultrasonic sensor instead of EEPROM 0x51.
+  tft1.print("TFT 1 - HC-SR04");
 
   // ── EEPROM presence check ──
   // (I2C bus itself was already brought up earlier, before the ADS1015 init.)
@@ -1204,6 +1318,18 @@ void setup() {
       Serial.printf("  WARNING: No device at 0x%02X (err %d)\n", addr, err);
     }
   }
+
+  // ── HC-SR04 Ultrasonic Sensor ──
+
+  Serial.println("Init HC-SR04...");
+
+  // TRIG is an output — the ESP32 drives it to start each ranging cycle.
+  pinMode(ULTRASONIC_TRIG_PIN, OUTPUT);
+  digitalWrite(ULTRASONIC_TRIG_PIN, LOW);
+
+  // ECHO is an input — the sensor drives it HIGH for the duration of the
+  // round-trip pulse, timed by pulseIn() in readUltrasonicDistanceCM().
+  pinMode(ULTRASONIC_ECHO_PIN, INPUT);
 
   // ── NeoPixels ──
 
