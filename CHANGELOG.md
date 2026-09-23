@@ -1,4 +1,7 @@
 Change Log
+09/22/26
+    Added HC-SR04 ultrasonic sensor. Changed lcd CS1 to display readings.
+
 09/12/26
     Changed pin assignements to match updated schematic. Added ADS1015 code.
 
