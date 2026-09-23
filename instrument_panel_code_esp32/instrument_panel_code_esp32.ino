@@ -305,7 +305,7 @@ const int POT_ADC_MAX[4] = {4095, 4095, 4095, 4095};
 
 // GPIO pin connected to the NeoPixel data-in line.
 // This single wire carries the timed serial signal for all 10 LEDs in the chain.
-#define NEO_PIN        41
+#define NEO_PIN        1
 
 // Total number of NeoPixel LEDs in the strip.
 // The library needs this at construction time to allocate the right buffer size.
@@ -337,19 +337,19 @@ const uint32_t LED_COLORS[5] = {
 
 // GPIO pin for the button that controls LED 5 (left turn indicator).
 // Wired as active-LOW: pin reads HIGH at rest, LOW when pressed.
-#define BTN_LED5_PIN   18
+#define BTN_LED5_PIN   37
 
 // GPIO pin for the button that controls LED 6 (right turn indicator).
 // Same wiring convention as BTN_LED6_PIN.
-#define BTN_LED6_PIN   21
+#define BTN_LED6_PIN   36
 
 // GPIO pin for the button that controls LED 7 (low beam indicator).
 // Wired as active-LOW: pin reads HIGH at rest, LOW when pressed.
-#define BTN_LED7_PIN   3
+#define BTN_LED7_PIN   40
 
 // GPIO pin for the button that controls LED 8 (high beam indicator).
 // Same wiring convention as BTN_LED8_PIN.
-#define BTN_LED8_PIN   38
+#define BTN_LED8_PIN   34
 
 // Color applied to LEDs 5 and 6 when their respective button is held.
 // 0xFF0000 is the green entry already defined in LED_COLORS[] (index 2).
@@ -394,23 +394,23 @@ const uint32_t LED_COLORS[5] = {
 
 // MOSI (Master Out Slave In) pin — carries pixel data FROM the ESP32 TO the displays.
 // Both displays share this line since only one CS is active at a time.
-#define TFT_DA         35   // MOSI
+#define TFT_DA         3   // MOSI
 
 // SCK (SPI Clock) pin — synchronizes data transfer between ESP32 and the TFT displays.
 // Shared between both displays, again safe because CS controls which is listening.
-#define TFT_CL         36   // SCK
+#define TFT_CL         7   // SCK
 
 // Data/Command pin — tells the display whether the incoming byte is a command
 // (e.g., set cursor) or pixel data. Both displays share this line.
-#define TFT_DC         37
+#define TFT_DC         2
 
 // Backlight pin — drives the LED backlight of both TFT panels.
 // Setting this HIGH turns the backlight on; the displays would be invisible without it.
-#define TFT_BL         42
+//#define TFT_BL         
 
 // Chip Select for Display 0 — when pulled LOW, this selects Display 0 for SPI communication.
 // When HIGH, Display 0 ignores SPI bus traffic, allowing Display 1 to be addressed.
-#define TFT_CS0        34   // Display 0  (EEPROM 0x50)
+#define TFT_CS0        5   // Display 0  (EEPROM 0x50)
 
 // Chip Select for Display 1 — same role as TFT_CS0, but for the second display.
 // The library manages toggling CS0 and CS1 automatically when you call tft0 vs tft1.
@@ -1109,12 +1109,12 @@ void setup() {
 
   // Configure the TFT backlight pin as a digital output.
   // Without this, writing to the pin would have no effect.
-  pinMode(TFT_BL, OUTPUT);
+  //pinMode(TFT_BL, OUTPUT);
 
   // Drive the backlight pin HIGH to turn on the LED backlight of both TFT displays.
   // The ST7789 panel is transmissive — without the backlight, the screen appears dark
   // even when correctly initialized and displaying content.
-  digitalWrite(TFT_BL, HIGH);
+  //digitalWrite(TFT_BL, HIGH);
 
   // ── SPI for TFTs ──
 
