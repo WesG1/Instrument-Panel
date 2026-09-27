@@ -22919,8 +22919,8 @@
 		)
 	)
 	(sheet
-		(at 78.74 181.61)
-		(size 55.626 49.784)
+		(at 76.2 180.34)
+		(size 55.626 57.15)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -22935,7 +22935,7 @@
 		)
 		(uuid "0ee3d854-c4ec-4633-ba9e-56f828781fb2")
 		(property "Sheetname" "USB and Power"
-			(at 78.74 180.8984 0)
+			(at 76.2 179.6284 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -22946,7 +22946,7 @@
 			)
 		)
 		(property "Sheetfile" "power.kicad_sch"
-			(at 78.74 231.9786 0)
+			(at 76.2 238.0746 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
