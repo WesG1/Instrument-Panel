@@ -632,7 +632,7 @@
         "uuid": "22f5f027-bafc-4272-aa28-1126b4970ace"
       }
     ],
-    "used_designators": "U9-17",
+    "used_designators": "U9-17,#PWR161-215,J13-18,R63-66,C21-35",
     "variants": []
   },
   "sheets": [
@@ -647,6 +647,10 @@
     [
       "0ee3d854-c4ec-4633-ba9e-56f828781fb2",
       "USB and Power"
+    ],
+    [
+      "6da0ddd0-8626-40f1-a175-28321af348a2",
+      "Motor Drivers and Shift Registers"
     ]
   ],
   "text_variables": {},
