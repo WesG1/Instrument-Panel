@@ -451,7 +451,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "ignore",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
       "similar_label_and_power": "warning",
@@ -645,7 +645,7 @@
         "uuid": "6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
       }
     ],
-    "used_designators": "R12-13,R15-20,#PWR73,#PWR81-82,LS1",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [
