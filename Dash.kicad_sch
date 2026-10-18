@@ -8970,16 +8970,6 @@
 	)
 	(wire
 		(pts
-			(xy 314.96 274.32) (xy 334.01 274.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "324034a7-bc6a-47e8-99f6-ba3ed0b215c0")
-	)
-	(wire
-		(pts
 			(xy 407.67 302.26) (xy 407.67 295.91)
 		)
 		(stroke
@@ -11580,16 +11570,6 @@
 	)
 	(wire
 		(pts
-			(xy 314.96 320.04) (xy 334.01 320.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dd2fac05-f86f-49ed-a485-7cf231e438e7")
-	)
-	(wire
-		(pts
 			(xy 435.61 334.01) (xy 435.61 242.57)
 		)
 		(stroke
@@ -12027,16 +12007,6 @@
 			(type default)
 		)
 		(uuid "f2e99a6f-1724-4268-a301-68693b6753a5")
-	)
-	(wire
-		(pts
-			(xy 314.96 365.76) (xy 334.01 365.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f3211ce9-80db-4121-a050-f6c927afc437")
 	)
 	(wire
 		(pts
@@ -13473,84 +13443,6 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "#PWR053")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 314.96 358.14 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "04424094-09ef-48e8-9ee8-2c4aa9e5db4a")
-		(property "Reference" "#PWR097"
-			(at 314.96 361.95 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 314.96 353.06 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 314.96 358.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 314.96 358.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 314.96 358.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "03377ffa-255b-42eb-a7a2-15e2972daf35")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "#PWR097")
 					(unit 1)
 				)
 			)
@@ -16727,88 +16619,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 314.96 270.51 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1ff92118-ce6c-41c4-8087-f2b50e945b54")
-		(property "Reference" "R50"
-			(at 317.5 269.2399 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10K"
-			(at 317.5 271.7799 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 313.182 270.51 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 314.96 270.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 314.96 270.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "8c056b58-9b9c-47be-adc7-99f5a5a96686")
-		)
-		(pin "1"
-			(uuid "f356bed4-0d34-4c68-b091-e584bf679374")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "R50")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 344.17 378.46 0)
 		(unit 1)
@@ -17320,84 +17130,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+5V")
-		(at 314.96 266.7 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "25bdc2dd-eb60-4d19-86c0-c8ffa2e75cf8")
-		(property "Reference" "#PWR095"
-			(at 314.96 270.51 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 314.96 261.62 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 314.96 266.7 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 314.96 266.7 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 314.96 266.7 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "6487151b-9725-44fe-a192-10f5089bba2e")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "#PWR095")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 152.4 140.97 180)
 		(unit 1)
@@ -17549,88 +17281,6 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "#PWR0153")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 314.96 316.23 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "26dd0407-9f6e-4b5e-ba5b-fb9b2fa76ebd")
-		(property "Reference" "R51"
-			(at 317.5 314.9599 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10K"
-			(at 317.5 317.4999 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 313.182 316.23 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 314.96 316.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 314.96 316.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "69299b77-e21b-4019-9295-596d43b7d40f")
-		)
-		(pin "1"
-			(uuid "722dfcbd-0991-4d27-894b-5381ec5006fa")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "R51")
 					(unit 1)
 				)
 			)
@@ -22384,6 +22034,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 334.01 365.76 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "49f54a96-903b-4432-9988-60f8991f1c86")
+		(property "Reference" "#PWR0168"
+			(at 334.01 372.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 334.01 370.84 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 334.01 365.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 334.01 365.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 334.01 365.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "251ff42c-d48d-49bd-b027-6213468d9306")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "#PWR0168")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 114.3 133.35 180)
 		(unit 1)
@@ -26472,84 +26200,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+5V")
-		(at 314.96 312.42 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "76a2622f-127b-4b55-980b-0a37878a854e")
-		(property "Reference" "#PWR096"
-			(at 314.96 316.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 314.96 307.34 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 314.96 312.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 314.96 312.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 314.96 312.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "04671e05-19e9-4259-bb5f-f0f057b8c19f")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "#PWR096")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 31.75 151.13 90)
 		(unit 1)
@@ -27785,6 +27435,84 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "U11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 334.01 274.32 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "816669b1-9ba3-4aa8-8940-831adf084200")
+		(property "Reference" "#PWR0180"
+			(at 334.01 280.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 334.01 279.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 334.01 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 334.01 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 334.01 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7de571b0-9e42-4988-add8-26472f42b6d2")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "#PWR0180")
 					(unit 1)
 				)
 			)
@@ -33994,6 +33722,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 334.01 320.04 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b817b06d-7f8a-414d-b342-70787c436d3d")
+		(property "Reference" "#PWR0179"
+			(at 334.01 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 334.01 325.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 334.01 320.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 334.01 320.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 334.01 320.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "fab378db-7cef-4cf4-8360-d5701a8f0b94")
+		)
+		(instances
+			(project "Dash"
+				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
+					(reference "#PWR0179")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 86.36 191.77 90)
 		(unit 1)
@@ -35096,88 +34902,6 @@
 			(project "Dash"
 				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
 					(reference "#PWR0172")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 314.96 361.95 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cb246e5d-4069-45e0-98c6-6c2d3d45ea3d")
-		(property "Reference" "R52"
-			(at 317.5 360.6799 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10K"
-			(at 317.5 363.2199 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 313.182 361.95 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 314.96 361.95 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 314.96 361.95 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "ebaba52e-5319-46d1-b3f7-1f0749cff189")
-		)
-		(pin "1"
-			(uuid "a54b952a-64a0-4cfc-b8a9-f2ea6a461632")
-		)
-		(instances
-			(project "Dash"
-				(path "/6148f2eb-849d-4e22-b7e5-e9bc0e1f790e"
-					(reference "R52")
 					(unit 1)
 				)
 			)
