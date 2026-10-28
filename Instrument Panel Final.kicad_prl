@@ -53,7 +53,7 @@
       "board_outline_area",
       "ly_points"
     ],
-    "visible_layers": "ffffffff_ffffffff_ffffd575_fffffffb",
+    "visible_layers": "ffffffff_ffffffff_ffffd575_ffffffab",
     "zone_display_mode": 0
   },
   "git": {
@@ -94,12 +94,12 @@
     "col_widths": [
       162,
       147,
-      131,
-      106,
-      114,
-      134,
-      116,
-      112,
+      91,
+      67,
+      91,
+      91,
+      91,
+      71,
       91,
       91
     ],
