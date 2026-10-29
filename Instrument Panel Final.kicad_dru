@@ -1,0 +1,4 @@
+(version 1)
+(rule "USB-C pad clearance"
+  (condition "A.insideCourtyard('J12') && B.insideCourtyard('J12')")
+  (constraint clearance (min 0.15mm)))
