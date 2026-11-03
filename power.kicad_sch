@@ -11641,7 +11641,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+		(property "Footprint" "Package_TO_SOT_THT:TO-220F-3_Horizontal_TabDown"
 			(at 106.68 96.52 0)
 			(hide yes)
 			(show_name no)
@@ -14828,7 +14828,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+		(property "Footprint" "Package_TO_SOT_THT:TO-220F-3_Horizontal_TabDown"
 			(at 81.28 97.79 0)
 			(hide yes)
 			(show_name no)
