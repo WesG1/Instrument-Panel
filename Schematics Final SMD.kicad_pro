@@ -416,7 +416,7 @@
         "uuid": "cd7d3b9a-39b4-4b92-8a4b-e261b0d86859"
       }
     ],
-    "used_designators": "D1,D4-22,#PWR1-13,#PWR15-17,#PWR19,#PWR21-23,#PWR31-34,#PWR37-39,#PWR44-57,#PWR94-160,#PWR203,#PWR216-228,C1-20,C36-37,FB1-3,#FLG1-8,R1-6,R12,R49-60,R62,R66-71,J1,J3,J6,J10-12,SW1-3,U1-7,U18,F1-2,IC1,L1,Q20-23",
+    "used_designators": "U8-9,#PWR14,#PWR18,#PWR20,#PWR24-30,#PWR35-36,#PWR40-43,#PWR58-73,#PWR204,J2,J4-5,J7-9,R7-10,R72,C21-30,Q1",
     "variants": []
   },
   "sheets": [
@@ -429,8 +429,8 @@
       "Logic Shifters"
     ],
     [
-      "c01995ad-04de-460f-b57f-8d5a05e06cdb",
-      "Motor Drivers and Shift Registers"
+      "4537bee2-21d3-4f4f-ae35-120d0a7d5b9f",
+      "Motor Drivers"
     ],
     [
       "bc130d9e-f297-4a60-a522-fc6a48ca9fd3",
