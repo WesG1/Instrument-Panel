@@ -8214,7 +8214,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_1210_3225Metric"
+		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
 			(at 25.4 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -8453,7 +8453,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 207.518 34.29 90)
 			(hide yes)
 			(show_name no)
@@ -8535,7 +8535,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_THT:D_A-405_P7.62mm_Horizontal"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 130.81 40.64 0)
 			(hide yes)
 			(show_name no)
@@ -8617,7 +8617,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 143.002 102.87 90)
 			(hide yes)
 			(show_name no)
@@ -8775,7 +8775,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_THT:L_Axial_L9.5mm_D4.0mm_P15.24mm_Horizontal_Fastron_SMCC"
+		(property "Footprint" "Inductor_SMD:L_Wuerth_XHMI-8080"
 			(at 138.43 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -8933,7 +8933,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 227.33 123.698 90)
 			(hide yes)
 			(show_name no)
@@ -9288,7 +9288,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 43.18 169.545 0)
 			(hide yes)
 			(show_name no)
@@ -9390,7 +9390,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DIP:DIP-4_W7.62mm"
+		(property "Footprint" "Package_DIP:DIP-4_W7.62mm_SMDSocket_SmallPads"
 			(at 147.32 97.79 0)
 			(hide yes)
 			(show_name no)
@@ -9711,7 +9711,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_THT:D_A-405_P7.62mm_Horizontal"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 135.89 96.52 0)
 			(hide yes)
 			(show_name no)
@@ -9893,7 +9893,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
 			(at 55.5752 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -10054,7 +10054,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 203.962 50.8 90)
 			(hide yes)
 			(show_name no)
@@ -10453,7 +10453,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 88.392 86.36 90)
 			(hide yes)
 			(show_name no)
@@ -10533,7 +10533,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
 			(at 116.84 23.1648 0)
 			(hide yes)
 			(show_name no)
@@ -10615,7 +10615,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 164.338 100.33 90)
 			(hide yes)
 			(show_name no)
@@ -10853,7 +10853,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
 			(at 149.5552 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -11325,7 +11325,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 306.07 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -12583,7 +12583,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
 			(at 27.6352 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -12663,7 +12663,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 251.46 56.388 90)
 			(hide yes)
 			(show_name no)
@@ -12745,7 +12745,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 168.6052 157.48 0)
 			(hide yes)
 			(show_name no)
@@ -13731,7 +13731,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
 			(at 32.7152 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -13813,7 +13813,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
 			(at 162.2552 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -14130,7 +14130,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
 			(at 50.4952 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -14288,7 +14288,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 123.19 98.298 90)
 			(hide yes)
 			(show_name no)
@@ -14370,7 +14370,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 115.062 102.87 90)
 			(hide yes)
 			(show_name no)
@@ -14528,7 +14528,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 227.33 105.918 90)
 			(hide yes)
 			(show_name no)
@@ -14687,7 +14687,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_BelFuse_0ZRE0005FF_L8.3mm_W3.8mm"
+		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
 			(at 25.4 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -14925,7 +14925,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 306.07 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -15326,7 +15326,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 266.3952 34.29 0)
 			(hide yes)
 			(show_name no)
@@ -15565,7 +15565,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
 			(at 61.9252 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -15647,7 +15647,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
 			(at 39.0652 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -15805,7 +15805,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 218.44 27.432 90)
 			(hide yes)
 			(show_name no)
@@ -15885,7 +15885,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 158.75 141.605 0)
 			(hide yes)
 			(show_name no)
@@ -15966,7 +15966,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 211.7852 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -16205,7 +16205,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_THT:D_A-405_P7.62mm_Horizontal"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 135.89 105.41 0)
 			(hide yes)
 			(show_name no)

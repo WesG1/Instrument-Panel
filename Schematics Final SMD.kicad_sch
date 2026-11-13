@@ -10244,7 +10244,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 272.7452 152.4 0)
 			(hide yes)
 			(show_name no)
@@ -10573,7 +10573,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 258.572 72.39 90)
 			(hide yes)
 			(show_name no)
@@ -11373,7 +11373,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 173.99 155.448 90)
 			(hide yes)
 			(show_name no)
@@ -12260,7 +12260,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 173.99 152.908 90)
 			(hide yes)
 			(show_name no)
@@ -12340,7 +12340,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Hirose:Hirose_DF13-04P-1.25DSA_1x04_P1.25mm_Vertical"
 			(at 135.89 123.19 0)
 			(hide yes)
 			(show_name no)
@@ -12503,7 +12503,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Hirose:Hirose_DF13-04P-1.25DSA_1x04_P1.25mm_Vertical"
 			(at 49.53 123.19 0)
 			(hide yes)
 			(show_name no)
@@ -12666,7 +12666,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_THT:L_Axial_L5.0mm_D3.6mm_P10.00mm_Horizontal_Murata_BL01RN1A2A2"
+		(property "Footprint" "Inductor_SMD:L_1206_3216Metric"
 			(at 365.76 166.878 90)
 			(hide yes)
 			(show_name no)
@@ -13068,7 +13068,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Hirose:Hirose_DF13-04P-1.25DSA_1x04_P1.25mm_Vertical"
 			(at 71.12 123.19 0)
 			(hide yes)
 			(show_name no)
@@ -13727,7 +13727,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Hirose:Hirose_DF13-04P-1.25DSA_1x04_P1.25mm_Vertical"
 			(at 158.75 123.19 0)
 			(hide yes)
 			(show_name no)
@@ -13901,7 +13901,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_THT:L_Axial_L5.0mm_D3.6mm_P10.00mm_Horizontal_Murata_BL01RN1A2A2"
+		(property "Footprint" "Inductor_SMD:L_1206_3216Metric"
 			(at 260.35 145.288 90)
 			(hide yes)
 			(show_name no)
@@ -13980,7 +13980,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 115.57 150.368 90)
 			(hide yes)
 			(show_name no)
@@ -14061,7 +14061,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 290.5252 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -14142,7 +14142,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 248.6152 152.4 0)
 			(hide yes)
 			(show_name no)
@@ -15547,7 +15547,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 375.6152 186.69 0)
 			(hide yes)
 			(show_name no)
@@ -15627,7 +15627,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Hirose:Hirose_DF13-04P-1.25DSA_1x04_P1.25mm_Vertical"
 			(at 114.3 123.19 0)
 			(hide yes)
 			(show_name no)
@@ -15790,7 +15790,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 168.91 150.368 90)
 			(hide yes)
 			(show_name no)
@@ -16037,7 +16037,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 320.548 165.1 90)
 			(hide yes)
 			(show_name no)
@@ -16198,7 +16198,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 370.078 57.15 90)
 			(hide yes)
 			(show_name no)
@@ -16907,7 +16907,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 332.4352 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -17211,7 +17211,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 273.558 60.96 90)
 			(hide yes)
 			(show_name no)
@@ -17458,7 +17458,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DIP:DIP-8_W7.62mm"
+		(property "Footprint" "Package_SO:SO-8_3.9x4.9mm_P1.27mm"
 			(at 187.96 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -17555,7 +17555,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 115.57 152.908 90)
 			(hide yes)
 			(show_name no)
@@ -17791,7 +17791,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_THT:L_Axial_L5.0mm_D3.6mm_P10.00mm_Horizontal_Murata_BL01RN1A2A2"
+		(property "Footprint" "Inductor_SMD:L_1206_3216Metric"
 			(at 365.76 161.798 90)
 			(hide yes)
 			(show_name no)
@@ -17873,7 +17873,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 252.4252 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -18032,7 +18032,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 249.682 74.93 90)
 			(hide yes)
 			(show_name no)
@@ -18192,7 +18192,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 379.4252 173.99 0)
 			(hide yes)
 			(show_name no)
@@ -18352,7 +18352,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 284.1752 172.72 0)
 			(hide yes)
 			(show_name no)
@@ -19217,7 +19217,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 115.57 155.448 90)
 			(hide yes)
 			(show_name no)
@@ -19534,7 +19534,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 274.828 91.44 90)
 			(hide yes)
 			(show_name no)
@@ -19772,7 +19772,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 249.682 39.37 90)
 			(hide yes)
 			(show_name no)
@@ -20008,7 +20008,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Hirose:Hirose_DF13-04P-1.25DSA_1x04_P1.25mm_Vertical"
 			(at 92.71 123.19 0)
 			(hide yes)
 			(show_name no)
@@ -20096,7 +20096,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 337.5152 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -20333,7 +20333,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 262.128 97.79 90)
 			(hide yes)
 			(show_name no)
@@ -20493,7 +20493,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 275.082 41.91 90)
 			(hide yes)
 			(show_name no)
@@ -20822,7 +20822,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DIP:DIP-8_W7.62mm"
+		(property "Footprint" "Package_SO:SO-8_3.9x4.9mm_P1.27mm"
 			(at 129.54 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -20922,7 +20922,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 323.342 179.07 90)
 			(hide yes)
 			(show_name no)
@@ -21236,7 +21236,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 295.6052 44.45 0)
 			(hide yes)
 			(show_name no)
