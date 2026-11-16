@@ -5,7 +5,7 @@
 	(uuid "dc46f413-d5b9-4bf4-b570-03d818d2c4f1")
 	(paper "A4")
 	(lib_symbols
-		(symbol "2026-11-12_22-50-09:DRV8912QPWPRQ1"
+		(symbol "DRV8912QPWPRQ1_1"
 			(pin_names
 				(offset 0.254)
 			)
@@ -14,8 +14,8 @@
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "U"
-				(at 0 2.54 0)
+			(property "Reference" "U8"
+				(at 0 50.8 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -25,7 +25,7 @@
 				)
 			)
 			(property "Value" "DRV8912QPWPRQ1"
-				(at 0 0 0)
+				(at 0 48.26 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -101,22 +101,10 @@
 					)
 				)
 			)
-			(symbol "DRV8912QPWPRQ1_0_1"
+			(symbol "DRV8912QPWPRQ1_1_0_1"
 				(polyline
 					(pts
 						(xy -20.32 45.72) (xy -20.32 -45.72)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -20.32 -45.72) (xy 20.32 -45.72)
 					)
 					(stroke
 						(width 0.2032)
@@ -598,6 +586,31 @@
 								(size 1.27 1.27)
 							)
 						)
+					)
+				)
+			)
+			(symbol "DRV8912QPWPRQ1_1_1_1"
+				(rectangle
+					(start -20.32 45.72)
+					(end 20.32 -45.72)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -20.32 -45.72) (xy 20.32 -45.72)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type background)
 					)
 				)
 			)
@@ -1470,12 +1483,6 @@
 		)
 	)
 	(junction
-		(at 187.96 124.46)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "18e940c2-eb44-4af9-991d-22d303d9b387")
-	)
-	(junction
 		(at 59.69 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1491,13 +1498,13 @@
 		(at 187.96 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "4072f5b8-98db-4727-bc33-354b5a509031")
+		(uuid "46950d5a-8c68-49a9-824c-95f0de54e72e")
 	)
 	(junction
-		(at 187.96 119.38)
+		(at 187.96 124.46)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "68c56709-136a-4314-80b5-b27cc595b84a")
+		(uuid "480bfeb8-23fe-4cbb-b15c-1ef19457cecf")
 	)
 	(junction
 		(at 59.69 124.46)
@@ -1506,10 +1513,16 @@
 		(uuid "6aebe485-fe23-4fa7-99ca-3e5c1ecc645f")
 	)
 	(junction
+		(at 187.96 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8ceda301-0efc-420f-b4a3-2bfdda0a1c74")
+	)
+	(junction
 		(at 187.96 43.18)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "9bd11ac2-dfed-4c02-9275-b41dff2bec8a")
+		(uuid "acc099f3-9217-46bc-9a3f-e3f7cf20a1c7")
 	)
 	(junction
 		(at 59.69 119.38)
@@ -1527,6 +1540,16 @@
 	)
 	(wire
 		(pts
+			(xy 187.96 119.38) (xy 187.96 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "01cf4fb2-c930-4c00-87ec-31b8d18439fe")
+	)
+	(wire
+		(pts
 			(xy 176.53 55.88) (xy 187.96 55.88)
 		)
 		(stroke
@@ -1534,16 +1557,6 @@
 			(type default)
 		)
 		(uuid "0a50c5a5-dec8-446e-8fba-4410e1215218")
-	)
-	(wire
-		(pts
-			(xy 187.96 121.92) (xy 187.96 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2284f372-e952-4d38-97ec-5c67fd065b9e")
 	)
 	(wire
 		(pts
@@ -1607,13 +1620,13 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 119.38) (xy 187.96 121.92)
+			(xy 187.96 121.92) (xy 187.96 124.46)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "abfa6487-abdd-47d3-a043-1b2ba455de5e")
+		(uuid "a72023b8-feac-40ea-abae-afb830fbaebd")
 	)
 	(wire
 		(pts
@@ -2615,7 +2628,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 169.8752 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -2775,7 +2788,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 165.862 55.88 90)
 			(hide yes)
 			(show_name no)
@@ -2824,6 +2837,7 @@
 		)
 	)
 	(symbol
+		(lib_name "DRV8912QPWPRQ1_1")
 		(lib_id "2026-11-12_22-50-09:DRV8912QPWPRQ1")
 		(at 85.09 83.82 0)
 		(unit 1)
@@ -2855,7 +2869,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PWP0024N_N"
+		(property "Footprint" "footprints_DRV8912:PWP0024N_N"
 			(at 85.09 83.82 0)
 			(hide yes)
 			(show_name no)
@@ -3008,7 +3022,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 37.592 55.88 90)
 			(hide yes)
 			(show_name no)
@@ -3168,7 +3182,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 27.6352 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -3328,7 +3342,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 155.9052 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -3527,157 +3541,6 @@
 			(project "Schematics Final SMD"
 				(path "/cd7d3b9a-39b4-4b92-8a4b-e261b0d86859/4537bee2-21d3-4f4f-ae35-120d0a7d5b9f"
 					(reference "#PWR029")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "2026-11-12_22-50-09:DRV8912QPWPRQ1")
-		(at 213.36 83.82 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "48bb028b-4912-4833-a0f6-e7fd3bd00264")
-		(property "Reference" "U9"
-			(at 213.36 33.02 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Value" "DRV8912QPWPRQ1"
-			(at 213.36 35.56 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Footprint" "PWP0024N_N"
-			(at 213.36 83.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.ti.com/lit/gpn/drv8912-q1"
-			(at 213.36 83.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 213.36 83.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "14"
-			(uuid "725e4646-74e0-49f5-b73c-28984102d6fa")
-		)
-		(pin "6"
-			(uuid "f92c3da5-ae32-43c2-a742-0d4bd7e9955e")
-		)
-		(pin "5"
-			(uuid "fe0d8ca8-3140-4fe7-b7cd-61631c9ba7da")
-		)
-		(pin "24"
-			(uuid "93b719fc-5519-4e52-9fef-7b61bf42b6e7")
-		)
-		(pin "18"
-			(uuid "8bb02912-ad38-4f18-b0a8-b0b605c1767f")
-		)
-		(pin "12"
-			(uuid "7da8b223-170d-4b91-a695-9f0aa4ac94c1")
-		)
-		(pin "13"
-			(uuid "2c9da4f0-940b-4ce9-b00d-f3c834b71a53")
-		)
-		(pin "15"
-			(uuid "b2380c13-01fc-4c60-a052-37dfcd187ccd")
-		)
-		(pin "17"
-			(uuid "3bc54e54-de6b-4d46-9be2-a8e23364d48d")
-		)
-		(pin "25"
-			(uuid "45da1a0c-ebc5-42a6-9595-34a98dbe0dec")
-		)
-		(pin "1"
-			(uuid "1ca4c975-e093-4f9c-8bf5-fdeadc3cb609")
-		)
-		(pin "16"
-			(uuid "a9a26bd7-f6c8-4bbd-8f4f-96f0365fc1de")
-		)
-		(pin "23"
-			(uuid "12f5dc28-3781-4a95-b527-d2a418129277")
-		)
-		(pin "21"
-			(uuid "46c043a5-9e0d-478a-87dd-8362c29c0e6a")
-		)
-		(pin "7"
-			(uuid "79d435a5-5a1a-4f56-8a6e-80e1d6588af6")
-		)
-		(pin "8"
-			(uuid "cbab3e93-8244-4deb-adc0-d53f3f4ac3a2")
-		)
-		(pin "3"
-			(uuid "eb7c6db4-760f-491c-b26d-052c593d5455")
-		)
-		(pin "4"
-			(uuid "a0e66ac0-3025-4e1f-8310-029f21687dc9")
-		)
-		(pin "2"
-			(uuid "7df96a3d-debb-491e-836f-a3529286b47c")
-		)
-		(pin "9"
-			(uuid "61e718ca-2681-4635-a392-18bb3946324b")
-		)
-		(pin "10"
-			(uuid "c0e4b01d-ff92-4a46-8efc-2b1dd7cde5ab")
-		)
-		(pin "11"
-			(uuid "3fecab07-a935-4b55-9242-7ff80d6f9747")
-		)
-		(pin "19"
-			(uuid "b83ecb24-d827-4e2b-b1ef-95b727af2665")
-		)
-		(pin "20"
-			(uuid "dd646bda-d782-4477-8a3e-84eb046ca96b")
-		)
-		(pin "22"
-			(uuid "4d0ed020-c1d2-4631-832a-14cf9c381494")
-		)
-		(instances
-			(project "Schematics Final SMD"
-				(path "/cd7d3b9a-39b4-4b92-8a4b-e261b0d86859/4537bee2-21d3-4f4f-ae35-120d0a7d5b9f"
-					(reference "U9")
 					(unit 1)
 				)
 			)
@@ -4185,7 +4048,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 51.7652 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -4501,7 +4364,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 41.6052 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -4583,7 +4446,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 159.7152 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -4665,7 +4528,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 180.0352 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -4747,7 +4610,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 31.4452 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -4829,7 +4692,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 155.9052 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -5145,7 +5008,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 27.6352 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -5890,6 +5753,158 @@
 			(project "Schematics Final SMD"
 				(path "/cd7d3b9a-39b4-4b92-8a4b-e261b0d86859/4537bee2-21d3-4f4f-ae35-120d0a7d5b9f"
 					(reference "#PWR060")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "DRV8912QPWPRQ1_1")
+		(lib_id "2026-11-12_22-50-09:DRV8912QPWPRQ1")
+		(at 213.36 83.82 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f6a4daec-ad68-49f4-a254-e289e4e09457")
+		(property "Reference" "U9"
+			(at 213.36 33.02 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "DRV8912QPWPRQ1"
+			(at 213.36 35.56 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "footprints_DRV8912:PWP0024N_N"
+			(at 213.36 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/gpn/drv8912-q1"
+			(at 213.36 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 213.36 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "14"
+			(uuid "e3e3ce5b-90db-4df1-bdf3-fd8add9f4b25")
+		)
+		(pin "6"
+			(uuid "eace403a-0005-4342-bbc6-9907c87d2084")
+		)
+		(pin "5"
+			(uuid "38d4acad-64af-4e58-a398-7749d401a621")
+		)
+		(pin "24"
+			(uuid "d9d32064-bf86-45bf-85ca-163961f88f4e")
+		)
+		(pin "18"
+			(uuid "e1c35eac-9773-4dc4-a407-7ab7933f04fa")
+		)
+		(pin "12"
+			(uuid "853f985d-9eb3-453d-b452-21cc81a5a01f")
+		)
+		(pin "13"
+			(uuid "fa84255f-2054-47c0-be57-6f5234ebf4e8")
+		)
+		(pin "15"
+			(uuid "917098ab-b362-4673-899b-192aba60718e")
+		)
+		(pin "17"
+			(uuid "04077332-f312-4955-bdd3-84c68edac976")
+		)
+		(pin "25"
+			(uuid "2ba3d3d9-3d46-41da-9518-b03bf351131e")
+		)
+		(pin "1"
+			(uuid "b255c869-22bd-4813-a9b1-04558d9dac80")
+		)
+		(pin "16"
+			(uuid "0c7906bf-ff39-465e-ba1a-d0adaaf9549e")
+		)
+		(pin "23"
+			(uuid "f7f7b95b-ea43-4e3b-a8d2-f979d2e10843")
+		)
+		(pin "21"
+			(uuid "512c053d-44fa-4f94-b69c-ea98f86a290b")
+		)
+		(pin "7"
+			(uuid "ce4760ef-b9a5-4493-89d3-69e7623f6b75")
+		)
+		(pin "8"
+			(uuid "d20f9324-239c-41a7-827e-cdc6a6913368")
+		)
+		(pin "3"
+			(uuid "801873de-1429-44b3-ac87-683e71be5816")
+		)
+		(pin "4"
+			(uuid "f655ef01-806f-446b-b6bc-d4056a8ae3de")
+		)
+		(pin "2"
+			(uuid "abc124f6-b832-4905-b24d-3d64d7e9be10")
+		)
+		(pin "9"
+			(uuid "3212eb62-87fb-4a6a-8e0f-96c6897c5657")
+		)
+		(pin "10"
+			(uuid "27d28ab2-1891-458e-b87c-23aecacfc456")
+		)
+		(pin "11"
+			(uuid "37cc5c24-de27-4042-8d30-6e240d5b5e54")
+		)
+		(pin "19"
+			(uuid "60e0d42b-114f-4140-bd03-4914291d5a5a")
+		)
+		(pin "20"
+			(uuid "508472bf-0f32-4fe6-9403-25b50824d1d7")
+		)
+		(pin "22"
+			(uuid "4322398c-2ff3-4ee9-bbe1-96c28d4163b4")
+		)
+		(instances
+			(project "Schematics Final SMD"
+				(path "/cd7d3b9a-39b4-4b92-8a4b-e261b0d86859/4537bee2-21d3-4f4f-ae35-120d0a7d5b9f"
+					(reference "U9")
 					(unit 1)
 				)
 			)
