@@ -12666,7 +12666,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_THT:L_Axial_L5.0mm_D3.6mm_P10.00mm_Horizontal_Murata_BL01RN1A2A2"
+		(property "Footprint" "Inductor_SMD:L_1206_3216Metric"
 			(at 365.76 166.878 90)
 			(hide yes)
 			(show_name no)
@@ -13901,7 +13901,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_THT:L_Axial_L5.0mm_D3.6mm_P10.00mm_Horizontal_Murata_BL01RN1A2A2"
+		(property "Footprint" "Inductor_SMD:L_1206_3216Metric"
 			(at 260.35 145.288 90)
 			(hide yes)
 			(show_name no)
@@ -17791,7 +17791,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_THT:L_Axial_L5.0mm_D3.6mm_P10.00mm_Horizontal_Murata_BL01RN1A2A2"
+		(property "Footprint" "Inductor_SMD:L_1206_3216Metric"
 			(at 365.76 161.798 90)
 			(hide yes)
 			(show_name no)
