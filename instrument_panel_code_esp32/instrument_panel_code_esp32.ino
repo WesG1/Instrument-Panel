@@ -195,9 +195,8 @@ void startupAnimation(){
 //  INCLUDES
 // ─────────────────────────────────────────────
 
-// ESP32Servo: Provides Servo control compatible with ESP32's PWM timer system.
-// The standard Arduino Servo.h doesn't work on ESP32, so this replaces it.
-#include <ESP32Servo.h>
+// (ESP32Servo removed — the gauge motors are now 28BYJ-48 steppers driven through
+// three 74HC595 shift registers + L293D drivers, so no PWM/servo library is needed.)
 
 // Adafruit_NeoPixel: Drives WS2812B addressable RGB LEDs over a single data wire.
 // Handles the precise timing protocol required by NeoPixels.
@@ -225,43 +224,130 @@ void startupAnimation(){
 #include <SPI.h>
 
 // ─────────────────────────────────────────────
-//  SERVO PIN & ANGLE DEFINITIONS
-//  NOTE: GPIO 34 conflict resolved — Servo originally
-//        listed on GPIO 34 is moved to GPIO 33 (GPIO 34
-//        is used by TFT CS1). Original servo 33 stays on 33.
-//        Adjust if your hardware differs.
+//  STEPPER MOTOR DEFINITIONS (6x 28BYJ-48, one L293D each)
+//
+//  Signal chain:  ESP32 SPI (MOSI=DA/GPIO3, SCK=CL/GPIO7)
+//                   -> U7 -> U8 -> U9  (3x 74HC595 daisy-chained via QH'->SER)
+//                   -> 24 outputs -> 6 x L293D (4 inputs each) -> 6 x 28BYJ-48
+//  The '595 RCLK (latch) pins are all tied to the CS2 net = GPIO15.
+//  Because the shift registers share MOSI/SCK with the TFT displays, every
+//  update shifts out all 24 bits in ONE SPI transaction and latches before
+//  the transaction ends, so TFT traffic can never reach the outputs.
+//
+//  Motor order (same as the old servo order):
+//    0=Oil, 1=Fuel, 2=Speed, 3=Tach, 4=Temp, 5=Batt
 // ─────────────────────────────────────────────
 
-// Array of 6 GPIO pin numbers, one per servo motor.
-// Using an array lets us loop over all servos rather than writing
-// individual lines for each one, keeping the code concise and scalable.
-// Oil=10, Fuel=11, Speed=12, Tach=13, Temp=14, Batt=15
-const int SERVO_PINS[6] = {10, 11, 12, 13, 14, 15};  // GPIO 34 freed for TFT CS
+#define NUM_STEPPERS        6
 
-// Minimum angle (in degrees) for each servo — the "closed" or "home" position.
-// Each servo may have a different mechanical range, so per-servo min values
-// allow precise calibration rather than assuming all servos share the same limits.
-// Order matches SERVO_PINS[] above: S1, S2, S3, S4, S5, S6
-const int SERVO_MIN[6] = {118, 116, 100,  95,  115, 97};
+// Latch pin for all three 74HC595s (CS2 net -> RCLK). Pulsed HIGH to
+// transfer the shifted bits to the outputs. (GPIO15 was a servo pin before.)
+#define STEPPER_LATCH_PIN   15
 
-// Maximum angle (in degrees) for each servo — the "open" or "extended" position.
-// Note these values are intentionally lower than SERVO_MIN because some servos
-// are mounted in reverse, so their physical "open" direction is a smaller degree value.
-const int SERVO_MAX[6] = {29,  20,   17,  20,  0,  15};
+// Optional: GPIO driving the '595 /OE pins. As drawn in the schematic, /OE
+// (pin 13) is only pulled up to +5V through R50-R52, which keeps every
+// output tri-stated. Either tie /OE to GND, or wire it to a spare GPIO and
+// put that GPIO number here (driven LOW once the outputs are loaded).
+// -1 = not used (you must tie /OE low in hardware).
+#define STEPPER_OE_PIN      -1
+
+// SPI clock used for the shift registers. 1 MHz is plenty (24 bits = ~24 us)
+// and is safe with 3.3V logic driving 5V '595s.
+#define STEPPER_SPI_HZ      1000000
+
+// Half-steps per output-shaft revolution of a 28BYJ-48 (64:1 gearbox,
+// 64 half-steps per motor-shaft turn).
+#define STEPS_PER_REV       4096
+
+// Time between half-steps, in ms. 2 ms = 500 half-steps/s, a conservative
+// speed for a 28BYJ-48 on 5V. Lower it for a faster needle if the motors
+// keep up; raise it if they stall. (Assumes a 1 kHz FreeRTOS tick, which is
+// the Arduino-ESP32 default.)
+#define STEPPER_STEP_MS     2
+
+// Extra half-steps driven past full travel while homing, to guarantee each
+// needle reaches its mechanical stop (~5 degrees).
+#define STEPPER_HOME_MARGIN 60
+
+// A new pot-driven target must differ from the current one by at least this
+// many half-steps before the needle moves (prevents ADC noise from
+// buzzing the motor). Endpoints (0 and full scale) always pass through.
+#define STEPPER_DEADBAND    4
+
+// Needle travel from home (0) to full scale, in degrees, per motor. These
+// are the old servo travels (|SERVO_MIN - SERVO_MAX|). Adjust to your dials.
+const int GAUGE_SWEEP_DEG[NUM_STEPPERS] = {89, 96, 83, 75, 115, 82};
+
+// The same travel converted to half-steps (computed at compile time).
+const int32_t STEPPER_SWEEP_STEPS[NUM_STEPPERS] = {
+  (int32_t)GAUGE_SWEEP_DEG[0] * STEPS_PER_REV / 360,
+  (int32_t)GAUGE_SWEEP_DEG[1] * STEPS_PER_REV / 360,
+  (int32_t)GAUGE_SWEEP_DEG[2] * STEPS_PER_REV / 360,
+  (int32_t)GAUGE_SWEEP_DEG[3] * STEPS_PER_REV / 360,
+  (int32_t)GAUGE_SWEEP_DEG[4] * STEPS_PER_REV / 360,
+  (int32_t)GAUGE_SWEEP_DEG[5] * STEPS_PER_REV / 360
+};
+
+// Set an entry true to flip that needle's direction (home end <-> full end)
+// if a motor turns the wrong way for its dial.
+const bool STEPPER_REVERSE[NUM_STEPPERS] = {false, false, false, false, false, false};
+
+// Which shift-register output drives each L293D input.
+// Entry = global bit number 0..23:  bit = 8 * register + output,
+//   register 0 = U7 (first in chain, fed by DA), 1 = U8, 2 = U9
+//   output    0..7 = QA..QH
+// Columns = L293D inputs 1A, 2A, 3A, 4A for that motor.
+// Matches the schematic (two L293Ds per '595, outputs in order QA..QD -> 1A..4A,
+// QE..QH -> 1A..4A of the next chip):
+//   U7 QA-QD -> U10 (J6)   Oil      U7 QE-QH -> U11 (J7)   Fuel
+//   U8 QA-QD -> U12 (J8)   Speed    U8 QE-QH -> U13 (J9)   Tach
+//   U9 QA-QD -> U14 (J10)  Temp     U9 QE-QH -> U15 (J11)  Batt
+// Which gauge plugs into which connector is up to you — if a gauge is on a
+// different socket, just swap the rows below. Nothing else needs to change.
+const uint8_t STEPPER_COIL_BIT[NUM_STEPPERS][4] = {
+  { 0,  1,  2,  3},   // Oil   : U7 QA QB QC QD
+  { 4,  5,  6,  7},   // Fuel  : U7 QE QF QG QH
+  { 8,  9, 10, 11},   // Speed : U8 QA QB QC QD
+  {12, 13, 14, 15},   // Tach  : U8 QE QF QG QH
+  {16, 17, 18, 19},   // Temp  : U9 QA QB QC QD
+  {20, 21, 22, 23}    // Batt  : U9 QE QF QG QH
+};
+
+// 8-phase half-step sequence. bit0=1A, bit1=2A, bit2=3A, bit3=4A.
+// Assumes each 28BYJ-48 is wired bipolar: blue/pink (coil A) to 1Y/2Y,
+// yellow/orange (coil B) to 3Y/4Y, red centre-tap NOT connected. Two inputs
+// of a pair being equal = that coil off; different = current one way or the other.
+// If a motor just buzzes or turns erratically, swap two of its coil wires.
+const uint8_t STEP_SEQ[8] = {
+  0b0001,  // A+
+  0b0101,  // A+ B+
+  0b0100,  //    B+
+  0b0110,  // A- B+
+  0b0010,  // A-
+  0b1010,  // A- B-
+  0b1000,  //    B-
+  0b1001   // A+ B-
+};
+
+// Runtime stepper state. Position is in half-steps from the home stop.
+// target is written by the pot readers / sweep logic, pos by the stepping loop.
+volatile int32_t stepperPos[NUM_STEPPERS]    = {0, 0, 0, 0, 0, 0};
+volatile int32_t stepperTarget[NUM_STEPPERS] = {0, 0, 0, 0, 0, 0};
+uint8_t stepperPhase[NUM_STEPPERS]           = {0, 0, 0, 0, 0, 0};
 
 // ─────────────────────────────────────────────
 //  GAUGE POTENTIOMETER DEFINITIONS
-//  Oil, Fuel, Temp (servo indices 0, 1, 4) are driven live by a
+//  Oil, Fuel, Temp (stepper indices 0, 1, 4) are driven live by a
 //  potentiometer instead of the preprogrammed sweep. Wire each pot as a
 //  simple voltage divider: outer legs to +5V and GND, wiper to the ADC
 //  pin below. The pot's total resistance value doesn't matter (10K, 100
 //  ohm, etc.) — only the wiper's position along that range, read as a
 //  voltage ratio.
-//  Batt (servo index 5) is also driven live, but from a fixed 51k/10k
+//  Batt (stepper index 5) is also driven live, but from a fixed 51k/10k
 //  resistor divider straight off VAA (battery voltage) rather than a pot —
 //  there are only three physical potentiometers on this board.
 //  Speed and Tach (indices 2, 3) have no sender wired up at all and just
-//  sweep — see servoTask().
+//  sweep — see stepperTask().
 //  None of these four inputs use the ESP32's own ADC pins — they wire
 //  into an ADS1015 I2C ADC breakout board (address 0x48), channels A0–A3.
 //  ALERT, A+, and A- on the breakout are left unconnected.
@@ -273,8 +359,8 @@ const int SERVO_MAX[6] = {29,  20,   17,  20,  0,  15};
 // ADS1015 driver object, shared over the same I2C bus (Wire) as the EEPROMs.
 Adafruit_ADS1015 ads;
 
-// IMPORTANT: this array must use the same gauge order as SERVO_PINS,
-// SERVO_MIN and SERVO_MAX: Oil, Fuel, Temp, Batt.
+// IMPORTANT: this array uses the pot-slot order Oil, Fuel, Temp, Batt
+// (see POT_STEPPER_INDEX below for how that maps onto the stepper array).
 // Values are ADS1015 input channels (0=A0, 1=A1, 2=A2, 3=A3), NOT GPIO
 // numbers. Per the wiring schematic: AIN0=Temp (RV1), AIN1=Batt (fixed
 // 51k/10k divider off VAA — no pot), AIN2=Fuel (RV2), AIN3=Oil (RV3).
@@ -282,7 +368,7 @@ const int POT_PINS[4] = {3, 2, 0, 1};
 
 // Per-channel ADC calibration. Leave at 0/4095 initially; if a pot does not
 // quite reach an endpoint, replace these with the observed raw values printed
-// by the servo task. Each channel remains independently calibrated.
+// by the stepper task. Each channel remains independently calibrated.
 // NOTE: these assume the ADS1015 gain is set to GAIN_ONE (±4.096V full-scale)
 // in setup(), which keeps its 12-bit single-ended output in the same 0–4095
 // range this code already expects.
@@ -290,16 +376,15 @@ const int POT_ADC_MIN[4] = {0, 0, 0, 0};
 const int POT_ADC_MAX[4] = {4095, 4095, 4095, 4095};
 
 // Maps each "pot slot" above (0=Oil, 1=Fuel, 2=Temp, 3=Batt — same order as
-// POT_PINS) to that gauge's actual index within SERVO_PINS / SERVO_MIN /
-// SERVO_MAX / servos[]. Needed because SERVO_PINS is ordered by physical
-// GPIO layout (Oil=10, Fuel=11, Speed=12, Tach=13, Temp=14, Batt=15), which
-// is no longer a contiguous 0–3 range once Speed and Tach sit in the middle.
-const int POT_SERVO_INDEX[4] = {0, 1, 4, 5};
+// POT_PINS) to that gauge's actual index within the stepper arrays
+// (Oil=0, Fuel=1, Speed=2, Tach=3, Temp=4, Batt=5). Needed because Speed and
+// Tach sit in the middle, so the pot slots are not a contiguous 0–3 range.
+const int POT_STEPPER_INDEX[4] = {0, 1, 4, 5};
 
-// The two servos that are NOT potentiometer-driven. Speed (SERVO_PINS
-// index 2, GPIO 12) and Tach (index 3, GPIO 13) have no real sender signal
-// wired up, so they instead run the original min→max→min sweep animation.
-const int SWEEP_SERVO_INDEX[2] = {2, 3};
+// The two steppers that are NOT potentiometer-driven. Speed (index 2) and
+// Tach (index 3) have no real sender signal wired up, so they instead
+// sweep between home and full scale to show the motors are alive.
+const int SWEEP_STEPPER_INDEX[2] = {2, 3};
 
 // ─────────────────────────────────────────────
 //  NEOPIXEL DEFINITIONS
@@ -367,6 +452,14 @@ const uint32_t LED_COLORS[5] = {
 // Using the same constant keeps the color consistent across the codebase.
 #define HEADLIGHT_LED_COLOR  0x0000FF
 #define BACKLIGHT_LED_COLOR 0xFFFFFF
+
+// ─── POWER LATCH ───
+#define IGNITION_PIN          18    // input from optocoupler: HIGH = key on
+#define POWER_OFF_PIN         17    // output: HIGH holds the power latch on
+#define SHUTDOWN_DELAY_MS     3000  // placeholder for real shutdown work
+#define IGNITION_DEBOUNCE_MS  100   // ignore brief dips (e.g. cranking)
+
+TaskHandle_t hPowerTask;
 
 // ─────────────────────────────────────────────
 //  I2C / EEPROM DEFINITIONS
@@ -454,21 +547,20 @@ Adafruit_ST7789 tft0 = Adafruit_ST7789(&tftSPI, TFT_CS0, TFT_DC, TFT_RST);
 Adafruit_ST7789 tft1 = Adafruit_ST7789(&tftSPI, TFT_CS1, TFT_DC, TFT_RST);
 
 // ─────────────────────────────────────────────
-//  SERVO OBJECTS
+//  STEPPER OUTPUT STATE
 // ─────────────────────────────────────────────
 
-// Array of 6 Servo objects, one for each physical servo motor.
-// Grouping them in an array allows all servos to be controlled with loops
-// instead of separate variables and duplicate code blocks.
-Servo servos[6];
+// Fan-out of all 24 coil drive bits (bit n = U7/U8/U9 output n, see
+// STEPPER_COIL_BIT). Rebuilt every step and shifted out to the '595 chain.
+uint32_t stepperOutputWord = 0;
 
 // ─────────────────────────────────────────────
 //  TASK HANDLES
 // ─────────────────────────────────────────────
 
-// Handle for the servo FreeRTOS task. TaskHandle_t is an opaque pointer
+// Handle for the stepper FreeRTOS task. TaskHandle_t is an opaque pointer
 // that lets you reference, suspend, resume, or delete the task later if needed.
-TaskHandle_t hServoTask;
+TaskHandle_t hStepperTask;
 
 // Handle for the NeoPixel FreeRTOS task. Stored globally so it can be
 // managed from setup() or loop() if future control logic is needed.
@@ -516,20 +608,20 @@ volatile bool highBeamState = false;
 
 // ─────────────────────────────────────────────
 //  SHARED GAUGE STATE
-//  Written by servoTask, read by neoTask.
+//  Written by stepperTask, read by neoTask.
 //  volatile tells the compiler to re-read from memory on every access
 //  rather than caching the value in a CPU register — essential when two
 //  FreeRTOS tasks running on separate scheduler time-slices share a variable.
 // ─────────────────────────────────────────────
 
-// Current angle (in degrees) of gauges 1, 2, 5, 6 (servo indices 0, 1, 4, 5).
-// Pre-initialized to each servo's SERVO_MIN value so the LED state is valid
-// before the servo task executes its first sweep step.
-volatile int gaugeAngle[4] = { SERVO_MIN[0], SERVO_MIN[1], SERVO_MIN[4], SERVO_MIN[5] };
+// Commanded needle angle (in degrees from the home stop) of gauges 1, 2, 5, 6
+// (stepper indices 0, 1, 4, 5). Starts at 0 (home) so the LED state is valid
+// before the stepper task has read its first pot value.
+volatile int gaugeAngle[4] = { 0, 0, 0, 0 };
 
 // Position along each pot's calibrated sweep, 0..1000. The LED task uses
 // this directly so its thresholds are exactly 10% and 20%, independent of
-// servo direction and integer angle rounding.
+// stepper direction and integer angle rounding.
 volatile int gaugePosition[4] = {0, 0, 0, 0};
 volatile int gaugeRaw[4] = {0, 0, 0, 0};
 
@@ -797,19 +889,98 @@ void tftShowUltrasonic(Adafruit_ST7789 &tft, float distanceCM) {
 }
 
 // ════════════════════════════════════════════════════════════
-//  FREERTOS TASK: SERVOS
-//  Oil, Fuel, Temp, Batt (indices 0, 1, 4, 5): driven LIVE by their
+//  74HC595 + L293D STEPPER DRIVE HELPERS
+// ════════════════════════════════════════════════════════════
+
+// Shifts a 24-bit word out to the three chained 74HC595s and latches it.
+// Bit 0..7 = U7 QA..QH, bit 8..15 = U8, bit 16..23 = U9 (see STEPPER_COIL_BIT).
+// The first byte sent travels furthest down the chain, so U9's byte goes first.
+// The latch pulse is issued INSIDE the SPI transaction: that holds the SPI bus
+// lock so the TFT task cannot clock pixel data into the shift registers between
+// the last data bit and the latch (the '595s share MOSI/SCK with the displays).
+void shiftRegistersWrite(uint32_t word) {
+  tftSPI.beginTransaction(SPISettings(STEPPER_SPI_HZ, MSBFIRST, SPI_MODE0));
+  tftSPI.transfer((uint8_t)((word >> 16) & 0xFF));   // -> U9
+  tftSPI.transfer((uint8_t)((word >> 8)  & 0xFF));   // -> U8
+  tftSPI.transfer((uint8_t)( word        & 0xFF));   // -> U7
+  digitalWrite(STEPPER_LATCH_PIN, HIGH);             // RCLK rising edge latches outputs
+  delayMicroseconds(1);
+  digitalWrite(STEPPER_LATCH_PIN, LOW);
+  tftSPI.endTransaction();
+}
+
+// Builds the 24-bit output word from every motor's current phase.
+uint32_t stepperBuildWord() {
+  uint32_t word = 0;
+  for (int m = 0; m < NUM_STEPPERS; m++) {
+    uint8_t pattern = STEP_SEQ[stepperPhase[m] & 7];
+    for (int c = 0; c < 4; c++) {
+      if (pattern & (1 << c)) {
+        word |= (1UL << STEPPER_COIL_BIT[m][c]);
+      }
+    }
+  }
+  return word;
+}
+
+// Advances motor m by one half-step. dir = +1 (toward full scale) or -1
+// (toward home). STEPPER_REVERSE flips which way the phase sequence runs.
+void stepperStep(int m, int dir) {
+  int phaseDir = STEPPER_REVERSE[m] ? -dir : dir;
+  stepperPhase[m] = (uint8_t)((stepperPhase[m] + 8 + phaseDir) & 7);
+  stepperPos[m]   = stepperPos[m] + dir;
+}
+
+// Moves every motor that is not yet at its target by ONE half-step, then
+// pushes the result to the shift registers if anything changed. Calling this
+// once per STEPPER_STEP_MS rate-limits every motor to the same safe speed.
+// Returns true if any motor is still away from its target.
+bool stepperServiceOnce() {
+  bool moving = false;
+  for (int m = 0; m < NUM_STEPPERS; m++) {
+    int32_t pos    = stepperPos[m];
+    int32_t target = stepperTarget[m];
+    if (pos < target)      { stepperStep(m, +1); moving = true; }
+    else if (pos > target) { stepperStep(m, -1); moving = true; }
+  }
+  uint32_t word = stepperBuildWord();
+  if (word != stepperOutputWord) {
+    stepperOutputWord = word;
+    shiftRegistersWrite(word);
+  }
+  return moving;
+}
+
+// Steppers have no position feedback, so each needle is driven back against
+// its mechanical stop at start-up to establish "home". Every motor is assumed
+// to be at worst at full scale, and is stepped back full travel + a margin;
+// any extra steps just slip harmlessly against the stop. Afterwards position
+// is exactly 0 for every motor.
+void stepperHomeAll() {
+  for (int m = 0; m < NUM_STEPPERS; m++) {
+    stepperPos[m]    = STEPPER_SWEEP_STEPS[m] + STEPPER_HOME_MARGIN;
+    stepperTarget[m] = 0;
+  }
+  while (stepperServiceOnce()) {
+    vTaskDelay(pdMS_TO_TICKS(STEPPER_STEP_MS));
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+//  FREERTOS TASK: STEPPERS
+//  Oil, Fuel, Temp, Batt (indices 0, 1, 4, 5): needle target follows their
 //    potentiometers (Batt reads the fixed VAA divider, not a real pot).
-//  Speed, Tach (indices 2, 3): unchanged — still sweep min→max→min,
-//    1 second per direction, exactly as before.
+//  Speed, Tach (indices 2, 3): sweep home → full scale → home. The 28BYJ-48
+//    is far slower than the old servos, so one pass now takes a few seconds
+//    instead of 1 second.
 // ════════════════════════════════════════════════════════════
 
 // Reads potentiometer slot i (0=Oil,1=Fuel,2=Temp,3=Batt — see POT_PINS),
-// low-pass filters it, and maps it onto that gauge's servo range. Returns
-// the new angle and updates gaugeAngle[i] so neoTask's LED-color logic
-// keeps working unchanged.
+// low-pass filters it, and converts it to a target position in half-steps
+// for that gauge's stepper. Also updates gaugeAngle[i] / gaugePosition[i]
+// so neoTask's LED-color logic keeps working unchanged.
 // potSmooth[] must be a 4-element float array persisted by the caller.
-int readGaugeServoAngle(int i, float potSmooth[4]) {
+int32_t readGaugeTarget(int i, float potSmooth[4]) {
   // Raw ADC reading from the ADS1015 (12-bit single-ended → range 0-4095
   // with GAIN_ONE, same scale the rest of this code already expects).
   int raw = ads.readADC_SingleEnded(POT_PINS[i]);
@@ -821,104 +992,79 @@ int readGaugeServoAngle(int i, float potSmooth[4]) {
   const float ALPHA = 0.15;
   potSmooth[i] += ALPHA * ((float)raw - potSmooth[i]);
 
-  // This pot slot's actual SERVO_PINS/SERVO_MIN/SERVO_MAX/servos[] index —
-  // slot order (Oil,Fuel,Temp,Batt) isn't the same as the physical GPIO
-  // order, so every lookup below has to go through this mapping.
-  int servoIdx = POT_SERVO_INDEX[i];
+  // This pot slot's index within the stepper arrays — slot order
+  // (Oil,Fuel,Temp,Batt) isn't the same as the stepper order.
+  int stepperIdx = POT_STEPPER_INDEX[i];
 
-  // Map the smoothed 0–4095 ADC range onto this gauge's calibrated angle
-  // range. map() handles the case where SERVO_MIN > SERVO_MAX correctly
-  // (some servos are mounted in reverse), so no special-casing is needed.
+  // Map the smoothed ADC range onto 0..1000 (0.1% resolution).
   int filteredRaw = constrain((int)potSmooth[i], POT_ADC_MIN[i], POT_ADC_MAX[i]);
   int position = map(filteredRaw, POT_ADC_MIN[i], POT_ADC_MAX[i], 0, 1000);
   position = constrain(position, 0, 1000);
-  int angle = map(position, 0, 1000, SERVO_MIN[servoIdx], SERVO_MAX[servoIdx]);
 
-  // Clamp defensively in case of ADC noise at the extremes (e.g. a stray
-  // reading just past 0 or 4095 rounding outside the intended angle range).
-  int lo = min(SERVO_MIN[servoIdx], SERVO_MAX[servoIdx]);
-  int hi = max(SERVO_MIN[servoIdx], SERVO_MAX[servoIdx]);
-  angle  = constrain(angle, lo, hi);
+  // Convert to half-steps from home, and to degrees of needle travel for
+  // the debug output.
+  int32_t steps = (int32_t)position * STEPPER_SWEEP_STEPS[stepperIdx] / 1000;
+  int angleDeg  = (int)((int32_t)steps * 360 / STEPS_PER_REV);
 
-  // Publish for neoTask (LED proximity-color logic reads this).
-  gaugeAngle[i] = angle;
+  // Publish for neoTask (LED proximity-color logic reads these).
+  gaugeAngle[i]    = angleDeg;
   gaugePosition[i] = position;
-  return angle;
+  return steps;
 }
 
 // FreeRTOS task function. The void* param argument is required by the
-// FreeRTOS API but unused here (it allows passing data into the task at
-// creation time if needed).
-void servoTask(void *param) {
-  // Number of discrete angle steps per sweep direction (servos 5-6 only).
-  // 100 steps over 1000 ms = 10 ms per step, giving smooth motion.
-  const int STEPS       = 100;
+// FreeRTOS API but unused here.
+void stepperTask(void *param) {
+  // The pots/ADC are re-read every POT_EVERY steps (10 x 2 ms = 20 ms). Reading
+  // four ADS1015 channels takes several ms, so doing it every step would slow
+  // the stepping rate.
+  const int POT_EVERY = 10;
 
-  // Delay in milliseconds between each step (1000 ms / 100 steps = 10 ms per step).
-  // This also sets how often the potentiometers/divider (Oil, Fuel, Temp, Batt) are re-read.
-  const int STEP_DELAY  = 1000 / STEPS; // ms per step = 10 ms
-
-  // Attach all 6 servos to their assigned GPIO pins.
-  // attach() sets up the PWM signal on that pin.
-  for (int i = 0; i < 6; i++) {
-    servos[i].attach(SERVO_PINS[i]);
-  }
-
-  // Speed and Tach still need a known starting position for the sweep animation.
-  // Oil, Fuel, Temp, and Batt don't — they'll immediately take whatever
-  // angle their pot/divider reads.
-  for (int idx : SWEEP_SERVO_INDEX) {
-    servos[idx].write(SERVO_MIN[idx]);
-  }
-
-  // Wait 500 ms after attaching to give the servos time to physically reach their
-  // start positions before the main loop begins.
-  vTaskDelay(pdMS_TO_TICKS(500));
+  // Home all six needles against their stops (takes a few seconds).
+  stepperHomeAll();
 
   // Per-channel smoothing state for the 4 potentiometers, seeded with a real
-  // first reading so the gauges don't sweep up from 0 on power-up.
+  // first reading so the gauges don't glitch on power-up.
   static float potSmooth[4];
   for (int i = 0; i < 4; i++) {
     potSmooth[i] = (float)ads.readADC_SingleEnded(POT_PINS[i]);
   }
 
-  bool sweepingUp = true; // Direction for the Speed/Tach sweep
-  int  step       = 0;    // Current step within the current sweep direction
+  int potCounter = 0;
 
   // Infinite loop — FreeRTOS tasks must never return, so they loop forever.
   for (;;) {
-    // ── Oil, Fuel, Temp, Batt (indices 0, 1, 4, 5): live potentiometer/
-    //    divider control ── Re-read and re-write every tick (every
-    //    STEP_DELAY ms) so the gauges track the physical inputs in
-    //    near real-time.
-    for (int i = 0; i < 4; i++) {
-      int angle = readGaugeServoAngle(i, potSmooth);
-      servos[POT_SERVO_INDEX[i]].write(angle);
+    // ── Oil, Fuel, Temp, Batt: update targets from the pots ──
+    if (potCounter == 0) {
+      for (int i = 0; i < 4; i++) {
+        int32_t newTarget = readGaugeTarget(i, potSmooth);
+        int     idx       = POT_STEPPER_INDEX[i];
+        int32_t current   = stepperTarget[idx];
+        int32_t diff      = newTarget - current;
+        if (diff < 0) diff = -diff;
+        // Ignore tiny changes (ADC noise) except when landing on an end stop.
+        if (diff >= STEPPER_DEADBAND || newTarget == 0 || newTarget == STEPPER_SWEEP_STEPS[idx]) {
+          stepperTarget[idx] = newTarget;
+        }
+      }
+    }
+    potCounter = (potCounter + 1) % POT_EVERY;
+
+    // ── Speed, Tach: bounce between home and full scale ──
+    // When a needle arrives at its target, send it the other way.
+    for (int idx : SWEEP_STEPPER_INDEX) {
+      if (stepperPos[idx] == stepperTarget[idx]) {
+        stepperTarget[idx] = (stepperTarget[idx] == 0) ? STEPPER_SWEEP_STEPS[idx] : 0;
+      }
     }
 
-    // ── Speed, Tach (indices 2, 3): original sweep animation, unchanged ──
-    // These two have no real sender wired up, so they just sweep between
-    // their calibrated min/max to visually confirm the servos are alive.
-    float t = (float)step / STEPS; // 0.0 → 1.0 across the current direction
-    for (int idx : SWEEP_SERVO_INDEX) {
-      int angle = sweepingUp
-        ? (int)(SERVO_MIN[idx] + t * (SERVO_MAX[idx] - SERVO_MIN[idx])) // Min → Max
-        : (int)(SERVO_MAX[idx] + t * (SERVO_MIN[idx] - SERVO_MAX[idx])); // Max → Min
-      servos[idx].write(angle);
-    }
+    // ── Take one half-step on every motor that needs it, update the '595s ──
+    stepperServiceOnce();
 
-    // Advance the sweep; flip direction once a full 1-second pass completes.
-    step++;
-    if (step > STEPS) {
-      step = 0;
-      sweepingUp = !sweepingUp;
-    }
-
-    // Yield to the FreeRTOS scheduler for STEP_DELAY milliseconds.
-    // pdMS_TO_TICKS() converts milliseconds to RTOS tick counts. This is the
-    // correct RTOS-aware delay — unlike Arduino's delay(), it lets other
-    // tasks run during the wait.
-    vTaskDelay(pdMS_TO_TICKS(STEP_DELAY));
+    // Plain vTaskDelay (not vTaskDelayUntil) on purpose: if the TFT task holds
+    // the SPI bus for a while, the stepper loop just pauses and resumes at the
+    // normal rate, instead of bursting catch-up steps that could stall a motor.
+    vTaskDelay(pdMS_TO_TICKS(STEPPER_STEP_MS));
   }
 }
 
@@ -948,10 +1094,10 @@ const char* colorName(uint32_t color) {
 // ════════════════════════════════════════════════════════════
 
 // FreeRTOS task function that drives the NeoPixel strip.
-// LEDs 1–4 reflect the live position of their paired gauge servo relative
-// to the servo's mechanical limits.
+// LEDs 1–4 reflect the commanded position of their paired gauge stepper
+// relative to the needle's mechanical limits.
 void neoTask(void *param) {
-  // Brief startup delay to let servoTask attach its servos and write the first
+  // Brief startup delay to let stepperTask start up and write the first
   // angles into gaugeAngle[] before neoTask tries to read them.
   vTaskDelay(pdMS_TO_TICKS(600));
 
@@ -960,8 +1106,8 @@ void neoTask(void *param) {
   strip.show();
 
   // How often gauge colors are re-evaluated. 50 ms gives ~20 samples across the
-  // 1-second servo sweep, so the LED color tracks the needle position in near
-  // real-time rather than only once per full sweep cycle.
+  // gauge's travel, so the LED color tracks the commanded needle position in
+  // near real-time.
   const int NEO_SAMPLE_MS = 50;
 
   // Infinite loop — FreeRTOS tasks must never return.
@@ -984,7 +1130,7 @@ void neoTask(void *param) {
     for (int i = 0; i < 4; i++) {
       // Read the most-recently-published angle for this gauge.
       // The volatile qualifier on gaugeAngle ensures we always get the latest
-      // value written by servoTask rather than a stale cached copy.
+      // value written by stepperTask rather than a stale cached copy.
       int angle = gaugeAngle[i];
       int position = gaugePosition[i];
       int nearestEdgePercent = min(position, 1000 - position) / 10;
@@ -1081,6 +1227,43 @@ void turnSignalTask(void *pvParameters) {
     strip.show();
     // Delays state for one half second
     vTaskDelay(pdMS_TO_TICKS(FLASH_INTERVAL_MS));
+  }
+}
+
+// ═════════════════════════════════════════════════════════════════
+//  FREERTOS TASK: Power Latch Delay
+//  Sets power latch so ESP stays on hen key is shut off
+//  Delays to complete pre shutdown functions before full power off
+// ═════════════════════════════════════════════════════════════════
+
+void powerTask(void *param) {
+  const int POLL_MS = 20;
+  int lowMs = 0;
+
+  for (;;) {
+    // Debounce: ignition must stay LOW before we treat it as a real key-off.
+    lowMs = (digitalRead(IGNITION_PIN) == LOW) ? lowMs + POLL_MS : 0;
+
+    if (lowMs >= IGNITION_DEBOUNCE_MS) {
+      Serial.println("[POWER] Ignition off, starting shutdown");
+
+      // PLACEHOLDER: later, sweep gauges to 0 and write mileage to EEPROM here.
+      uint32_t start = millis();
+      bool aborted = false;
+      while (millis() - start < SHUTDOWN_DELAY_MS) {
+        if (digitalRead(IGNITION_PIN) == HIGH) { aborted = true; break; }
+        vTaskDelay(pdMS_TO_TICKS(POLL_MS));
+      }
+
+      if (!aborted) {
+        digitalWrite(POWER_OFF_PIN, LOW);   // release the latch; power should drop
+        vTaskDelay(pdMS_TO_TICKS(500));
+        // Still running means the key came back on at the last moment.
+        digitalWrite(POWER_OFF_PIN, HIGH);  // re-latch
+      }
+      lowMs = 0;
+    }
+    vTaskDelay(pdMS_TO_TICKS(POLL_MS));
   }
 }
 
@@ -1373,10 +1556,13 @@ void setup() {
   // INPUT_PULLUP holds the pin HIGH when the button is open, so connecting the
   // other side of the button to GND naturally pulls it LOW when pressed —
   // no external resistor required.
-  pinMode(BTN_LED5_PIN, INPUT_PULLDOWN);
+  pinMode(BTN_LED5_PIN, INPUT);
 
   // Configure GPIO 21 with the same input pull-up arrangement for the LED 6 button.
-  pinMode(BTN_LED6_PIN, INPUT_PULLDOWN);
+  pinMode(BTN_LED6_PIN, INPUT);
+
+  pinMode(BTN_LED7_PIN, INPUT);
+  pinMode(BTN_LED8_PIN, INPUT);  
 
   // Attach the ISR for LED 5's button on GPIO 18.
   // digitalPinToInterrupt() translates the GPIO number to the correct hardware
@@ -1388,32 +1574,40 @@ void setup() {
   // Attach the ISR for LED 6's button on GPIO 21 using the same strategy.
   attachInterrupt(digitalPinToInterrupt(BTN_LED6_PIN), isr_btn6, CHANGE);
 
-  // ── Allocate servo timers ──
+  // ── Stepper drivers (74HC595 chain -> L293D -> 28BYJ-48) ──
+  // The shift registers sit on the same SPI bus as the TFTs (tftSPI.begin()
+  // has already run above), with CS2 / GPIO15 acting as their latch (RCLK).
 
-  // Reserve hardware timer 0 for ESP32 servo PWM generation.
-  // The ESP32-S2 has 4 independent hardware timers. The ESP32Servo library uses them
-  // to generate the precise 50 Hz PWM signals that servos require.
-  ESP32PWM::allocateTimer(0);
+  pinMode(IGNITION_PIN, INPUT);        // optocoupler drives it, R63 pulls it down
+  pinMode(POWER_OFF_PIN, OUTPUT);
+  digitalWrite(POWER_OFF_PIN, HIGH);   // latch power on  
 
-  // Reserve hardware timer 1 for servo use.
-  // With 6 servos and 4 timers, the library maps multiple servos to each timer automatically.
-  ESP32PWM::allocateTimer(1);
+  Serial.println("Init stepper shift registers...");
 
-  // Reserve hardware timer 2 for servo PWM.
-  ESP32PWM::allocateTimer(2);
+  // Latch idles LOW; it is pulsed HIGH after each 24-bit shift.
+  pinMode(STEPPER_LATCH_PIN, OUTPUT);
+  digitalWrite(STEPPER_LATCH_PIN, LOW);
 
-  // Reserve hardware timer 3 for servo PWM.
-  // Allocating all 4 timers before attaching any servos prevents timer conflicts
-  // with other peripherals (like NeoPixels) that might also request timers.
-  ESP32PWM::allocateTimer(3);
+  // Load all-zero (every coil off) into the outputs before enabling them,
+  // so the motors never see random power-up bits.
+  stepperOutputWord = 0;
+  shiftRegistersWrite(0);
+
+  // Optional /OE control: enable the '595 outputs only now that they hold
+  // a known state. (/OE is active LOW; the external 10k pull-up keeps it
+  // disabled until this pin is driven LOW.)
+  if (STEPPER_OE_PIN >= 0) {
+    pinMode(STEPPER_OE_PIN, OUTPUT);
+    digitalWrite(STEPPER_OE_PIN, LOW);
+  }
 
   Serial.println("Launching FreeRTOS tasks...\n");
 
-  // Create the servo sweep task and assign it to the FreeRTOS scheduler.
+  // Create the stepper task and assign it to the FreeRTOS scheduler.
   // Parameters: task function, name (for debug), stack size (bytes), parameter (NULL = none),
   // priority (1 = lowest non-idle), and handle pointer to store the task reference.
-  // 4096 bytes of stack is sufficient for simple math and servo calls.
-  xTaskCreate(servoTask,         "ServoTask",  4096, NULL, 1, &hServoTask);
+  // 4096 bytes of stack is sufficient for the stepping math and ADS1015 reads.
+  xTaskCreate(stepperTask,       "StepperTask", 4096, NULL, 1, &hStepperTask);
 
   // Create the NeoPixel animation task.
   // 4096 bytes is enough for the simple color-buffer loop with no deep call chains.
@@ -1425,6 +1619,8 @@ void setup() {
   xTaskCreate(eepromDisplayTask, "EepromTask", 8192, NULL, 1, &hEepromTask);
 
   xTaskCreate(turnSignalTask,    "TurnSignalTask", 2048, NULL, 1, &hTurnSignalTask);  
+
+  xTaskCreate(powerTask, "PowerTask", 2048, NULL, 1, &hPowerTask);
 
   // Confirm all tasks have been submitted to the scheduler.
   // At this point FreeRTOS begins preemptively running all three tasks concurrently.
