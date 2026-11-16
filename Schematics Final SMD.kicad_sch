@@ -6284,36 +6284,6 @@
 		)
 		(uuid "f7e9e6c7-deef-4683-9f1d-c8caf03a9fd4")
 	)
-	(text "Batt LED"
-		(exclude_from_sim no)
-		(at 196.342 37.084 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "0d367315-56ee-4957-bc62-0be36b547798")
-	)
-	(text "Low Beam LED"
-		(exclude_from_sim no)
-		(at 176.53 70.104 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "1c16e11d-aab7-481a-a2cd-f138d92d755b")
-	)
-	(text "Brake LED"
-		(exclude_from_sim no)
-		(at 225.044 37.084 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "2306848a-66aa-44a4-a567-a79d5b9dae6c")
-	)
 	(text "Amplifier"
 		(exclude_from_sim no)
 		(at 314.198 132.08 0)
@@ -6337,26 +6307,6 @@
 		)
 		(uuid "2f6e59fe-cb8a-4618-93ad-72b88b7fcdbf")
 	)
-	(text "Temp LED"
-		(exclude_from_sim no)
-		(at 170.18 37.084 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "3c0c9789-41b0-4191-955e-306316f7f9c0")
-	)
-	(text "Left Turn LED"
-		(exclude_from_sim no)
-		(at 145.542 70.104 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "3c5ec902-51ea-48f5-9c27-22f02d567fcf")
-	)
 	(text "ADC"
 		(exclude_from_sim no)
 		(at 228.854 135.128 0)
@@ -6367,16 +6317,6 @@
 			)
 		)
 		(uuid "3f9d57b8-cf60-40dc-9ef5-26f71a40a61e")
-	)
-	(text "High Beam LED"
-		(exclude_from_sim no)
-		(at 203.454 70.358 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "43f23ee9-a4d2-4235-af1a-42a9c4dcf0f4")
 	)
 	(text "Addr 0x48\n"
 		(exclude_from_sim no)
@@ -6400,16 +6340,6 @@
 		)
 		(uuid "aca498a7-fd1f-4106-a784-ec3c03ca8aaa")
 	)
-	(text "Fuel LED"
-		(exclude_from_sim no)
-		(at 143.002 37.084 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "ad7eff38-35b8-45ff-a9dd-9803c37aba11")
-	)
 	(text "Internal Connectors"
 		(exclude_from_sim no)
 		(at 49.784 101.092 0)
@@ -6420,16 +6350,6 @@
 			)
 		)
 		(uuid "afff60bf-5100-4867-a6aa-03621657ba2e")
-	)
-	(text "Oil LED\n"
-		(exclude_from_sim no)
-		(at 115.57 37.338 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "b26d48eb-ffcc-4d7f-94af-c000edb2f855")
 	)
 	(text "LEDs"
 		(exclude_from_sim no)
@@ -6442,16 +6362,6 @@
 			)
 		)
 		(uuid "bb69a04a-17f4-410f-86d9-859572007341")
-	)
-	(text "Right Turn LED"
-		(exclude_from_sim no)
-		(at 117.094 70.104 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "c2246b84-d4fb-4e48-9fa0-832d8df2ee08")
 	)
 	(junction
 		(at 273.05 96.52)
@@ -10464,7 +10374,7 @@
 		(fields_autoplaced yes)
 		(uuid "0a00b548-6e59-4606-b03f-df9a4b3c1d0a")
 		(property "Reference" "D13"
-			(at 176.53 62.1598 0)
+			(at 173.99 62.1598 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10473,8 +10383,8 @@
 				)
 			)
 		)
-		(property "Value" "APA-106-F5"
-			(at 176.53 64.6998 0)
+		(property "Value" "Batt_LED"
+			(at 173.99 64.6998 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10634,7 +10544,7 @@
 		(fields_autoplaced yes)
 		(uuid "0c43245e-2020-4d81-96eb-3e1a9315de13")
 		(property "Reference" "D8"
-			(at 116.84 62.1598 0)
+			(at 118.11 62.1598 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10643,8 +10553,8 @@
 				)
 			)
 		)
-		(property "Value" "APA-106-F5"
-			(at 116.84 64.6998 0)
+		(property "Value" "Low_Beam_LED"
+			(at 118.11 64.6998 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10800,7 +10710,7 @@
 		(fields_autoplaced yes)
 		(uuid "0f6e1caa-e845-43d5-afad-905e369c4b83")
 		(property "Reference" "D15"
-			(at 203.2 62.1598 0)
+			(at 204.47 62.1598 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10809,8 +10719,8 @@
 				)
 			)
 		)
-		(property "Value" "APA-106-F5"
-			(at 203.2 64.6998 0)
+		(property "Value" "Right_Turn_LED"
+			(at 204.47 64.6998 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12805,7 +12715,7 @@
 		(fields_autoplaced yes)
 		(uuid "2eb1fb26-4ae4-4051-ae23-a121a36b1cd5")
 		(property "Reference" "D14"
-			(at 199.39 29.1398 0)
+			(at 200.66 29.1398 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12814,8 +12724,8 @@
 				)
 			)
 		)
-		(property "Value" "APA-106-F5"
-			(at 199.39 31.6798 0)
+		(property "Value" "HIgh_Beam_LED"
+			(at 200.66 31.6798 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13794,7 +13704,7 @@
 		(fields_autoplaced yes)
 		(uuid "452555f0-cfdc-4670-b8ef-91fa0724936b")
 		(property "Reference" "D10"
-			(at 146.05 29.1398 0)
+			(at 143.51 29.1398 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13803,8 +13713,8 @@
 				)
 			)
 		)
-		(property "Value" "APA-106-F5"
-			(at 146.05 31.6798 0)
+		(property "Value" "Oil_LED"
+			(at 143.51 31.6798 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14612,7 +14522,7 @@
 		(fields_autoplaced yes)
 		(uuid "5399c665-9217-4108-a121-1e265e19fb23")
 		(property "Reference" "D12"
-			(at 172.72 29.1398 0)
+			(at 170.18 29.1398 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14621,8 +14531,8 @@
 				)
 			)
 		)
-		(property "Value" "APA-106-F5"
-			(at 172.72 31.6798 0)
+		(property "Value" "Fuel_LED"
+			(at 170.18 31.6798 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15929,7 +15839,7 @@
 		(fields_autoplaced yes)
 		(uuid "72c69d78-dc03-4a4a-a9ad-82d50fe544e2")
 		(property "Reference" "D11"
-			(at 146.05 62.1598 0)
+			(at 144.78 62.1598 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15938,8 +15848,8 @@
 				)
 			)
 		)
-		(property "Value" "APA-106-F5"
-			(at 146.05 64.6998 0)
+		(property "Value" "Temp_LED"
+			(at 144.78 64.6998 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17272,7 +17182,7 @@
 		(fields_autoplaced yes)
 		(uuid "8d074a9f-d595-4e9b-9999-835b70f0b25a")
 		(property "Reference" "D16"
-			(at 227.33 29.1398 0)
+			(at 226.06 29.1398 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17281,8 +17191,8 @@
 				)
 			)
 		)
-		(property "Value" "APA-106-F5"
-			(at 227.33 31.6798 0)
+		(property "Value" "Brake_LED"
+			(at 226.06 31.6798 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18576,7 +18486,7 @@
 				)
 			)
 		)
-		(property "Value" "APA-106-F5"
+		(property "Value" "Left_Turn_LED"
 			(at 119.38 31.6798 0)
 			(show_name no)
 			(do_not_autoplace no)

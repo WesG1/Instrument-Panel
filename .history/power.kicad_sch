@@ -8214,7 +8214,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
+		(property "Footprint" "Fuse:Fuse_1210_3225Metric"
 			(at 25.4 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -8535,7 +8535,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric"
 			(at 130.81 40.64 0)
 			(hide yes)
 			(show_name no)
@@ -9288,7 +9288,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric"
 			(at 43.18 169.545 0)
 			(hide yes)
 			(show_name no)
@@ -9711,7 +9711,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_THT:D_A-405_P7.62mm_Horizontal"
 			(at 135.89 96.52 0)
 			(hide yes)
 			(show_name no)
@@ -9893,7 +9893,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 55.5752 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -10533,7 +10533,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 116.84 23.1648 0)
 			(hide yes)
 			(show_name no)
@@ -10853,7 +10853,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 149.5552 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -12583,7 +12583,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 27.6352 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -13731,7 +13731,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 32.7152 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -13813,7 +13813,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 162.2552 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -14130,7 +14130,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 50.4952 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -14687,7 +14687,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
+		(property "Footprint" "Fuse:Fuse_2920_7451Metric_Pad2.10x5.45mm_HandSolder"
 			(at 25.4 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -15565,7 +15565,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
 			(at 61.9252 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -15647,7 +15647,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.4_Nichicon"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_4x4.5"
 			(at 39.0652 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -15885,7 +15885,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric"
 			(at 158.75 141.605 0)
 			(hide yes)
 			(show_name no)
@@ -16205,7 +16205,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMA"
+		(property "Footprint" "Diode_THT:D_A-405_P7.62mm_Horizontal"
 			(at 135.89 105.41 0)
 			(hide yes)
 			(show_name no)
